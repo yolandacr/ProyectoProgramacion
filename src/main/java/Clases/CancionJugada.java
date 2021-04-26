@@ -6,8 +6,12 @@
 package Clases;
 
 import Enums.CategoríaMusical;
+import Excepciones.InvalidNumberException;
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Scanner;
 import javax.sound.sampled.Clip;
+import Interfaces.FuncionesCancionJugada;
 
 /**
  * La clase Canción Jugada hereda de canción y representará el resultado
@@ -15,9 +19,10 @@ import javax.sound.sampled.Clip;
  *
  * @author Yolanda Cordero
  */
-public class CancionJugada extends Canción {
+public class CancionJugada extends Canción implements FuncionesCancionJugada {
 
     private boolean aciertoONo;//booleano que almacena si hay acierto o no
+    Scanner sc = new Scanner(System.in);
 
     /**
      * método constructor de las canciones jugadas
@@ -76,6 +81,54 @@ public class CancionJugada extends Canción {
                 + "\n\tRuta: " + super.getRuta()
                 + "\n\tAudioClip: " + super.getAudioClip()
                 + "\n\tAcierto: " + aciertoONo;
+    }
+
+    @Override
+    public void eligeCategoría(Partida p) {
+          byte opcion = 0;
+
+        try {
+            System.out.println("Elige categoría: "
+                    + "\n\t1- Años 80"
+                    + "\n\t2- Años 90"
+                    + "\n\t3- Años 200"
+                    + "\n\t4- Actualidad"
+            );
+            opcion = Byte.parseByte(sc.nextLine());
+            if (opcion < 1 || opcion > 4) {
+                throw new InvalidNumberException("La opción no es válida, prueba de nuevo");
+            }
+        } catch (InvalidNumberException ex) {
+            System.out.println("Opción no válida. Prueba de nuevo");
+            while (opcion < 1 || opcion > 2) {
+                System.out.println("Elige categoría: "
+                    + "\n\t1- Años 80"
+                    + "\n\t2- Años 90"
+                    + "\n\t3- Años 200"
+                    + "\n\t4- Actualidad");
+                opcion = Byte.parseByte(sc.nextLine());
+            }
+        }
+        switch (opcion) {
+
+            case 1:
+               ArrayList<CancionJugada>años80=new ArrayList();
+               p.setCancionJugada(años80);
+                break;
+            case 2:
+                ArrayList<CancionJugada>años90=new ArrayList();
+               p.setCancionJugada(años90);
+                break;
+            case 3:
+                ArrayList<CancionJugada>años2000=new ArrayList();
+                p.setCancionJugada(años2000);
+                break;
+            case 4:
+                ArrayList<CancionJugada>actualidad=new ArrayList();
+                p.setCancionJugada(actualidad);
+                break;
+        }
+        return
     }
 
 }

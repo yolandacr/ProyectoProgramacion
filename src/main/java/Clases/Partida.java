@@ -6,22 +6,27 @@
 package Clases;
 
 import Enums.ModoJuego;
-import Interfaces.SumaTotales;
+import Excepciones.InvalidNumberException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import Interfaces.FuncionesPartida;
+import java.time.format.DateTimeFormatter;
+import java.util.Scanner;
 
 /**
  * clase que almacena toda la información de objetos Partida
  *
  * @author Yolanda Cordero
  */
-public class Partida implements SumaTotales {
+public class Partida implements FuncionesPartida {
+
+    Scanner sc = new Scanner(System.in);
 
     private Jugador jugador;//objeto jugador de la partida
     private short puntosPartida;//puntos almacenados en la partida.
     private LocalDateTime fecha;//fecha en la que se realizó la partida.
     private ModoJuego nivel;//nivel de juego en el que se ha jugado.
-    private ArrayList<CancionJugada> cancionJugada;//canciones que ya han sido jugadas en esta partida.
+    private ArrayList<CancionJugada> cancionJugada;//canciones que son jugadas en esta partida.
 
     /**
      * método constructor para las partidas jugadas.
@@ -32,12 +37,20 @@ public class Partida implements SumaTotales {
      * @param nivel nivel de dificultad elegido
      * @param cancionJugada canciones que ya han sido jugadas en la aprtida
      */
-    public Partida(Jugador jugador, short puntosPartida, LocalDateTime fecha, ModoJuego nivel, ArrayList<CancionJugada> cancionJugada) {
+    public Partida(Jugador jugador, short puntosPartida, LocalDateTime fecha,
+            ModoJuego nivel, ArrayList<CancionJugada> cancionJugada) {
         this.jugador = jugador;
         this.puntosPartida = puntosPartida;
         this.fecha = fecha;
         this.nivel = nivel;
         this.cancionJugada = cancionJugada;
+    }
+
+    public Partida() {
+    }
+
+    public Partida(Jugador j) {
+        this.jugador = j;
     }
 
     /**
@@ -137,7 +150,7 @@ public class Partida implements SumaTotales {
      */
     @Override
     public String toString() {
-        return "Jugador: " + jugador
+        return jugador
                 + "\n\tPuntos de la partida: " + puntosPartida
                 + "\n\tFecha: " + fecha
                 + "\n\tNivel de dificultad: " + nivel
@@ -162,10 +175,50 @@ public class Partida implements SumaTotales {
      * @param acierto le pasa un booleano que si es true suma 1.
      * @return un número con el total de aciertos.
      */
-
     @Override
     public byte sumarAciertos(boolean acierto) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void eligeNivel(Partida p) {
+
+        byte opcion = 0;
+
+        try {
+            System.out.println("Elige tu modo de juego: "
+                    + "\n\t1- Fácil"
+                    + "\n\t2- Experto");
+            opcion = Byte.parseByte(sc.nextLine());
+            if (opcion < 1 || opcion > 2) {
+                throw new InvalidNumberException("La opción no es válida, prueba de nuevo");
+            }
+        } catch (InvalidNumberException ex) {
+            System.out.println("Opción no válida. Prueba de nuevo");
+            while (opcion < 1 || opcion > 2) {
+                System.out.println("Elige tu modo de juego: "
+                        + "\n\t1- Fácil"
+                        + "\n\t2- Experto");
+                opcion = Byte.parseByte(sc.nextLine());
+            }
+        }
+        switch (opcion) {
+
+            case 1:
+                p.setNivel(ModoJuego.FÁCIL);
+                break;
+            case 2:
+                p.setNivel(ModoJuego.EXPERTO);
+                break;
+        }
+
+    }
+
+    @Override
+    public void estableceFecha(Partida p) {
+        LocalDateTime fechaActual = LocalDateTime.now();
+
+        p.setFecha(fechaActual);
     }
 
 }

@@ -8,7 +8,9 @@ package Clases;
 import Enums.CategoríaMusical;
 import Interfaces.ReproducirCancion;
 import java.io.File;
+import java.util.Scanner;
 import javax.sound.sampled.Clip;
+
 
 /**
  * La siguiente clase representa a los objetos Canción.
@@ -25,6 +27,7 @@ public class Canción extends ElementoConNombre implements ReproducirCancion {
     private File imagen;//imagen del disco al que pertenece
     private String ruta;//ruta relativa donde se encuentra la canción.
     private Clip audioClip;//archivo Clip de cada audio.
+    Scanner sc=new Scanner(System.in);
 
     /**
      * método constructor de la clase Canción.
@@ -233,5 +236,7 @@ public class Canción extends ElementoConNombre implements ReproducirCancion {
     public void stop() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    
 
 }

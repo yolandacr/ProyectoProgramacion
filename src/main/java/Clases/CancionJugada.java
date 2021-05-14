@@ -5,8 +5,10 @@
  */
 package Clases;
 
-import Enums.CategoríaMusical;
+import Enums.CategoriaMusical;
 import Excepciones.InvalidNumberException;
+
+import java.awt.Image;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -19,7 +21,7 @@ import Interfaces.FuncionesCancionJugada;
  *
  * @author Yolanda Cordero
  */
-public class CancionJugada extends Canción implements FuncionesCancionJugada {
+public class CancionJugada extends Cancion implements FuncionesCancionJugada {
 
     private boolean aciertoONo;//booleano que almacena si hay acierto o no
     Scanner sc = new Scanner(System.in);
@@ -38,12 +40,8 @@ public class CancionJugada extends Canción implements FuncionesCancionJugada {
      * @param audioClip archivo de audio
      * @param aciertoONo booleano que valora si hay acierto o no
      */
-    public CancionJugada(String nombre, String autor, CategoríaMusical categoria,
-            String[] opcionesEleccion, short año, String disco, File imagen,
-            String ruta, Clip audioClip, boolean aciertoONo) {
-        super(nombre, autor, categoria, opcionesEleccion, año, disco, imagen, ruta, audioClip);
-        this.aciertoONo = aciertoONo;
-    }
+    
+    
 
     /**
      * método getter para saber si hay acierto o no
@@ -54,7 +52,13 @@ public class CancionJugada extends Canción implements FuncionesCancionJugada {
         return aciertoONo;
     }
 
-    /**
+    public CancionJugada(String nombre, String autor, CategoriaMusical categoria, String[] opcionesEleccion, short año,
+			String disco, Image imagen, String ruta, Clip audioClip) {
+		super(nombre, autor, categoria, opcionesEleccion, año, disco, imagen, ruta, audioClip);
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
      * setter para el acierto
      *
      * @param aciertoONo establece un nuevo valor para la variable acierto entre
@@ -83,7 +87,7 @@ public class CancionJugada extends Canción implements FuncionesCancionJugada {
                 + "\n\tAcierto: " + aciertoONo;
     }
 
-    @Override
+    /*@Override
     public void eligeCategoría(Partida p) {
           byte opcion = 0;
 
@@ -129,6 +133,6 @@ public class CancionJugada extends Canción implements FuncionesCancionJugada {
                 break;
         }
         return
-    }
+    }*/
 
 }

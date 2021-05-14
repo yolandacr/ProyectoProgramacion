@@ -15,9 +15,9 @@ import java.util.ArrayList;
 public class Rockola {
 
     private ArrayList<Partida> partidas;//arraylist con las partidas
-    private ArrayList<Canción> canciones;//arraylist con las canciones
+    private ArrayList<Cancion> canciones;//arraylist con las canciones
 
-    public Rockola(ArrayList<Partida> partidas, ArrayList<Canción> canciones) {
+    public Rockola(ArrayList<Partida> partidas, ArrayList<Cancion> canciones) {
         this.partidas = partidas;
         this.canciones = canciones;
     }
@@ -30,11 +30,11 @@ public class Rockola {
         this.partidas = partidas;
     }
 
-    public ArrayList<Canción> getCanciones() {
+    public ArrayList<Cancion> getCanciones() {
         return canciones;
     }
 
-    public void setCanciones(ArrayList<Canción> canciones) {
+    public void setCanciones(ArrayList<Cancion> canciones) {
         this.canciones = canciones;
     }
 

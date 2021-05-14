@@ -5,15 +5,24 @@
  */
 package casa.proyectot3;
 
+import Clases.CancionJugada;
+import Clases.Cancion;
 import Clases.Jugador;
+//import Clases.Jugador;
 import Clases.Partida;
-
+import Enums.CategoriaMusical;
 import Excepciones.PasswordInvalidException;
-import java.io.FileNotFoundException;
 
+import java.awt.Image;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import javax.imageio.ImageIO;
+import javax.sound.sampled.Clip;
 
 /**
  * La siguiente clase es la principal de mi proyecto
@@ -22,51 +31,93 @@ import java.util.logging.Logger;
  */
 public class Main {
 
-    /**
-     * método main de mi proyecto
-     *
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        try {
-            Scanner sc = new Scanner(System.in);
+	/**
+	 * método main de mi proyecto
+	 *
+	 * @param args the command line arguments
+	 */
+	public static void main(String[] args) {
+		
+		 InterfacesGraficas.Ventana miVentana = new InterfacesGraficas.Ventana();
+		 miVentana.setVisible(true);
+		 
 
-            Jugador jugador1 = new Jugador();
+		try {
+			Scanner sc = new Scanner(System.in);
 
-            System.out.println("Bienvenido a la Rockola Boomer. Elige que quieres hacer: "
-                    + "\n\t1- Registrar Usuario"
-                    + "\n\t2- Login de usuario");
+			Jugador jugador1 = new Jugador();
 
-            byte opcion = Byte.parseByte(sc.nextLine());
-            while (opcion < 1 || opcion > 2) {
-                System.out.println("Opción no válida. Elige una de las dos opciones por favor");
-                System.out.println("Bienvenido a la Rockola Boomer. Elige que quieres hacer: "
-                        + "\n\t1- Registrar Usuario"
-                        + "\n\t2- Login de usuario");
+			System.out.println("Bienvenido a la Rockola Boomer. Elige que quieres hacer: " + "\n\t1- Registrar Usuario"
+					+ "\n\t2- Login de usuario");
 
-                opcion = Byte.parseByte(sc.nextLine());
+			byte opcion = Byte.parseByte(sc.nextLine());
+			while (opcion < 1 || opcion > 2) {
+				System.out.println("Opción no válida. Elige una de las dos opciones por favor");
+				System.out.println("Bienvenido a la Rockola Boomer. Elige que quieres hacer: "
+						+ "\n\t1- Registrar Usuario" + "\n\t2- Login de usuario");
 
-            }
+				opcion = Byte.parseByte(sc.nextLine());
 
-            switch (opcion) {
-                case 1:
-                    jugador1 = jugador1.pideDatos();
-                    jugador1.registrar();
+			}
 
-                    break;
-                case 2:
-                    jugador1.login();
-                    Partida partida1 = new Partida(jugador1, (short) 0, null, null, null);
-                    partida1.eligeNivel(partida1);
-                    partida1.estableceFecha(partida1);
-                    System.out.println(partida1);
+			switch (opcion) {
+			case 1:
+				jugador1 = jugador1.pideDatos();
+				jugador1.registrar();
 
-                    break;
-            }
-        } catch (PasswordInvalidException | FileNotFoundException ex) {
-            System.out.println("La acción no ha podido llevarse a cabo");
-        }
+				break;
+			case 2:
+				jugador1.login();
+				Partida partida1 = new Partida(jugador1, (short) 0, null, null, null);
+				partida1.eligeNivel(partida1);
+				partida1.estableceFecha(partida1);
+				System.out.println(partida1);
 
-    }
+				break;
+			}
+		} catch (PasswordInvalidException | FileNotFoundException ex) {
+			System.out.println("La acción no ha podido llevarse a cabo");
+		}
+		
+		//OBJETO CANCIÓN 1
+		
+		String[] opcionesEleccionAlice = { "quizas", "sitio muy raro", "el viaje", "que se joda todo lo demas" };
+		try {
+			Image discoAlice = ImageIO.read(new File("./imagenes/aliceWonder.jpg"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		/*Cancion cancionAlice = new CancionJugada("que se joda todo lo demas", "alice wonder", CategoríaMusical.ACTUAL,
+				opcionesEleccionAlice, 2021, "que se joda todo lo demás",discoAlice,"./sonidos/ACTUALIDAD/aliceWonder.wav",
+				Clip,false);*/
+		
+		//OBJETO CANCIÓN 2
+		String[] opcionesEleccionMerichane = { "yo estaba ahi", "sin saber salir", "merichane", "yo" };
+		try {
+			Image discoZahara = ImageIO.read(new File("./imagenes/zahara.jpg"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		/*Cancion cancionMerichane = new CancionJugada("merichane", "zahara", CategoríaMusical.ACTUAL,
+				opcionesEleccionMerichane, 2021, "puta",discoZahara,"./sonidos/ACTUALIDAD/merichane.wav",
+				Clip,false);*/
+		
+		
+		//OBJETO CANCIÓN 3
+				String[] opcionesEleccionBad = { "bad gay", "bad guy", "bad boy", "bad" };
+				try {
+					Image discoBillie = ImageIO.read(new File("./imagenes/billie.jpg"));
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				/*Cancion cancionMerichane = new CancionJugada("bad guy", "billie eilish", CategoríaMusical.ACTUAL,
+						opcionesEleccionBad, 2021, "When We All Fall Asleep, Where Do We Go?",discoBillie,"./sonidos/ACTUALIDAD/billie.wav",
+						Clip,false);*/
+		
+
+	}
 
 }

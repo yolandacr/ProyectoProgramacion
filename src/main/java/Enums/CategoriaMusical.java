@@ -3,17 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Interfaces;
-
-
-import Clases.Partida;
-
+package Enums;
 
 /**
- *
- * @author reena
+ * La siguiente clase es un enums de categoría musicales.
+ * @author Yolanda Cordero
  */
-public interface FuncionesCancionJugada {
-    //public void eligeCategoría(Partida p);
-    
+public enum CategoriaMusical {
+    AÑOS80,
+    AÑOS90,
+    AÑOS2000,
+    ACTUAL
+
 }

@@ -37,10 +37,9 @@ public class Main {
 	 * @param args the command line arguments
 	 */
 	public static void main(String[] args) {
-		
-		 InterfacesGraficas.Ventana miVentana = new InterfacesGraficas.Ventana();
-		 miVentana.setVisible(true);
-		 
+
+		InterfacesGraficas.Ventana miVentana = new InterfacesGraficas.Ventana();
+		miVentana.setVisible(true);
 
 		try {
 			Scanner sc = new Scanner(System.in);
@@ -78,9 +77,9 @@ public class Main {
 		} catch (PasswordInvalidException | FileNotFoundException ex) {
 			System.out.println("La acción no ha podido llevarse a cabo");
 		}
-		
-		//OBJETO CANCIÓN 1
-		
+
+		// OBJETO CANCIÓN 1
+
 		String[] opcionesEleccionAlice = { "quizas", "sitio muy raro", "el viaje", "que se joda todo lo demas" };
 		try {
 			Image discoAlice = ImageIO.read(new File("./imagenes/aliceWonder.jpg"));
@@ -88,11 +87,14 @@ public class Main {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		/*Cancion cancionAlice = new CancionJugada("que se joda todo lo demas", "alice wonder", CategoríaMusical.ACTUAL,
-				opcionesEleccionAlice, 2021, "que se joda todo lo demás",discoAlice,"./sonidos/ACTUALIDAD/aliceWonder.wav",
-				Clip,false);*/
-		
-		//OBJETO CANCIÓN 2
+		/*
+		 * Cancion cancionAlice = new CancionJugada("que se joda todo lo demas",
+		 * "alice wonder", CategoríaMusical.ACTUAL, opcionesEleccionAlice, 2021,
+		 * "que se joda todo lo demás",discoAlice,
+		 * "./sonidos/ACTUALIDAD/aliceWonder.wav", Clip,false);
+		 */
+
+		// OBJETO CANCIÓN 2
 		String[] opcionesEleccionMerichane = { "yo estaba ahi", "sin saber salir", "merichane", "yo" };
 		try {
 			Image discoZahara = ImageIO.read(new File("./imagenes/zahara.jpg"));
@@ -100,23 +102,41 @@ public class Main {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		/*Cancion cancionMerichane = new CancionJugada("merichane", "zahara", CategoríaMusical.ACTUAL,
-				opcionesEleccionMerichane, 2021, "puta",discoZahara,"./sonidos/ACTUALIDAD/merichane.wav",
-				Clip,false);*/
-		
-		
-		//OBJETO CANCIÓN 3
-				String[] opcionesEleccionBad = { "bad gay", "bad guy", "bad boy", "bad" };
-				try {
-					Image discoBillie = ImageIO.read(new File("./imagenes/billie.jpg"));
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				/*Cancion cancionMerichane = new CancionJugada("bad guy", "billie eilish", CategoríaMusical.ACTUAL,
-						opcionesEleccionBad, 2021, "When We All Fall Asleep, Where Do We Go?",discoBillie,"./sonidos/ACTUALIDAD/billie.wav",
-						Clip,false);*/
-		
+		/*
+		 * Cancion cancionMerichane = new CancionJugada("merichane", "zahara",
+		 * CategoríaMusical.ACTUAL, opcionesEleccionMerichane, 2021,
+		 * "puta",discoZahara,"./sonidos/ACTUALIDAD/merichane.wav", Clip,false);
+		 */
+
+		// OBJETO CANCIÓN 3
+		String[] opcionesEleccionBad = { "bad gay", "bad guy", "bad boy", "bad" };
+		try {
+			Image discoBillie = ImageIO.read(new File("./imagenes/billie.jpg"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		/*
+		 * Cancion cancionBillie = new CancionJugada("bad guy", "billie eilish",
+		 * CategoríaMusical.ACTUAL, opcionesEleccionBad, 2021,
+		 * "When We All Fall Asleep, Where Do We Go?",discoBillie,
+		 * "./sonidos/ACTUALIDAD/billie.wav", Clip,false);
+		 */
+
+		// OBJETO CANCIÓN 4
+		String[] opcionesEleccionForever = { "forever", "savor", "hate you", "forgive me" };
+		try {
+			Image discoChvrches = ImageIO.read(new File("./imagenes/chvrches.png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		/*
+		 * Cancion cancionForever = new CancionJugada("forever", "chvrches",
+		 * CategoríaMusical.ACTUAL, opcionesEleccionForever, 2018,
+		 * "love is dead",discoChvrches,
+		 * "./sonidos/ACTUALIDAD/forever.wav", Clip,false);
+		 */
 
 	}
 

@@ -10,9 +10,15 @@ import Interfaces.ReproducirCancion;
 
 import java.awt.Image;
 import java.io.File;
+import java.io.IOException;
 import java.util.Scanner;
-import javax.sound.sampled.Clip;
+import javax.sound.sampled.AudioFormat;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 
 /**
  * La siguiente clase representa a los objetos Canción.
@@ -27,24 +33,26 @@ public class Cancion extends ElementoConNombre implements ReproducirCancion {
     private short año;//año de la canción
     private String disco;//disco al que pertenece
     private Image imagen;//imagen del disco al que pertenece
-    private String ruta;//ruta relativa donde se encuentra la canción.
-    private Clip audioClip;//archivo Clip de cada audio.
-    Scanner sc=new Scanner(System.in);
+    private String ruta;//ruta del archivo de audio en String
 
+    //estas dos variables se utilizan para crear el reproductor
+    private Clip audioClip;//variable que representa el archivo de audio
+    private AudioInputStream audioStream;//variable que representa la ruta del archivo de audio en un objeto
+    Scanner sc = new Scanner(System.in);
+    
     /**
-     * método constructor de la clase Canción.
-     *
-     * @param nombre nombre de la canción
-     * @param autor autor de la canción
-     * @param categoria categoría musical a la que pertenece
-     * @param opcionesEleccion las distintas opciones a elegir del modo fácil
-     * @param año año de la canción
-     * @param disco nombre del disco al que pertenece la canción
-     * @param imagen imágen del disco de la canción
-     * @param ruta ruta donde se encuentra el archivo
-     * @param audioClip archivo de audio.
+     * método constructor con todos los parámetros
+     * @param autor autor de la cancion
+     * @param categoria categoria a la que pertenece
+     * @param opcionesEleccion array de opciones de la cancion
+     * @param año año de publicacion
+     * @param disco disco al que pertenece
+     * @param imagen imagend el disco
+     * @param ruta ruta relativa de la cancion
+     * @param nombre nombre de la cancion
      */
-    public Cancion(String nombre, String autor, CategoriaMusical categoria, String[] opcionesEleccion, short año, String disco, Image imagen, String ruta, Clip audioClip) {
+
+    public Cancion(String autor, CategoriaMusical categoria, String[] opcionesEleccion, short año, String disco, Image imagen, String ruta, String nombre) {
         super(nombre);
         this.autor = autor;
         this.categoria = categoria;
@@ -53,7 +61,55 @@ public class Cancion extends ElementoConNombre implements ReproducirCancion {
         this.disco = disco;
         this.imagen = imagen;
         this.ruta = ruta;
-        this.audioClip = audioClip;
+    }
+    
+    
+    
+    
+    /**
+     * constructor de canción para la pantalla de acierto
+     * @param autor autor de la cancion
+     * @param año año enel que se publicó la canción
+     * @param disco nombre del disco al que pertenece
+     * @param imagen imagen del disco al que pertenece
+     * @param nombre nombre de la canción
+     */
+
+    public Cancion(String nombre,String autor, short año, String disco, Image imagen) {
+        super(nombre);
+        this.autor = autor;
+        this.año = año;
+        this.disco = disco;
+        this.imagen = imagen;
+    }
+
+    
+
+    /**
+     * constructor pasando solo la ruta del archivo audio.Se usará para el reproductor.
+     *
+     * @param ruta
+     */
+    public Cancion(String ruta) {
+        //crea un AudioInputStream desde la ruta de sonido especificada
+        File audioFile = new File(ruta);
+        try {
+            audioStream = AudioSystem.getAudioInputStream(audioFile);
+        } catch (UnsupportedAudioFileException | IOException e) {
+            e.printStackTrace();
+        }
+
+        //adquiere el formato de audio y crea un objeto DataLine.
+        AudioFormat format = audioStream.getFormat();
+        //var info = new DataLine.Info(Clip.class, format);
+
+        //obtiene el clip
+        try {
+            audioClip = AudioSystem.getClip();
+            audioClip.open(audioStream);
+        } catch (LineUnavailableException | IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -154,7 +210,7 @@ public class Cancion extends ElementoConNombre implements ReproducirCancion {
      *
      * @return un objeto file con la imagen
      */
-    public Image getImagen() {    
+    public Image getImagen() {
         return imagen;
     }
 
@@ -163,7 +219,7 @@ public class Cancion extends ElementoConNombre implements ReproducirCancion {
      *
      * @param imagen establece un nuevo objeto imagen
      */
-    public void setImagen(Image imagen) {    
+    public void setImagen(Image imagen) {
         this.imagen = imagen;
     }
 
@@ -204,41 +260,53 @@ public class Cancion extends ElementoConNombre implements ReproducirCancion {
     }
 
     /**
-     * método para imprimir objetos canción
+     * método getter para AudioStream
      *
+     * @return un objeto audioStream
+     */
+    public AudioInputStream getAudioStream() {
+        return audioStream;
+    }
+
+    /**
+     * método setter para AudioStream
+     *
+     * @param audioStream
+     */
+    public void setAudioStream(AudioInputStream audioStream) {
+        this.audioStream = audioStream;
+    }
+
+    /**
+     * método para imprimir objetos canción cuando acierten
      * @return un string concatenado con otodos los atributos del objeto.
      */
     @Override
     public String toString() {
-        return "Nombre: " + super.getNombre()
-                + "\n\tAutor: " + autor
-                + "\n\tCategoría: " + categoria
-                + "\n\tOpcionesEleccion: " + opcionesEleccion
-                + "\n\tAño: " + año
-                + "\n\tDisco: " + disco
-                + "\n\tImagen: " + imagen
-                + "\n\tRuta: " + ruta
-                + "\n\tAudioClip: " + audioClip;
+        return "Nombre: "+super.getNombre()
+                + "\nAutor: " + autor 
+                + "\nAño: " + año 
+                + "\nDisco: " + disco 
+                + "\nImagen: " + imagen;
     }
-    
+
     /**
      * método que reproduce el clip de audio
      */
-
     @Override
     public void play() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        new Thread(() -> {
+            audioClip.setFramePosition(0);
+            audioClip.start();
+        }) {
+        }.start();
     }
-    
+
     /**
      * método que para el clip de audio
      */
-
     @Override
     public void stop() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        audioClip.stop();
     }
-
-    
-
 }

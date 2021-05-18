@@ -19,6 +19,7 @@ public class Ventana extends JFrame {
 	private PantallaInicio inicio;//objeto para la pantalla de inicio
 	private PantallaRegistro registro;//objeto para la pantalla de registro
 	private PantallaLogin login;
+	private PantallaJuego juego;
 	/*
 	 * private PantallaNivel nivel; private PantallaCategoria categoria; private
 	 * PantallaJuego juego; private PantallaAcierto aciertoONo; private
@@ -78,5 +79,14 @@ public class Ventana extends JFrame {
 		if(inicio!=null) {this.inicio.setVisible(false);}
 		this.setContentPane(inicio);
 		this.inicio.setVisible(true);
+	}
+	
+	public void irAlJuego() {
+		if(this.juego==null) {
+			this.juego=new PantallaJuego(this);
+		}
+		if(juego!=null) {this.juego.setVisible(false);}
+		this.setContentPane(juego);
+		this.juego.setVisible(true);
 	}
 }

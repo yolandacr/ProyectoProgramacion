@@ -88,6 +88,12 @@ public class PantallaLogin extends JPanel {
 		// botón registro
 		
 		JButton botonRegistrar = new JButton("Acceder");
+		botonRegistrar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				ventana.irAlJuego();
+			}
+		});
 		botonRegistrar.setForeground(new Color(255, 51, 255));
 		botonRegistrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

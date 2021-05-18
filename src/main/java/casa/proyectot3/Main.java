@@ -41,7 +41,7 @@ public class Main {
 		InterfacesGraficas.Ventana miVentana = new InterfacesGraficas.Ventana();
 		miVentana.setVisible(true);
 
-		try {
+		/*try {
 			Scanner sc = new Scanner(System.in);
 
 			Jugador jugador1 = new Jugador();
@@ -76,7 +76,14 @@ public class Main {
 			}
 		} catch (PasswordInvalidException | FileNotFoundException ex) {
 			System.out.println("La acción no ha podido llevarse a cabo");
-		}
+		}*/
+                
+                
+                //objeto audio 1
+                Cancion cancion1= new Cancion("./sonidos/ACTUALIDAD/aliceWonder.wav");//crea el objeto
+                //reproductor que reproduce el audio en el reproductor.
+                
+                
 
 		// OBJETO CANCIÓN 1
 

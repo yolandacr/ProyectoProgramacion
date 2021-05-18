@@ -7,13 +7,26 @@ import java.awt.Font;
 import java.awt.Color;
 import javax.swing.JButton;
 import javax.swing.JTextField;
+
+import Clases.Cancion;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class PantallaJuego extends JPanel {
-	public PantallaJuego() {
+	private Cancion cancion= new Cancion("./sonidos/ACTUALIDAD/aliceWonder.wav");//crea el objeto
+    //reproductor que reproduce el audio en el reproductor.
+	
+	private Ventana ventana;//objeto ventana base
+	private JTextField campoPuntos;
+	
+	
+	
+	public PantallaJuego(Ventana v) {
+		this.ventana=v;
 		setLayout(null);
-		
 		JLabel textoPuntos = new JLabel("Puntos:");
 		textoPuntos.setFont(new Font("Goudy Stout", Font.PLAIN, 20));
 		textoPuntos.setBounds(40, 21, 155, 42);
@@ -46,13 +59,25 @@ public class PantallaJuego extends JPanel {
 		add(botonOpcion3);
 		
 		JButton botonPlay = new JButton("Play");
+		botonPlay.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				cancion.play();
+				
+			}
+		});
 		botonPlay.setBounds(685, 111, 85, 21);
 		add(botonPlay);
 		
 		JButton botonStop = new JButton("Stop");
+		botonStop.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				cancion.stop();
+			}
+		});
 		botonStop.setBounds(833, 111, 85, 21);
 		add(botonStop);
 	}
-	private Ventana ventana;//objeto ventana base
-	private JTextField campoPuntos;
+	
 }

@@ -4,17 +4,28 @@ import javax.swing.JPanel;
 import java.awt.GridLayout;
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.GridBagConstraints;
 import java.awt.Font;
 import javax.swing.JTextField;
 import java.awt.Insets;
 import javax.swing.SwingConstants;
+import Clases.Jugador;
+
 import java.awt.Color;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 
 /**
  *  La siguiente clase es la Interface gráfica de la pantalla para que el jugador se registre.
@@ -85,26 +96,62 @@ public class PantallaLogin extends JPanel {
 		add(campoContraseña, gbc_campoContraseña);
 		campoContraseña.setColumns(10);
 		
+		
+		final ArrayList<Jugador> campoSeleccionCentro 
+		= new ArrayList<Jugador>();
+		
 		// botón registro
 		
-		JButton botonRegistrar = new JButton("Acceder");
-		botonRegistrar.addMouseListener(new MouseAdapter() {
+		JButton botonLogin = new JButton("Acceder");
+		botonLogin.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				ventana.irAlJuego();
+		if (campoNombre.getText().isBlank() || campoContraseña.getText().isBlank()) {
+		JOptionPane.showMessageDialog(ventana, "Todos los campos deben" + " estar rellenos",
+		"No pudo insertarse", JOptionPane.ERROR_MESSAGE);
+					
+				} else { //no estan en blanco y pasa a validar
+					Jugador jugadorLogin=new Jugador(campoNombre.getSelectedText(),campoContraseña.getSelectedText());
+					
+					try {
+						Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola",
+								"root", "1234");
+						Statement smt = conexion.createStatement();
+						
+						smt.executeUpdate("select * from jugador where "
+								+"nombre='"+jugadorLogin.getNombre()+
+								"' and contraseña='"+jugadorLogin.getConstraseña()+"'");
+						System.out.println(smt);
+						if(smt.equals(jugadorLogin)) {
+							ventana.irANivel();
+						}else {
+							JOptionPane.showMessageDialog(ventana, "El usuario" + " no existe",
+									"Prueba de nuevo", JOptionPane.ERROR_MESSAGE);
+						}
+						
+						
+						smt.close();
+						conexion.close();
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					
+				}
+				
 			}
 		});
-		botonRegistrar.setForeground(new Color(255, 51, 255));
-		botonRegistrar.addActionListener(new ActionListener() {
+		botonLogin.setForeground(new Color(255, 51, 255));
+		botonLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		botonRegistrar.setFont(new Font("Goudy Stout", Font.PLAIN, 25));
-		GridBagConstraints gbc_botonRegistrar = new GridBagConstraints();
-		gbc_botonRegistrar.insets = new Insets(0, 0, 5, 5);
-		gbc_botonRegistrar.gridx = 2;
-		gbc_botonRegistrar.gridy = 5;
-		add(botonRegistrar, gbc_botonRegistrar);
+		botonLogin.setFont(new Font("Goudy Stout", Font.PLAIN, 25));
+		GridBagConstraints gbc_botonLogin = new GridBagConstraints();
+		gbc_botonLogin.insets = new Insets(0, 0, 5, 5);
+		gbc_botonLogin.gridx = 2;
+		gbc_botonLogin.gridy = 5;
+		add(botonLogin, gbc_botonLogin);
 		
 		//botón volver
 		

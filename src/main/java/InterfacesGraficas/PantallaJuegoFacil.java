@@ -15,7 +15,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class PantallaJuego extends JPanel {
+public class PantallaJuegoFacil extends JPanel {
 	private Cancion cancion= new Cancion("./sonidos/ACTUALIDAD/aliceWonder.wav");//crea el objeto
     //reproductor que reproduce el audio en el reproductor.
 	
@@ -24,7 +24,7 @@ public class PantallaJuego extends JPanel {
 	
 	
 	
-	public PantallaJuego(Ventana v) {
+	public PantallaJuegoFacil(Ventana v) {
 		this.ventana=v;
 		setLayout(null);
 		JLabel textoPuntos = new JLabel("Puntos:");

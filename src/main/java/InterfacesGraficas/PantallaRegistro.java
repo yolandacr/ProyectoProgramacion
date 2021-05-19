@@ -4,17 +4,26 @@ import javax.swing.JPanel;
 import java.awt.GridLayout;
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.GridBagConstraints;
 import java.awt.Font;
 import javax.swing.JTextField;
 import java.awt.Insets;
 import javax.swing.SwingConstants;
+
+import Clases.Jugador;
+
 import java.awt.Color;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  *  La siguiente clase es la Interface gráfica de la pantalla para que el jugador se registre.
@@ -88,6 +97,37 @@ public class PantallaRegistro extends JPanel {
 		// botón registro
 		
 		JButton botonRegistrar = new JButton("Registrar");
+		botonRegistrar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if (campoNombre.getText().isBlank() || campoContraseña.getText().isBlank()) {
+					JOptionPane.showMessageDialog(ventana, "Todos los campos deben" + " estar rellenos",
+							"No pudo insertarse", JOptionPane.ERROR_MESSAGE);
+					
+				} else { // Todo relleno, se puede insertar
+					try {
+						Jugador jugador = new Jugador(campoNombre.getText(),
+								campoContraseña.getText());
+						Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola",
+								"root", "1234");
+						Statement smt = conexion.createStatement();
+						smt.executeUpdate(
+								"insert into Jugador " + "values('" + campoNombre.getText() + "'," + "'"
+										+ campoContraseña.getText() +  "')");
+						JOptionPane.showMessageDialog(ventana, "El usuario se ha registrado correctamente", "Registro correcto",
+								JOptionPane.YES_OPTION);
+
+						smt.close();
+						conexion.close();
+						ventana.irInicio();
+					} catch (SQLException e1) {
+						JOptionPane.showMessageDialog(ventana,e1.getMessage()
+								,"Error de inserción",JOptionPane.ERROR_MESSAGE);
+					} 
+					}
+				}
+			}
+		);
 		botonRegistrar.setForeground(new Color(255, 51, 255));
 		botonRegistrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

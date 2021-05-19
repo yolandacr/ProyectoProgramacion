@@ -18,7 +18,7 @@ public class PantallaCategoria extends JPanel {
 	private Ventana ventana;//objeto ventana base
 	
 	
-	public PantallaCategoria() {
+	public PantallaCategoria(Ventana v) {
 		setLayout(null);
 		
 		JLabel textoCategoria = new JLabel("Elige la categoría");

@@ -55,19 +55,6 @@ public class PantallaInicio extends JPanel {
 		gridBagLayout.columnWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
-		
-				// titulo
-		
-				JLabel botonBienvenida = new JLabel("Rockola Boomer");
-				botonBienvenida.setHorizontalAlignment(SwingConstants.CENTER);
-				botonBienvenida.setForeground(new Color(255, 51, 255));
-				botonBienvenida.setFont(new Font("Goudy Stout", Font.BOLD, 35));
-				GridBagConstraints gbc_botonBienvenida = new GridBagConstraints();
-				gbc_botonBienvenida.anchor = GridBagConstraints.NORTHWEST;
-				gbc_botonBienvenida.insets = new Insets(0, 0, 5, 0);
-				gbc_botonBienvenida.gridx = 1;
-				gbc_botonBienvenida.gridy = 1;
-				add(botonBienvenida, gbc_botonBienvenida);
 				
 						// botón de nuevo usuario
 				
@@ -78,6 +65,16 @@ public class PantallaInicio extends JPanel {
 								ventana.irARegistro();
 							}
 						});
+						
+						JLabel textoBienvenida = new JLabel("Bienvenido a la Rockola Boomer");
+						textoBienvenida.setFont(new Font("Dialog", Font.PLAIN, 25));
+						textoBienvenida.setForeground(Color.MAGENTA);
+						textoBienvenida.setHorizontalAlignment(SwingConstants.CENTER);
+						GridBagConstraints gbc_textoBienvenida = new GridBagConstraints();
+						gbc_textoBienvenida.insets = new Insets(0, 0, 5, 0);
+						gbc_textoBienvenida.gridx = 1;
+						gbc_textoBienvenida.gridy = 2;
+						add(textoBienvenida, gbc_textoBienvenida);
 						botonRegistro.setForeground(new Color(153, 51, 255));
 						botonRegistro.setFont(new Font("Goudy Stout", Font.BOLD, 25));
 						GridBagConstraints gbc_botonRegistro = new GridBagConstraints();

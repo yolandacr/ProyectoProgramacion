@@ -5,7 +5,7 @@
  */
 package Clases;
 
-import Enums.ModoJuego;
+
 import Excepciones.InvalidNumberException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -18,14 +18,14 @@ import java.util.Scanner;
  *
  * @author Yolanda Cordero
  */
-public class Partida implements FuncionesPartida {
+public class Partida {
 
     Scanner sc = new Scanner(System.in);
 
     private Jugador jugador;//objeto jugador de la partida
     private short puntosPartida;//puntos almacenados en la partida.
     private LocalDateTime fecha;//fecha en la que se realizó la partida.
-    private ModoJuego nivel;//nivel de juego en el que se ha jugado.
+    //private ModoJuego nivel;//nivel de juego en el que se ha jugado.
     private ArrayList<CancionJugada> cancionJugada;//canciones que son jugadas en esta partida.
 
     /**
@@ -34,15 +34,12 @@ public class Partida implements FuncionesPartida {
      * @param jugador jugador que la realizó
      * @param puntosPartida puntos conseguidos en la partida
      * @param fecha fecha de la partida y hora
-     * @param nivel nivel de dificultad elegido
      * @param cancionJugada canciones que ya han sido jugadas en la aprtida
      */
-    public Partida(Jugador jugador, short puntosPartida, LocalDateTime fecha,
-            ModoJuego nivel, ArrayList<CancionJugada> cancionJugada) {
+    public Partida(Jugador jugador, short puntosPartida, LocalDateTime fecha, ArrayList<CancionJugada> cancionJugada) {
         this.jugador = jugador;
         this.puntosPartida = puntosPartida;
         this.fecha = fecha;
-        this.nivel = nivel;
         this.cancionJugada = cancionJugada;
     }
 
@@ -107,23 +104,6 @@ public class Partida implements FuncionesPartida {
         this.fecha = fecha;
     }
 
-    /**
-     * método getterpara el nivel de juego
-     *
-     * @return un string con el enum correspondiente.
-     */
-    public ModoJuego getNivel() {
-        return nivel;
-    }
-
-    /**
-     * método setter para nivel
-     *
-     * @param nivel establece un nuevo valor de el enum para el nivel
-     */
-    public void setNivel(ModoJuego nivel) {
-        this.nivel = nivel;
-    }
 
     /**
      * método getter de la lista de canciones jugadas.
@@ -153,7 +133,6 @@ public class Partida implements FuncionesPartida {
         return jugador
                 + "\n\tPuntos de la partida: " + puntosPartida
                 + "\n\tFecha: " + fecha
-                + "\n\tNivel de dificultad: " + nivel
                 + "\n\tCanciones Jugadas: " + cancionJugada;
     }
 
@@ -164,10 +143,10 @@ public class Partida implements FuncionesPartida {
      * experto.
      * @return un número con el total
      */
-    @Override
+    /*@Override
     public short sumarPuntos(byte puntos) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    }*/
 
     /**
      * método que suma los aciertos
@@ -175,12 +154,12 @@ public class Partida implements FuncionesPartida {
      * @param acierto le pasa un booleano que si es true suma 1.
      * @return un número con el total de aciertos.
      */
-    @Override
+    /*@Override
     public byte sumarAciertos(boolean acierto) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    }*/
 
-    @Override
+    /*@Override
     public void eligeNivel(Partida p) {
 
         byte opcion = 0;
@@ -219,6 +198,6 @@ public class Partida implements FuncionesPartida {
         LocalDateTime fechaActual = LocalDateTime.now();
 
         p.setFecha(fechaActual);
-    }
+    }*/
 
 }

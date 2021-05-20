@@ -5,15 +5,13 @@
  */
 package Clases;
 
-import Enums.CategoriaMusical;
-import Interfaces.ReproducirCancion;
 
+import Interfaces.ReproducirCancion;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
 import javax.sound.sampled.AudioFormat;
-
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
@@ -28,9 +26,9 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 public class Cancion extends ElementoConNombre implements ReproducirCancion {
 
     private String autor;//representa el nombre del autor de la canción
-    private CategoriaMusical categoria;//enumeración que representa la categoróa a la que va a pertenecer.
+    private String categoria;//enumeración que representa la categoróa a la que va a pertenecer.
     private String[] opcionesEleccion;//representa a las distintas opciones de elección del modo fácil.
-    private short año;//año de la canción
+    private int año;//año de la canción
     private String disco;//disco al que pertenece
     private Image imagen;//imagen del disco al que pertenece
     private String ruta;//ruta del archivo de audio en String
@@ -40,33 +38,32 @@ public class Cancion extends ElementoConNombre implements ReproducirCancion {
     private AudioInputStream audioStream;//variable que representa la ruta del archivo de audio en un objeto
     Scanner sc = new Scanner(System.in);
     
-    /**
-     * método constructor con todos los parámetros
-     * @param autor autor de la cancion
-     * @param categoria categoria a la que pertenece
-     * @param opcionesEleccion array de opciones de la cancion
-     * @param año año de publicacion
-     * @param disco disco al que pertenece
-     * @param imagen imagend el disco
-     * @param ruta ruta relativa de la cancion
-     * @param nombre nombre de la cancion
-     */
+  /**
+   * constructor con todos los parámetros para crear las canciones del arraylist en cada categoria
+   * @param autor
+   * @param categoria
+   * @param opcionesEleccion
+   * @param año
+   * @param disco
+   * @param imagen
+   * @param ruta
+   * @param audioClip
+   * @param audioStream
+   * @param sc
+   */
+    
+    
+    public Cancion(String nombre, String autor, String categoria, int año, String disco, String ruta) {
+		super(nombre);
+		this.autor = autor;
+		this.categoria = categoria;
+		this.año = año;
+		this.disco = disco;
+		this.ruta = ruta;
+		
+	}
 
-    public Cancion(String autor, CategoriaMusical categoria, String[] opcionesEleccion, short año, String disco, Image imagen, String ruta, String nombre) {
-        super(nombre);
-        this.autor = autor;
-        this.categoria = categoria;
-        this.opcionesEleccion = opcionesEleccion;
-        this.año = año;
-        this.disco = disco;
-        this.imagen = imagen;
-        this.ruta = ruta;
-    }
-    
-    
-    
-    
-    /**
+	/**
      * constructor de canción para la pantalla de acierto
      * @param autor autor de la cancion
      * @param año año enel que se publicó la canción
@@ -82,10 +79,32 @@ public class Cancion extends ElementoConNombre implements ReproducirCancion {
         this.disco = disco;
         this.imagen = imagen;
     }
+    
+    /**
+     * constructor para crear arrayList en Pantalla de categoría.
+     * @param nombre
+     * @param autor
+     * @param categoria
+     * @param año
+     * @param disco
+     * @param ruta
+     */
 
     
 
-    /**
+    public Cancion(String nombre, String autor, String categoria, short año, String disco, String ruta) {
+		super(nombre);
+		this.autor = autor;
+		this.categoria = categoria;
+		this.año = año;
+		this.disco = disco;
+		this.ruta = ruta;
+	}
+
+
+
+
+	/**
      * constructor pasando solo la ruta del archivo audio.Se usará para el reproductor.
      *
      * @param ruta
@@ -136,7 +155,7 @@ public class Cancion extends ElementoConNombre implements ReproducirCancion {
      *
      * @return un string con el nombre de la categoría
      */
-    public CategoriaMusical getCategoria() {
+    public String getCategoria() {
         return categoria;
     }
 
@@ -146,7 +165,7 @@ public class Cancion extends ElementoConNombre implements ReproducirCancion {
      * @param categoria otorga un nuevo string pasado por parámetros a la
      * variable categoría entre las opciones del enum.
      */
-    public void setCategoria(CategoriaMusical categoria) {
+    public void setCategoria(String categoria) {
         this.categoria = categoria;
     }
 
@@ -174,7 +193,7 @@ public class Cancion extends ElementoConNombre implements ReproducirCancion {
      *
      * @return un número con el valor de la variable
      */
-    public short getAño() {
+    public int getAño() {
         return año;
     }
 

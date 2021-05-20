@@ -98,9 +98,6 @@ public class PantallaLogin extends JPanel {
 		campoContraseña.setColumns(10);
 		
 		
-		final ArrayList<Jugador> campoSeleccionCentro 
-		= new ArrayList<Jugador>();
-		
 		// botón registro
 		
 		JButton botonLogin = new JButton("Acceder");
@@ -112,23 +109,31 @@ public class PantallaLogin extends JPanel {
 		"No pudo insertarse", JOptionPane.ERROR_MESSAGE);
 					
 				} else { //no estan en blanco y pasa a validar
-					Jugador jugadorLogin=new Jugador(campoNombre.getSelectedText(),campoContraseña.getSelectedText());
+					Jugador jugadorLogin=new Jugador();
 					
 					try {
 						Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola",
-								"root", "1234");
+								"root", "admin");
 						Statement smt = conexion.createStatement();
 						
-						ResultSet loginResult= smt.executeQuery("select nombre from jugador where "
-								+"contraseña='"+jugadorLogin.getContraseña()+"'");
-						String nombre = loginResult.getString("nombre");
 						
-						if (loginResult.next()){
-							JOptionPane.showMessageDialog(null, "Bienvenido " + nombre, "Mensaje",JOptionPane.INFORMATION_MESSAGE);
-							ventana.irANivel();
-		                } 
+						
+						ResultSet loginResult= smt.executeQuery("select * from jugador where nombre='"+campoNombre.getText()
+						+"' AND "+"contraseña='"+campoContraseña.getText()+"'");
+						
+					
+						
+						if(loginResult.next()==true) {
+						String nombre = loginResult.getString("nombre");
+						String contraseña= loginResult.getString("contraseña");
+						jugadorLogin=new Jugador(nombre,contraseña);
+						
+						JOptionPane.showMessageDialog(null, "Bienvenido " + nombre, "Mensaje",JOptionPane.INFORMATION_MESSAGE);
+						ventana.irACategoria();
+							
+						}
 						else {
-							JOptionPane.showMessageDialog(null, "El usuario no existe: " , "Prueba de nuevo",JOptionPane.ERROR_MESSAGE);
+							JOptionPane.showMessageDialog(null, "El usuario o clave incorrectos. " , "Prueba de nuevo",JOptionPane.ERROR_MESSAGE);
 		                    	 
 		                    }
 		            

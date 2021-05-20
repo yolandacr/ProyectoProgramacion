@@ -11,6 +11,8 @@ import java.awt.Insets;
 import java.awt.BorderLayout;
 import javax.swing.SwingConstants;
 import java.awt.GridLayout;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class PantallaNivel extends JPanel{
 	private Ventana ventana;//objeto ventana base
@@ -28,11 +30,23 @@ public class PantallaNivel extends JPanel{
 		add(botonSelecciona);
 		
 		JButton botonFacil = new JButton("Fácil");
+		botonFacil.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				ventana.irFacil();
+			}
+		});
 		botonFacil.setFont(new Font("Goudy Stout", Font.PLAIN, 20));
 		botonFacil.setForeground(new Color(255, 51, 255));
 		add(botonFacil);
 		
 		JButton botonExperto = new JButton("Experto");
+		botonExperto.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				ventana.irAExperto();
+			}
+		});
 		botonExperto.setFont(new Font("Goudy Stout", Font.PLAIN, 20));
 		botonExperto.setForeground(new Color(255, 51, 255));
 		add(botonExperto);

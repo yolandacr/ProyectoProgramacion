@@ -8,6 +8,8 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
+import Clases.Jugador;
+
 @SuppressWarnings("serial")
 
 /**
@@ -20,7 +22,10 @@ public class Ventana extends JFrame {
 	private PantallaRegistro registro;//objeto para la pantalla de registro
 	private PantallaLogin login;
 	private PantallaJuegoFacil juegoFacil;
+	private PantallaJuegoDificil juegoDificil;
 	private PantallaNivel nivel;
+	private PantallaCategoria categoria;
+	private Jugador jugador;
 	/*
 	 * private PantallaNivel nivel; private PantallaCategoria categoria; private
 	 * PantallaJuego juego; private PantallaAcierto aciertoONo; private
@@ -91,6 +96,26 @@ public class Ventana extends JFrame {
 		this.juegoFacil.setVisible(true);
 	}
 	
+	public void irAExperto(){
+		if(this.juegoDificil==null) {
+			this.juegoDificil=new PantallaJuegoDificil(this);
+		}
+		if(juegoDificil!=null) {this.juegoDificil.setVisible(false);}
+		this.setContentPane(juegoDificil);
+		this.juegoDificil.setVisible(true);
+	}
+	
+	public void irACategoria() {
+		if(this.categoria==null) {
+			this.categoria=new PantallaCategoria(this);
+		}
+		if(categoria!=null) {this.categoria.setVisible(false);}
+		this.setContentPane(categoria);
+		this.categoria.setVisible(true);
+	}
+	
+	
+	
 	public void irANivel() {
 		if(this.nivel==null) {
 			this.nivel=new PantallaNivel(this);
@@ -99,4 +124,6 @@ public class Ventana extends JFrame {
 		this.setContentPane(nivel);
 		this.nivel.setVisible(true);
 	}
+	
+	
 }

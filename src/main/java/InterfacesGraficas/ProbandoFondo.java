@@ -22,7 +22,7 @@ public class ProbandoFondo extends JPanel {
 		add(lblNewLabel, "name_428059014633200");
 		
 		JPanel panelTransparente = new JPanel();
-		panelTransparente.setBackground(Color.TRANSLUCENT);
+		panelTransparente.setBackground(new Color(Color.TRANSLUCENT));
 		add(panelTransparente, "name_428721491217500");
 		panelTransparente.setOpaque(false);
 		panelTransparente.setLayout(new CardLayout(0, 0));

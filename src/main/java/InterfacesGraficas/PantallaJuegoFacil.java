@@ -33,6 +33,7 @@ public class PantallaJuegoFacil extends JPanel {
 		add(textoPuntos);
 		
 		campoPuntos = new JTextField();
+		campoPuntos.setEditable(false);
 		campoPuntos.setFont(new Font("Goudy Stout", Font.PLAIN, 18));
 		campoPuntos.setBounds(205, 33, 96, 19);
 		add(campoPuntos);

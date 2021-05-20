@@ -5,7 +5,7 @@
  */
 package Clases;
 
-import Enums.CategoriaMusical;
+
 import Excepciones.InvalidNumberException;
 import java.awt.Image;
 import java.io.File;
@@ -19,9 +19,15 @@ import Interfaces.FuncionesCancionJugada;
  *
  * @author Yolanda Cordero
  */
-public class CancionJugada extends Cancion implements FuncionesCancionJugada {
+public class CancionJugada extends Cancion {
 
     private boolean aciertoONo;
+
+	public CancionJugada(String nombre, String autor, String categoria, int año, String disco, String ruta,
+			boolean aciertoONo) {
+		super(nombre, autor, categoria, año, disco, ruta);
+		this.aciertoONo = aciertoONo;
+	}
 
     /**
      * método constructor de cancionescon todas las variables internas menos las del reproductor.
@@ -35,10 +41,6 @@ public class CancionJugada extends Cancion implements FuncionesCancionJugada {
      * @param ruta ruta del archivo audio
      * @param aciertoONo booleano que es true si acierta y false si falla.
      */
-    public CancionJugada(String nombre, String autor, CategoriaMusical categoria, String[] opcionesEleccion, short año, String disco,
-            Image imagen, String ruta, boolean aciertoONo) {
-        super(autor, categoria, opcionesEleccion, año, disco, imagen, ruta, nombre);
-        this.aciertoONo = aciertoONo;
-    }
+   
 
 }

@@ -5,7 +5,7 @@
  */
 package Clases;
 
-import Excepciones.NombreVacioException;
+
 import Excepciones.PasswordInvalidException;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -19,7 +19,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Scanner;
-import Interfaces.FuncionesLogin;
 import java.io.File;
 
 /**
@@ -28,7 +27,7 @@ import java.io.File;
  *
  * @author Yolanda Cordero
  */
-public class Jugador extends ElementoConNombre implements FuncionesLogin {
+public class Jugador extends ElementoConNombre {
 
     private String constraseña;//variable string que contendrá la contraseña del jugador.
     
@@ -45,6 +44,9 @@ public class Jugador extends ElementoConNombre implements FuncionesLogin {
         this.constraseña = constraseña;
     }
 
+    /**
+     * constructor sin argumentos
+     */
     public Jugador() {
 
     }

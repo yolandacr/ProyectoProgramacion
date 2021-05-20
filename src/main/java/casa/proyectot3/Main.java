@@ -8,11 +8,8 @@ package casa.proyectot3;
 import Clases.CancionJugada;
 import Clases.Cancion;
 import Clases.Jugador;
-//import Clases.Jugador;
 import Clases.Partida;
-import Enums.CategoriaMusical;
 import Excepciones.PasswordInvalidException;
-
 import java.awt.Image;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -20,7 +17,6 @@ import java.io.IOException;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import javax.imageio.ImageIO;
 import javax.sound.sampled.Clip;
 

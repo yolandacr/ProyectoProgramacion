@@ -48,7 +48,7 @@ public class PantallaCategoria extends JPanel {
 					ventana.cancionesAJugar=new ArrayList <Cancion>();
 					Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root", "admin");
 					Statement smt = conexion.createStatement();
-					ResultSet cancionesResult= smt.executeQuery("select * from cancion where categoria='"+"ACTUALIDAD"+"'");
+					ResultSet cancionesResult= smt.executeQuery("select * from cancion where categoria='"+"ACTUALIDAD"+"' limit 20");
 					
 					while(cancionesResult.next()) {
 						ventana.cancionesAJugar.add(new Cancion(cancionesResult.getString("nombre"),
@@ -57,6 +57,20 @@ public class PantallaCategoria extends JPanel {
 								cancionesResult.getInt("año"),
 								cancionesResult.getString("disco"),
 								cancionesResult.getString("ruta")));	
+						
+							
+					
+							Connection conexion1 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root", "admin");
+							Statement smt1 = conexion1.createStatement();
+							ResultSet opcionesResult= smt.executeQuery("select * from opciones where nombre_cancion='"+cancionesResult.getString("nombre")+"'");
+							
+							//while recorriendo opcionesResult y rellenando opcionesCancionActual
+							String [] opcionesCancionActual=new String[4];
+							ventana.cancionesAJugar.get(ventana.cancionesAJugar.size()-1).setOpcionesEleccion(opcionesCancionActual);
+							
+							
+						
+						
 					}
 					smt.close();
 					ventana.irANivel();
@@ -65,15 +79,7 @@ public class PantallaCategoria extends JPanel {
 					e1.printStackTrace();
 				}
 				
-				try {
-					Connection conexion1 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root", "admin");
-					Statement smt = conexion1.createStatement();
-					ResultSet opcionesResult= smt.executeQuery("select * from opciones where nombre_cancion='"+"ACTUALIDAD"+"'");
-					
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+				
 				
 				
 			}

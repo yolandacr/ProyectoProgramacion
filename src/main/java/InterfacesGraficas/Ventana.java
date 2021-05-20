@@ -4,10 +4,12 @@ import java.awt.Cursor;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
+import Clases.Cancion;
 import Clases.Jugador;
 
 @SuppressWarnings("serial")
@@ -26,6 +28,9 @@ public class Ventana extends JFrame {
 	private PantallaNivel nivel;
 	private PantallaCategoria categoria;
 	private Jugador jugador;
+	private String[]eleccionesCancion;
+
+	protected ArrayList<Cancion> cancionesAJugar;
 	/*
 	 * private PantallaNivel nivel; private PantallaCategoria categoria; private
 	 * PantallaJuego juego; private PantallaAcierto aciertoONo; private

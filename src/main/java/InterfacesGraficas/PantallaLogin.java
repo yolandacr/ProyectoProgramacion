@@ -66,6 +66,7 @@ public class PantallaLogin extends JPanel {
 		add(etiquetaNombre, gbc_etiquetaNombre);
 		
 		campoNombre = new JTextField();
+		campoNombre.setText("YOLANDA");
 		campoNombre.setHorizontalAlignment(SwingConstants.CENTER);
 		GridBagConstraints gbc_campoNombre = new GridBagConstraints();
 		gbc_campoNombre.fill = GridBagConstraints.HORIZONTAL;
@@ -88,6 +89,7 @@ public class PantallaLogin extends JPanel {
 		add(etiquetaContraseña, gbc_etiquetaContraseña);
 		
 		campoContraseña = new JTextField();
+		campoContraseña.setText("CORDERO");
 		campoContraseña.setHorizontalAlignment(SwingConstants.CENTER);
 		GridBagConstraints gbc_campoContraseña = new GridBagConstraints();
 		gbc_campoContraseña.fill = GridBagConstraints.HORIZONTAL;

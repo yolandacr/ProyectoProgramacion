@@ -26,6 +26,7 @@ public class PantallaJuegoFacil extends JPanel {
 	
 	public PantallaJuegoFacil(Ventana v) {
 		this.ventana=v;
+		Cancion actual=ventana.cancionesAJugar.get(0);
 		setLayout(null);
 		JLabel textoPuntos = new JLabel("Puntos:");
 		textoPuntos.setFont(new Font("Goudy Stout", Font.PLAIN, 20));
@@ -39,7 +40,7 @@ public class PantallaJuegoFacil extends JPanel {
 		add(campoPuntos);
 		campoPuntos.setColumns(10);
 		
-		JButton botonOpcion1 = new JButton("Opción1");
+		JButton botonOpcion1 = new JButton(actual.getOpcionesEleccion()[0]);
 		botonOpcion1.setBounds(377, 352, 85, 21);
 		add(botonOpcion1);
 		

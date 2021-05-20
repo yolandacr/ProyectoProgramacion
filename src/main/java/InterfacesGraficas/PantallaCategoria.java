@@ -26,7 +26,6 @@ import java.util.ArrayList;
 public class PantallaCategoria extends JPanel {
 	private Ventana ventana;//objeto ventana base
 	private String categoria;
-	private ArrayList<Cancion> cancionesActualidad;
 	
 	
 	
@@ -46,28 +45,36 @@ public class PantallaCategoria extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				try {
-					cancionesActualidad=new ArrayList <Cancion>();
+					ventana.cancionesAJugar=new ArrayList <Cancion>();
 					Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root", "admin");
 					Statement smt = conexion.createStatement();
 					ResultSet cancionesResult= smt.executeQuery("select * from cancion where categoria='"+"ACTUALIDAD"+"'");
 					
 					while(cancionesResult.next()) {
-						cancionesActualidad.add(new Cancion(cancionesResult.getString("nombre"),
+						ventana.cancionesAJugar.add(new Cancion(cancionesResult.getString("nombre"),
 								cancionesResult.getString("autor"),
 								cancionesResult.getString("categoria"),
 								cancionesResult.getInt("año"),
 								cancionesResult.getString("disco"),
-								cancionesResult.getString("ruta")
-							));
-						
+								cancionesResult.getString("ruta")));	
 					}
-					
 					smt.close();
 					ventana.irANivel();
 					
 				} catch (SQLException e1) {
 					e1.printStackTrace();
 				}
+				
+				try {
+					Connection conexion1 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root", "admin");
+					Statement smt = conexion1.createStatement();
+					ResultSet opcionesResult= smt.executeQuery("select * from opciones where nombre_cancion='"+"ACTUALIDAD"+"'");
+					
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
 				
 			}
 		});

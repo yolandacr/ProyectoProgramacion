@@ -23,6 +23,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -118,18 +119,19 @@ public class PantallaLogin extends JPanel {
 								"root", "1234");
 						Statement smt = conexion.createStatement();
 						
-						smt.executeUpdate("select * from jugador where "
-								+"nombre='"+jugadorLogin.getNombre()+
-								"' and contraseña='"+jugadorLogin.getConstraseña()+"'");
-						System.out.println(smt);
-						if(smt.equals(jugadorLogin)) {
+						ResultSet loginResult= smt.executeQuery("select nombre from jugador where "
+								+"contraseña='"+jugadorLogin.getContraseña()+"'");
+						String nombre = loginResult.getString("nombre");
+						
+						if (loginResult.next()){
+							JOptionPane.showMessageDialog(null, "Bienvenido " + nombre, "Mensaje",JOptionPane.INFORMATION_MESSAGE);
 							ventana.irANivel();
-						}else {
-							JOptionPane.showMessageDialog(ventana, "El usuario" + " no existe",
-									"Prueba de nuevo", JOptionPane.ERROR_MESSAGE);
-						}
-						
-						
+		                } 
+						else {
+							JOptionPane.showMessageDialog(null, "El usuario no existe: " , "Prueba de nuevo",JOptionPane.ERROR_MESSAGE);
+		                    	 
+		                    }
+		            
 						smt.close();
 						conexion.close();
 					} catch (SQLException e1) {

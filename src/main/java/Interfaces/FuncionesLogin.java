@@ -15,8 +15,7 @@ import java.io.FileNotFoundException;
  * @author Yolanda Cordero
  */
 public interface FuncionesLogin {
-    public void login() throws PasswordInvalidException, FileNotFoundException;
+    public void login();
     public void registrar();
-    public Jugador pideDatos() throws NombreVacioException,PasswordInvalidException;
     
 }

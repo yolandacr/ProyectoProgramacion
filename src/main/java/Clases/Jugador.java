@@ -38,7 +38,7 @@ public class Jugador extends ElementoConNombre implements FuncionesLogin {
      * Método constructor de la clase jugador
      *
      * @param nombre nombre del jugador
-     * @param constraseña contraseña del jugador
+     * @param contraseña contraseña del jugador
      */
     public Jugador(String nombre, String constraseña) {
         super(nombre);
@@ -54,7 +54,7 @@ public class Jugador extends ElementoConNombre implements FuncionesLogin {
      *
      * @return un string con la clave
      */
-    public String getConstraseña() {
+    public String getContraseña() {
         return constraseña;
     }
 
@@ -64,7 +64,7 @@ public class Jugador extends ElementoConNombre implements FuncionesLogin {
      * @param constraseña asigna el argumento pasado por parámetros a la
      * contraseña.
      */
-    public void setConstraseña(String constraseña) {
+    public void setContraseña(String constraseña) {
 
         this.constraseña = constraseña;
     }
@@ -84,8 +84,7 @@ public class Jugador extends ElementoConNombre implements FuncionesLogin {
     		ArrayList<Jugador> jugadores=
     				new ArrayList<Jugador>();
     		
-			Connection conexion=
-			DriverManager.getConnection("jdbc:mysql://127.0.1.1/"
+			Connection conexion= DriverManager.getConnection("jdbc:mysql://127.0.1.1/"
 					+ "rockola","root","1234");
 			Statement consultaJugadores=conexion.createStatement();
 			

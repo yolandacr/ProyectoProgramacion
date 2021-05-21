@@ -109,7 +109,7 @@ public class PantallaRegistro extends JPanel {
 						Jugador jugador = new Jugador(campoNombre.getText(),
 								campoContraseña.getText());
 						Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola",
-								"root", "admin");
+								"root", "1234");
 						Statement smt = conexion.createStatement();
 						smt.executeUpdate(
 								"insert into Jugador " + "values('" + campoNombre.getText() + "'," + "'"

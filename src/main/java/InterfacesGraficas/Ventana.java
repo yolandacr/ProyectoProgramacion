@@ -27,9 +27,9 @@ public class Ventana extends JFrame {
 	private PantallaJuegoDificil juegoDificil;
 	private PantallaNivel nivel;
 	private PantallaCategoria categoria;
-	private Jugador jugador;
-	private String[]eleccionesCancion;
-
+	private PantallaRanking ranking;
+	protected Jugador jugador;
+	protected String [] opcionesCancionActual;
 	protected ArrayList<Cancion> cancionesAJugar;
 	/*
 	 * private PantallaNivel nivel; private PantallaCategoria categoria; private
@@ -120,7 +120,6 @@ public class Ventana extends JFrame {
 	}
 	
 	
-	
 	public void irANivel() {
 		if(this.nivel==null) {
 			this.nivel=new PantallaNivel(this);
@@ -128,6 +127,15 @@ public class Ventana extends JFrame {
 		if(nivel!=null) {this.nivel.setVisible(false);}
 		this.setContentPane(nivel);
 		this.nivel.setVisible(true);
+	}
+	
+	public void irARanking() {
+		if(this.ranking==null) {
+			this.ranking=new PantallaRanking(this);
+		}
+		if(ranking!=null) {this.ranking.setVisible(false);}
+		this.setContentPane(ranking);
+		this.ranking.setVisible(true);
 	}
 	
 	

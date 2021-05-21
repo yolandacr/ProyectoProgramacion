@@ -115,7 +115,7 @@ public class PantallaLogin extends JPanel {
 					
 					try {
 						Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola",
-								"root", "admin");
+								"root", "1234");
 						Statement smt = conexion.createStatement();
 						
 						

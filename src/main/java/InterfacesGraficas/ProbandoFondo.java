@@ -8,18 +8,21 @@ import javax.swing.SwingConstants;
 import java.awt.Color;
 
 public class ProbandoFondo extends JPanel {
-	public ProbandoFondo() {
+	private Ventana ventana;
+	public ProbandoFondo(Ventana v) {
+		this.ventana=v;
+		
 		setLayout(new CardLayout(0, 0));
 		
-		JPanel panel = new JPanel();
-		panel.setBackground(Color.WHITE);
-		add(panel, "name_428196733529700");
-		panel.setLayout(new CardLayout(0, 0));
+		JPanel panelFondo = new JPanel();
+		panelFondo.setBackground(Color.WHITE);
+		add(panelFondo, "name_428196733529700");
+		panelFondo.setLayout(new CardLayout(0, 0));
 		
-		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setIcon(new ImageIcon(".\\imagenes\\imagenFondo.jpg"));
-		add(lblNewLabel, "name_428059014633200");
+		JLabel imagenFondo = new JLabel("New label");
+		imagenFondo.setHorizontalAlignment(SwingConstants.CENTER);
+		imagenFondo.setIcon(new ImageIcon("C:\\Users\\reena\\Desktop\\TRIMESTRE 3\\PROGRAMACION\\ProyectoRockola\\ProyectoProgramacion\\imagenes\\imagenFondo.jpg"));
+		add(imagenFondo, "name_428059014633200");
 		
 		JPanel panelTransparente = new JPanel();
 		panelTransparente.setBackground(new Color(Color.TRANSLUCENT));
@@ -29,7 +32,7 @@ public class ProbandoFondo extends JPanel {
 		
 		
 	}
-	private Ventana ventana;
+	
 	
 
 }

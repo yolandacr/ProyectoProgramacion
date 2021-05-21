@@ -1,5 +1,7 @@
 package InterfacesGraficas;
 
+//TODO no puedo cerrar bien los smt de esta clase
+
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
@@ -24,64 +26,60 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 public class PantallaCategoria extends JPanel {
-	private Ventana ventana;//objeto ventana base
-	private String categoria;
-	
-	
-	
+	private Ventana ventana;// objeto ventana base
+
 	public PantallaCategoria(Ventana v) {
-		ventana=v;
-		setLayout(null);
-		
-		JLabel textoCategoria = new JLabel("Elige la categoría");
-		textoCategoria.setFont(new Font("Goudy Stout", Font.PLAIN, 25));
-		textoCategoria.setForeground(new Color(204, 51, 255));
-		textoCategoria.setHorizontalAlignment(SwingConstants.CENTER);
-		textoCategoria.setBounds(136, 80, 506, 35);
-		add(textoCategoria);
-		
+		this.ventana = v;
+		GridBagLayout gridBagLayout = new GridBagLayout();
+		gridBagLayout.columnWidths = new int[] { 209, 275, 50, 275, 0, 0 };
+		gridBagLayout.rowHeights = new int[] { 80, 35, 187, 56, 51, 53, 0 };
+		gridBagLayout.columnWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE };
+		gridBagLayout.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
+		setLayout(gridBagLayout);
+
 		JButton botonActualidad = new JButton("Actualidad");
 		botonActualidad.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+
 				try {
-					ventana.cancionesAJugar=new ArrayList <Cancion>();
-					Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root", "admin");
+					ventana.cancionesAJugar = new ArrayList<Cancion>();
+					Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root", "1234");
 					Statement smt = conexion.createStatement();
-					ResultSet cancionesResult= smt.executeQuery("select * from cancion where categoria='"+"ACTUALIDAD"+"' limit 20");
-					
-					while(cancionesResult.next()) {
-						ventana.cancionesAJugar.add(new Cancion(cancionesResult.getString("nombre"),
-								cancionesResult.getString("autor"),
-								cancionesResult.getString("categoria"),
-								cancionesResult.getInt("año"),
-								cancionesResult.getString("disco"),
-								cancionesResult.getString("ruta")));	
-						
-							
-					
-							Connection conexion1 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root", "admin");
-							Statement smt1 = conexion1.createStatement();
-							ResultSet opcionesResult= smt.executeQuery("select * from opciones where nombre_cancion='"+cancionesResult.getString("nombre")+"'");
-							
-							//while recorriendo opcionesResult y rellenando opcionesCancionActual
-							String [] opcionesCancionActual=new String[4];
-							ventana.cancionesAJugar.get(ventana.cancionesAJugar.size()-1).setOpcionesEleccion(opcionesCancionActual);
-							
-							
-						
-						
+					ResultSet cancionesResult = smt
+							.executeQuery("select * from cancion where categoria='" + "ACTUALIDAD" + "' limit 10");
+
+					while (cancionesResult.next()) {
+						ventana.cancionesAJugar.add(
+								new Cancion(cancionesResult.getString("nombre"), cancionesResult.getString("autor"),
+										cancionesResult.getString("categoria"), cancionesResult.getInt("año"),
+										cancionesResult.getString("disco"), cancionesResult.getString("ruta")));
+
+						Connection conexion1 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root",
+								"1234");
+						Statement smt1 = conexion1.createStatement();
+						ResultSet opcionesResult = smt1.executeQuery("select * from opciones where nombre_cancion='"
+								+ cancionesResult.getString("nombre") + "'");
+
+						// while recorriendo opcionesResult y rellenando opcionesCancionActual
+						while (opcionesResult.next()) {
+							ventana.cancionesAJugar.get(ventana.cancionesAJugar.size() - 1)
+									.setOpcionesEleccion(ventana.opcionesCancionActual);
+
+						}
+
+						smt1.close();
 					}
 					smt.close();
+
 					ventana.irANivel();
-					
+
 				} catch (SQLException e1) {
 					e1.printStackTrace();
 				}
-				
-				
-				
-				
+				// smt.close();
+				// smt1.close();
+
 			}
 		});
 		botonActualidad.setFont(new Font("Goudy Stout", Font.PLAIN, 20));
@@ -90,26 +88,55 @@ public class PantallaCategoria extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		botonActualidad.setBounds(69, 302, 275, 56);
-		add(botonActualidad);
-		
-		JButton boton2000 = new JButton("Años 2000");
-		boton2000.setFont(new Font("Goudy Stout", Font.PLAIN, 20));
-		boton2000.setForeground(new Color(255, 51, 255));
-		boton2000.setBounds(69, 409, 275, 53);
-		add(boton2000);
-		
+
+		JLabel textoCategoria = new JLabel("Elige la categoría");
+		textoCategoria.setFont(new Font("Goudy Stout", Font.PLAIN, 25));
+		textoCategoria.setForeground(new Color(204, 51, 255));
+		textoCategoria.setHorizontalAlignment(SwingConstants.CENTER);
+		GridBagConstraints gbc_textoCategoria = new GridBagConstraints();
+		gbc_textoCategoria.anchor = GridBagConstraints.NORTH;
+		gbc_textoCategoria.insets = new Insets(0, 0, 5, 5);
+		gbc_textoCategoria.gridwidth = 3;
+		gbc_textoCategoria.gridx = 1;
+		gbc_textoCategoria.gridy = 1;
+		add(textoCategoria, gbc_textoCategoria);
+		GridBagConstraints gbc_botonActualidad = new GridBagConstraints();
+		gbc_botonActualidad.anchor = GridBagConstraints.WEST;
+		gbc_botonActualidad.fill = GridBagConstraints.VERTICAL;
+		gbc_botonActualidad.insets = new Insets(0, 0, 5, 5);
+		gbc_botonActualidad.gridx = 1;
+		gbc_botonActualidad.gridy = 3;
+		add(botonActualidad, gbc_botonActualidad);
+
 		JButton boton90 = new JButton("Años 90");
 		boton90.setFont(new Font("Goudy Stout", Font.PLAIN, 20));
 		boton90.setForeground(new Color(255, 51, 255));
-		boton90.setBounds(394, 302, 275, 56);
-		add(boton90);
-		
+		GridBagConstraints gbc_boton90 = new GridBagConstraints();
+		gbc_boton90.fill = GridBagConstraints.BOTH;
+		gbc_boton90.insets = new Insets(0, 0, 5, 5);
+		gbc_boton90.gridx = 3;
+		gbc_boton90.gridy = 3;
+		add(boton90, gbc_boton90);
+
+		JButton boton2000 = new JButton("Años 2000");
+		boton2000.setFont(new Font("Goudy Stout", Font.PLAIN, 20));
+		boton2000.setForeground(new Color(255, 51, 255));
+		GridBagConstraints gbc_boton2000 = new GridBagConstraints();
+		gbc_boton2000.fill = GridBagConstraints.BOTH;
+		gbc_boton2000.insets = new Insets(0, 0, 0, 5);
+		gbc_boton2000.gridx = 1;
+		gbc_boton2000.gridy = 5;
+		add(boton2000, gbc_boton2000);
+
 		JButton boton80 = new JButton("Años 80");
 		boton80.setFont(new Font("Goudy Stout", Font.PLAIN, 20));
 		boton80.setForeground(new Color(255, 51, 255));
-		boton80.setBounds(394, 409, 275, 53);
-		add(boton80);
+		GridBagConstraints gbc_boton80 = new GridBagConstraints();
+		gbc_boton80.insets = new Insets(0, 0, 0, 5);
+		gbc_boton80.fill = GridBagConstraints.BOTH;
+		gbc_boton80.gridx = 3;
+		gbc_boton80.gridy = 5;
+		add(boton80, gbc_boton80);
 	}
-	
+
 }

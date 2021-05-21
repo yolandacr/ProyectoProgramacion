@@ -1,5 +1,7 @@
 package InterfacesGraficas;
 
+//TODO FALTA DOCUMENTACION EN TODO EL PROYECTO, LAS PANTALLAS ESTAN TODAS DISEÑADAS FALTA LA PARTE GROSA DEL JUEGO.
+
 import javax.swing.JPanel;
 import java.awt.FlowLayout;
 import javax.swing.JButton;
@@ -50,10 +52,10 @@ public class PantallaInicio extends JPanel {
 	public PantallaInicio(Ventana v) {
 		this.ventana = v;
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{195, 526, 0};
-		gridBagLayout.rowHeights = new int[]{133, 42, 169, 129, 185, 39, 0};
-		gridBagLayout.columnWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.columnWidths = new int[]{122, 693, 0, 0};
+		gridBagLayout.rowHeights = new int[]{133, 42, 169, 94, 81, 80, 0, 0};
+		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 1.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 				
 						// botón de nuevo usuario
@@ -66,20 +68,20 @@ public class PantallaInicio extends JPanel {
 							}
 						});
 						
-						JLabel textoBienvenida = new JLabel("Bienvenido a la Rockola Boomer");
-						textoBienvenida.setFont(new Font("Dialog", Font.PLAIN, 25));
-						textoBienvenida.setForeground(Color.MAGENTA);
-						textoBienvenida.setHorizontalAlignment(SwingConstants.CENTER);
-						GridBagConstraints gbc_textoBienvenida = new GridBagConstraints();
-						gbc_textoBienvenida.insets = new Insets(0, 0, 5, 0);
-						gbc_textoBienvenida.gridx = 1;
-						gbc_textoBienvenida.gridy = 2;
-						add(textoBienvenida, gbc_textoBienvenida);
+						JLabel textoBienvenida2 = new JLabel(" Rockola Boomer");
+						textoBienvenida2.setHorizontalAlignment(SwingConstants.CENTER);
+						textoBienvenida2.setFont(new Font("Goudy Stout", Font.PLAIN, 40));
+						textoBienvenida2.setForeground(new Color(255, 51, 255));
+						GridBagConstraints gbc_textoBienvenida2 = new GridBagConstraints();
+						gbc_textoBienvenida2.insets = new Insets(0, 0, 5, 5);
+						gbc_textoBienvenida2.gridx = 1;
+						gbc_textoBienvenida2.gridy = 1;
+						add(textoBienvenida2, gbc_textoBienvenida2);
 						botonRegistro.setForeground(new Color(153, 51, 255));
 						botonRegistro.setFont(new Font("Goudy Stout", Font.BOLD, 25));
 						GridBagConstraints gbc_botonRegistro = new GridBagConstraints();
 						gbc_botonRegistro.anchor = GridBagConstraints.NORTH;
-						gbc_botonRegistro.insets = new Insets(0, 0, 5, 0);
+						gbc_botonRegistro.insets = new Insets(0, 0, 5, 5);
 						gbc_botonRegistro.gridx = 1;
 						gbc_botonRegistro.gridy = 3;
 						add(botonRegistro, gbc_botonRegistro);
@@ -96,11 +98,26 @@ public class PantallaInicio extends JPanel {
 						botonLogin.setForeground(new Color(153, 51, 255));
 						botonLogin.setFont(new Font("Goudy Stout", Font.BOLD, 25));
 						GridBagConstraints gbc_botonLogin = new GridBagConstraints();
-						gbc_botonLogin.insets = new Insets(0, 0, 5, 0);
+						gbc_botonLogin.insets = new Insets(0, 0, 5, 5);
 						gbc_botonLogin.anchor = GridBagConstraints.NORTH;
 						gbc_botonLogin.gridx = 1;
 						gbc_botonLogin.gridy = 4;
 						add(botonLogin, gbc_botonLogin);
+						
+						JButton botonRanking = new JButton("Ver Ranking");
+						botonRanking.addMouseListener(new MouseAdapter() {
+							@Override
+							public void mouseClicked(MouseEvent e) {
+								ventana.irARanking();
+							}
+						});
+						botonRanking.setFont(new Font("Goudy Stout", Font.PLAIN, 25));
+						botonRanking.setForeground(new Color(153, 51, 255));
+						GridBagConstraints gbc_botonRanking = new GridBagConstraints();
+						gbc_botonRanking.insets = new Insets(0, 0, 5, 5);
+						gbc_botonRanking.gridx = 1;
+						gbc_botonRanking.gridy = 5;
+						add(botonRanking, gbc_botonRanking);
 
 		// Imagen de fondo TODO PREGUNTAR A MIGUEL COMO SE HACE
 

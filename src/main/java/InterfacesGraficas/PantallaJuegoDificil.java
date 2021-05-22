@@ -22,7 +22,7 @@ import java.awt.event.MouseEvent;
  *
  */
 public class PantallaJuegoDificil extends JPanel {
-	private Cancion cancion = new Cancion("./sonidos/ACTUALIDAD/aliceWonder.wav");// crea el objeto
+	//private Cancion cancion = new Cancion("./sonidos/ACTUALIDAD/aliceWonder.wav");// crea el objeto
 	// reproductor que reproduce el audio en el reproductor. Se tiene que borrar
 
 	private Ventana ventana;// objeto ventana base
@@ -52,7 +52,7 @@ public class PantallaJuegoDificil extends JPanel {
 		botonPlay.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				cancion.play();
+				
 
 			}
 		});
@@ -63,7 +63,7 @@ public class PantallaJuegoDificil extends JPanel {
 		botonStop.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				cancion.stop();
+				
 			}
 		});
 		botonStop.setBounds(527, 221, 85, 21);

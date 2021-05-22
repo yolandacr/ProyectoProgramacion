@@ -9,6 +9,12 @@ import java.awt.BorderLayout;
 import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.Color;
+
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 
@@ -18,6 +24,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
+import java.io.IOException;
 import java.util.Random;
 
 /**
@@ -36,6 +44,8 @@ public class PantallaJuegoFacil extends JPanel {
 	private Ventana ventana;// objeto ventana base
 	private JTextField campoPuntos;// campo donde aparecen los puntos acumulados
 	private Cancion actual;// cancion con la que se juega en el momento dado
+	private File archivoSonido;
+	private Clip sonido;
 
 	/**
 	 * metodo constructor
@@ -48,8 +58,18 @@ public class PantallaJuegoFacil extends JPanel {
 
 		Random r = new Random();
 		actual = ventana.cancionesAJugar.get(r.nextInt(10));
-		Cancion reproduccionActual = new Cancion(actual.getRuta());
-		
+
+		// creacion del file y el stream por donde se va a reproducir
+
+		AudioInputStream audioInputStream;
+		try {
+			audioInputStream = AudioSystem.getAudioInputStream(new File(actual.getRuta()));
+			sonido = AudioSystem.getClip();
+			sonido.open(audioInputStream);
+		} catch (UnsupportedAudioFileException | IOException | LineUnavailableException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
 
 		setLayout(null);
 		JLabel textoPuntos = new JLabel("Puntos:");
@@ -88,11 +108,14 @@ public class PantallaJuegoFacil extends JPanel {
 		botonOpcion3.setBounds(248, 417, 214, 21);
 		add(botonOpcion3);
 
+		// boton play
+
 		JButton botonPlay = new JButton("Play");
 		botonPlay.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				actual.play();
+
+				sonido.start();
 
 			}
 		});
@@ -103,7 +126,7 @@ public class PantallaJuegoFacil extends JPanel {
 		botonStop.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				actual.stop();
+				sonido.stop();
 			}
 		});
 		botonStop.setBounds(833, 111, 85, 21);

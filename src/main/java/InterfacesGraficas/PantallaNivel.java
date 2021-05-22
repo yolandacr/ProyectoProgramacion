@@ -10,9 +10,16 @@ import javax.swing.JButton;
 import java.awt.Insets;
 import java.awt.BorderLayout;
 import javax.swing.SwingConstants;
+
+import Clases.Cancion;
+import Clases.Jugador;
+import Clases.Partida;
+
 import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 public class PantallaNivel extends JPanel{
 	private Ventana ventana;//objeto ventana base
@@ -33,6 +40,10 @@ public class PantallaNivel extends JPanel{
 		botonFacil.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				LocalDateTime fechaActual = LocalDateTime.now();
+				
+				// public Partida(Jugador jugador, short puntosPartida, LocalDateTime fecha, ArrayList<Cancion> cancionesPartida) {
+				ventana.nuevaPartida= new Partida(ventana.jugador,(short)0,fechaActual,ventana.cancionesAJugar);
 				ventana.irFacil();
 			}
 		});

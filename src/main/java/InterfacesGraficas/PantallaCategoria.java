@@ -58,15 +58,21 @@ public class PantallaCategoria extends JPanel {
 						Connection conexion1 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root",
 								"1234");
 						Statement smt1 = conexion1.createStatement();
-						ResultSet opcionesResult = smt1.executeQuery("select * from opciones where nombre_cancion='"
+						ResultSet opcionesResult = smt1.executeQuery("select nombre from opciones where nombre_cancion='"
 								+ cancionesResult.getString("nombre") + "'");
-
-						// while recorriendo opcionesResult y rellenando opcionesCancionActual
-						while (opcionesResult.next()) {
-							ventana.cancionesAJugar.get(ventana.cancionesAJugar.size() - 1)
+						
+						
+						
+								byte contador = 0;
+								ventana.opcionesCancionActual=new String[4];
+								
+								while (opcionesResult.next()) {
+								    ventana.opcionesCancionActual[contador] = opcionesResult.getString("nombre");
+								    contador++;
+								    ventana.cancionesAJugar.get(ventana.cancionesAJugar.size() - 1)
 									.setOpcionesEleccion(ventana.opcionesCancionActual);
+								}
 
-						}
 
 						smt1.close();
 					}

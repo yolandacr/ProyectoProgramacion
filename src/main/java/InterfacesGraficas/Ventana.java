@@ -11,6 +11,7 @@ import javax.swing.JFrame;
 
 import Clases.Cancion;
 import Clases.Jugador;
+import Clases.Partida;
 
 @SuppressWarnings("serial")
 
@@ -31,6 +32,7 @@ public class Ventana extends JFrame {
 	protected Jugador jugador;
 	protected String [] opcionesCancionActual;
 	protected ArrayList<Cancion> cancionesAJugar;
+	protected Partida nuevaPartida;
 	/*
 	 * private PantallaNivel nivel; private PantallaCategoria categoria; private
 	 * PantallaJuego juego; private PantallaAcierto aciertoONo; private

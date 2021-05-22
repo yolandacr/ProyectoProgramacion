@@ -1,4 +1,4 @@
-/*
+/* TODO el reproductor ha dejado de servir, preguntar a miguel, creo que tengo que guardar objetos en la bbdd de clip y audioclip
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.

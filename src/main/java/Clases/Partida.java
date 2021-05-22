@@ -26,7 +26,7 @@ public class Partida {
     private short puntosPartida;//puntos almacenados en la partida.
     private LocalDateTime fecha;//fecha en la que se realizó la partida.
     //private ModoJuego nivel;//nivel de juego en el que se ha jugado.
-    private ArrayList<CancionJugada> cancionJugada;//canciones que son jugadas en esta partida.
+    private ArrayList<Cancion> cancionesPartida;//canciones que son jugadas en esta partida.
 
     /**
      * método constructor para las partidas jugadas.
@@ -36,11 +36,11 @@ public class Partida {
      * @param fecha fecha de la partida y hora
      * @param cancionJugada canciones que ya han sido jugadas en la aprtida
      */
-    public Partida(Jugador jugador, short puntosPartida, LocalDateTime fecha, ArrayList<CancionJugada> cancionJugada) {
+    public Partida(Jugador jugador, short puntosPartida, LocalDateTime fecha, ArrayList<Cancion> cancionesPartida) {
         this.jugador = jugador;
         this.puntosPartida = puntosPartida;
         this.fecha = fecha;
-        this.cancionJugada = cancionJugada;
+        this.cancionesPartida = cancionesPartida;
     }
 
     public Partida() {
@@ -104,37 +104,24 @@ public class Partida {
         this.fecha = fecha;
     }
 
+	public ArrayList<Cancion> getCancionesPartida() {
+		return cancionesPartida;
+	}
 
-    /**
-     * método getter de la lista de canciones jugadas.
-     *
-     * @return una lista de canciones jugadas
-     */
-    public ArrayList<CancionJugada> getCancionJugada() {
-        return cancionJugada;
-    }
+	public void setCancionesPartida(ArrayList<Cancion> cancionesPartida) {
+		this.cancionesPartida = cancionesPartida;
+	}
 
-    /**
-     * método setter para canciones jugadas
-     *
-     * @param cancionJugada establece nuevos valores para las canciones jugadas.
-     */
-    public void setCancionJugada(ArrayList<CancionJugada> cancionJugada) {
-        this.cancionJugada = cancionJugada;
-    }
+	@Override
+	public String toString() {
+		return "Partida [jugador=" + jugador + ", puntosPartida=" + puntosPartida + ", fecha=" + fecha
+				+ ", cancionesPartida=" + cancionesPartida + "]";
+	}
 
-    /**
-     * método para imprimir objetos de CancionJugada.
-     *
-     * @return un string con los datos concatenados.
-     */
-    @Override
-    public String toString() {
-        return jugador
-                + "\n\tPuntos de la partida: " + puntosPartida
-                + "\n\tFecha: " + fecha
-                + "\n\tCanciones Jugadas: " + cancionJugada;
-    }
+
+   
+
+    
 
     /**
      * función que suma los puntos por canción acertada

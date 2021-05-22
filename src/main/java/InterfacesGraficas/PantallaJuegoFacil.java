@@ -89,14 +89,46 @@ public class PantallaJuegoFacil extends JPanel {
 		campoPuntos.setText(puntos);
 
 		JButton botonOpcion1 = new JButton(actual.getOpcionesEleccion()[0]);
+		botonOpcion1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+
+				if (botonOpcion1.getName() == actual.getNombre()) {
+					ventana.irAciertoV2();
+				} else {
+					ventana.irFallo();
+				}
+
+			}
+		});
 		botonOpcion1.setBounds(248, 352, 214, 21);
 		add(botonOpcion1);
 
 		JButton botonOpcion2 = new JButton(actual.getOpcionesEleccion()[1]);
+		botonOpcion2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if (botonOpcion2.getName() == actual.getNombre()) {
+					ventana.irAciertoV2();
+				} else {
+					ventana.irFallo();
+				}
+			}
+		});
 		botonOpcion2.setBounds(556, 352, 214, 21);
 		add(botonOpcion2);
 
 		JButton botonOpcion4 = new JButton(actual.getOpcionesEleccion()[2]);
+		botonOpcion4.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if (botonOpcion4.getName() == actual.getNombre()) {
+					ventana.irAciertoV2();
+				} else {
+					ventana.irFallo();
+				}
+			}
+		});
 		botonOpcion4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -105,6 +137,16 @@ public class PantallaJuegoFacil extends JPanel {
 		add(botonOpcion4);
 
 		JButton botonOpcion3 = new JButton(actual.getOpcionesEleccion()[3]);
+		botonOpcion3.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if (botonOpcion3.getName() == actual.getNombre()) {
+					ventana.irAciertoV2();
+				} else {
+					ventana.irFallo();
+				}
+			}
+		});
 		botonOpcion3.setBounds(248, 417, 214, 21);
 		add(botonOpcion3);
 
@@ -114,9 +156,9 @@ public class PantallaJuegoFacil extends JPanel {
 		botonPlay.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-
-				sonido.start();
-
+				new Thread(() ->{
+				sonido.start();}) {}
+				.start();
 			}
 		});
 		botonPlay.setBounds(685, 111, 85, 21);

@@ -12,6 +12,7 @@ import javax.swing.JFrame;
 import Clases.Cancion;
 import Clases.Jugador;
 import Clases.Partida;
+import Interfaces.FuncionesVentana;
 
 @SuppressWarnings("serial")
 
@@ -21,7 +22,7 @@ import Clases.Partida;
  *         base. Constructor y métodos que nos dejaran navegar por las pantallas
  *         correctamente.
  */
-public class Ventana extends JFrame {
+public class Ventana extends JFrame implements FuncionesVentana {
 	private PantallaInicio inicio;// objeto para la pantalla de inicio
 	private PantallaRegistro registro;// objeto para la pantalla de registro
 	private PantallaLogin login;
@@ -29,6 +30,8 @@ public class Ventana extends JFrame {
 	private PantallaJuegoDificil juegoDificil;
 	private PantallaNivel nivel;
 	private PantallaCategoria categoria;
+	private PantallaAciertov2 acierto;
+	private PantallaFallo fallo;
 	private PantallaRanking ranking;
 	protected Jugador jugador;
 	protected String[] opcionesCancionActual;
@@ -155,5 +158,33 @@ public class Ventana extends JFrame {
 		this.setContentPane(ranking);
 		this.ranking.setVisible(true);
 	}
+
+	@Override
+	public void irAciertoV2() {
+		if (this.acierto == null) {
+			this.acierto = new PantallaAciertov2(this);
+		}
+		if (acierto != null) {
+			this.acierto.setVisible(false);
+		}
+		this.setContentPane(acierto);
+		this.acierto.setVisible(true);
+		
+	}
+
+	@Override
+	public void irFallo() {
+		if (this.fallo == null) {
+			this.fallo = new PantallaFallo(this);
+		}
+		if (fallo != null) {
+			this.fallo.setVisible(false);
+		}
+		this.setContentPane(fallo);
+		this.fallo.setVisible(true);
+		
+	}
+	
+	
 
 }

@@ -6,13 +6,12 @@
 package Excepciones;
 
 /**
- *La siguiente excepción es para la contraseña inválida.
+ * La siguiente excepcion saltará cuando un array a formar esté vacío
  * @author Yolanda Cordero
  */
-public class PasswordInvalidException extends Exception {
-
-    public PasswordInvalidException(String mensaje) {
+public class ArrayVacioException extends Exception {
+    public ArrayVacioException(String mensaje) {
         super(mensaje);
     }
-
+    
 }

@@ -5,20 +5,6 @@
  */
 package casa.proyectot3;
 
-import Clases.CancionJugada;
-import Clases.Cancion;
-import Clases.Jugador;
-import Clases.Partida;
-import Excepciones.PasswordInvalidException;
-import java.awt.Image;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.imageio.ImageIO;
-import javax.sound.sampled.Clip;
 
 /**
  * La siguiente clase es la principal de mi proyecto
@@ -28,7 +14,7 @@ import javax.sound.sampled.Clip;
 public class Main {
 
 	/**
-	 * método main de mi proyecto
+	 * método main de mi proyecto donde creo la interfaz gráfica
 	 *
 	 * @param args the command line arguments
 	 */
@@ -36,24 +22,6 @@ public class Main {
 
 		InterfacesGraficas.Ventana miVentana = new InterfacesGraficas.Ventana();
 		miVentana.setVisible(true);
-
-		/*try {
-			
-			case 2:
-				
-				partida1.estableceFecha(partida1);
-			
-	*/
-                
-                
-               
-                
-		
-		
-		
-
-		
-
 
 	}
 

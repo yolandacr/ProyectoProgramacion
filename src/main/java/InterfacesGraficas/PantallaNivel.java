@@ -21,36 +21,43 @@ import java.awt.event.MouseEvent;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
-public class PantallaNivel extends JPanel{
-	private Ventana ventana;//objeto ventana base
-	
-	
-	
+/**
+ * clase para la pantalla nivel
+ * 
+ * @author yolanda cordero
+ *
+ */
+public class PantallaNivel extends JPanel {
+	private Ventana ventana;// objeto ventana base
+
+	/**
+	 * metodo constructor
+	 * 
+	 * @param v ventana jframe base
+	 */
 	public PantallaNivel(Ventana v) {
-		this.ventana=v;
+		this.ventana = v;
 		setLayout(new GridLayout(0, 1, 0, 0));
-		
+
 		JLabel botonSelecciona = new JLabel("Selecciona el nivel de juego");
 		botonSelecciona.setHorizontalAlignment(SwingConstants.CENTER);
 		botonSelecciona.setFont(new Font("Goudy Stout", Font.PLAIN, 20));
 		botonSelecciona.setForeground(new Color(204, 51, 255));
 		add(botonSelecciona);
-		
+
 		JButton botonFacil = new JButton("Fácil");
 		botonFacil.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				LocalDateTime fechaActual = LocalDateTime.now();
-				
-				// public Partida(Jugador jugador, short puntosPartida, LocalDateTime fecha, ArrayList<Cancion> cancionesPartida) {
-				ventana.nuevaPartida= new Partida(ventana.jugador,(short)0,fechaActual,ventana.cancionesAJugar);
+				ventana.nuevaPartida = new Partida(ventana.jugador, (short) 0, fechaActual, ventana.cancionesAJugar);
 				ventana.irFacil();
 			}
 		});
 		botonFacil.setFont(new Font("Goudy Stout", Font.PLAIN, 20));
 		botonFacil.setForeground(new Color(255, 51, 255));
 		add(botonFacil);
-		
+
 		JButton botonExperto = new JButton("Experto");
 		botonExperto.addMouseListener(new MouseAdapter() {
 			@Override
@@ -61,10 +68,7 @@ public class PantallaNivel extends JPanel{
 		botonExperto.setFont(new Font("Goudy Stout", Font.PLAIN, 20));
 		botonExperto.setForeground(new Color(255, 51, 255));
 		add(botonExperto);
-		
-		
+
 	}
-	
-	
 
 }

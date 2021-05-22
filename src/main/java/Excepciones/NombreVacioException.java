@@ -6,8 +6,8 @@
 package Excepciones;
 
 /**
- *
- * @author reena
+ * La siguiente excepción saltará cuando el nombre del jugador esté en blanco
+ * @author Yolanda Cordero
  */
 public class NombreVacioException extends Exception {
     public NombreVacioException(String mensaje) {

@@ -6,7 +6,7 @@
 package Clases;
 
 
-import Interfaces.ReproducirCancion;
+import Interfaces.FuncionesCancion;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
@@ -23,7 +23,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
  *
  * @author Yolanda Cordero
  */
-public class Cancion extends ElementoConNombre implements ReproducirCancion {
+public class Cancion extends ElementoConNombre implements FuncionesCancion {
 
     private String autor;//representa el nombre del autor de la canción
     private String categoria;//enumeración que representa la categoróa a la que va a pertenecer.
@@ -32,11 +32,14 @@ public class Cancion extends ElementoConNombre implements ReproducirCancion {
     private String disco;//disco al que pertenece
     private Image imagen;//imagen del disco al que pertenece
     private String ruta;//ruta del archivo de audio en String
+    
 
     //estas dos variables se utilizan para crear el reproductor
     private Clip audioClip;//variable que representa el archivo de audio
     private AudioInputStream audioStream;//variable que representa la ruta del archivo de audio en un objeto
-    Scanner sc = new Scanner(System.in);
+    
+    
+  
     
   /**
    * constructor con todos los parámetros para crear las canciones del arraylist en cada categoria
@@ -49,7 +52,6 @@ public class Cancion extends ElementoConNombre implements ReproducirCancion {
    * @param ruta
    * @param audioClip
    * @param audioStream
-   * @param sc
    */
     
     

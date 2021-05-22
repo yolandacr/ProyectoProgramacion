@@ -6,12 +6,23 @@ import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 
+/**
+ * Clase de la Pantalla Acierto
+ * @author Yolanda Cordero
+ *
+ */
+
 public class PantallaAcierto extends JPanel{
-	private Ventana ventana;// variable de onjeto ventana para pasarla por parámetros al constructor.
-	private JTextField campoNombre;
-	private JTextField campoAutor;
-	private JTextField campoAño;
-	private JTextField campoDisco;
+	private Ventana ventana;// variable de objeto ventana para pasarla por parámetros al constructor.
+	private JTextField campoNombre;//campo donde aparecera el nombrede la cancion
+	private JTextField campoAutor;// el autor de la cancion
+	private JTextField campoAño;// el año de publicacion
+	private JTextField campoDisco;//el disco al que pertenece
+	
+	/**
+	 * consctructor de pantallas de acierto
+	 * @param v ventana base
+	 */
 	
 	public PantallaAcierto(Ventana v) {
 		this.ventana = v;

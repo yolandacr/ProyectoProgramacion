@@ -1,7 +1,5 @@
 package InterfacesGraficas;
 
-//TODO no puedo cerrar bien los smt de esta clase
-
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
@@ -25,8 +23,21 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+/**
+ * Clase para la pantalla de categoría de juego extiende de JPanel
+ * 
+ * @author Yolanda Cordero
+ *
+ */
+
 public class PantallaCategoria extends JPanel {
 	private Ventana ventana;// objeto ventana base
+
+	/**
+	 * metodo constructor
+	 * 
+	 * @param v objeto ventana jframe base
+	 */
 
 	public PantallaCategoria(Ventana v) {
 		this.ventana = v;
@@ -58,21 +69,19 @@ public class PantallaCategoria extends JPanel {
 						Connection conexion1 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root",
 								"1234");
 						Statement smt1 = conexion1.createStatement();
-						ResultSet opcionesResult = smt1.executeQuery("select nombre from opciones where nombre_cancion='"
-								+ cancionesResult.getString("nombre") + "'");
-						
-						
-						
-								byte contador = 0;
-								ventana.opcionesCancionActual=new String[4];
-								
-								while (opcionesResult.next()) {
-								    ventana.opcionesCancionActual[contador] = opcionesResult.getString("nombre");
-								    contador++;
-								    ventana.cancionesAJugar.get(ventana.cancionesAJugar.size() - 1)
-									.setOpcionesEleccion(ventana.opcionesCancionActual);
-								}
+						ResultSet opcionesResult = smt1
+								.executeQuery("select nombre from opciones where nombre_cancion='"
+										+ cancionesResult.getString("nombre") + "'");
 
+						byte contador = 0;
+						ventana.opcionesCancionActual = new String[4];
+
+						while (opcionesResult.next()) {
+							ventana.opcionesCancionActual[contador] = opcionesResult.getString("nombre");
+							contador++;
+							ventana.cancionesAJugar.get(ventana.cancionesAJugar.size() - 1)
+									.setOpcionesEleccion(ventana.opcionesCancionActual);
+						}
 
 						smt1.close();
 					}
@@ -83,8 +92,6 @@ public class PantallaCategoria extends JPanel {
 				} catch (SQLException e1) {
 					e1.printStackTrace();
 				}
-				// smt.close();
-				// smt1.close();
 
 			}
 		});

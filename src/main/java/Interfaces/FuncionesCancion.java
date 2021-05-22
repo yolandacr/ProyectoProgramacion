@@ -9,7 +9,7 @@ package Interfaces;
  * Clase de interface para la clase canción
  * @author Yolanda Cordero
  */
-public interface ReproducirCancion {
+public interface FuncionesCancion {
 /**
  * reroduce la canción
  */

@@ -25,12 +25,13 @@ public class CancionJugada extends Cancion {
      * @param año año de salida de la cancion
      * @param disco al que pertenece la cancion
      * @param ruta ruta relativa del archivo de audio
+     * @param rutaImagen ruta relativa para la imagen del disco
      * @param aciertoONo booleano que sera true si acierta y false si falla
      */
 
-	public CancionJugada(String nombre, String autor, String categoria, int año, String disco, String ruta,
+	public CancionJugada(String nombre, String autor, String categoria, int año, String disco, String ruta, String rutaImagen,
 			boolean aciertoONo) {
-		super(nombre, autor, categoria, año, disco, ruta);
+		super(nombre, autor, categoria, año, disco, ruta, rutaImagen);
 		this.aciertoONo = aciertoONo;
 	}
 	

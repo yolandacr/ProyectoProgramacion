@@ -1,3 +1,4 @@
+//DOCUMENTACION OK
 package InterfacesGraficas;
 
 import javax.swing.JPanel;

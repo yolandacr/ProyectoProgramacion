@@ -1,5 +1,6 @@
 
 //TODO PREGUNTAR A MIGUEL SI NO SERIA MEJOR UN ARRAYLIST PARA HACER LOS BOTONES CN CONTENIDO RANDOM Y ASI BORRAR EL QUE YA SALIERA
+// peta al pulsar botones. creo q es fallo de los hilos
 package InterfacesGraficas;
 
 import javax.swing.JPanel;
@@ -38,15 +39,11 @@ import javax.swing.SwingConstants;
 
 public class PantallaJuegoFacil extends JPanel {
 
-	// private Cancion cancion= new
-	// Cancion("./sonidos/ACTUALIDAD/aliceWonder.wav");//crea el objeto
-	// reproductor que reproduce el audio en el reproductor.
-
 	private Ventana ventana;// objeto ventana base
 	private JTextField campoPuntos;// campo donde aparecen los puntos acumulados
 	private Cancion actual;// cancion con la que se juega en el momento dado
-	private File archivoSonido;
-	private Clip sonido;
+	private File archivoSonido;// archivo de sonido
+	private Clip sonido;// objeto reproducible del sonido
 
 	/**
 	 * metodo constructor
@@ -177,9 +174,9 @@ public class PantallaJuegoFacil extends JPanel {
 		botonPlay.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				/*new Thread(() ->{
-				sonido.start();}) {}
-				.start();*/
+				/*
+				 * new Thread(() ->{ sonido.start();}) {} .start();
+				 */
 				sonido.start();
 				while (sonido.isRunning())
 					try {
@@ -204,8 +201,7 @@ public class PantallaJuegoFacil extends JPanel {
 		});
 		botonStop.setBounds(511, 148, 136, 57);
 		add(botonStop);
-		
-		
+
 	}
 
 }

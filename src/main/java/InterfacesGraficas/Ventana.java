@@ -1,3 +1,5 @@
+//DOCUMENTACION OK
+
 package InterfacesGraficas;
 
 import java.awt.Cursor;
@@ -23,27 +25,22 @@ import Interfaces.FuncionesVentana;
  *         correctamente.
  */
 public class Ventana extends JFrame implements FuncionesVentana {
-	private PantallaInicio inicio;// objeto para la pantalla de inicio
-	private PantallaRegistro registro;// objeto para la pantalla de registro
-	private PantallaLogin login;
-	private PantallaJuegoFacil juegoFacil;
-	private PantallaJuegoDificil juegoDificil;
-	private PantallaNivel nivel;
-	private PantallaCategoria categoria;
-	private PantallaAciertov2 acierto;
-	private PantallaFallo fallo;
-	private PantallaRanking ranking;
-	protected Jugador jugador;
-	protected String[] opcionesCancionActual;
-	protected ArrayList<Cancion> cancionesAJugar;
-	protected Partida nuevaPartida;
-	protected String[] nombresRanking;
-	protected short[]puntosRanking;
-	/*
-	 * private PantallaNivel nivel; private PantallaCategoria categoria; private
-	 * PantallaJuego juego; private PantallaAcierto aciertoONo; private
-	 * PantallaResultado resultado; private PantallaRanking ranking;
-	 */
+	private PantallaInicio inicio; // objeto para la pantalla de inicio
+	private PantallaRegistro registro; // objeto para la pantalla de registro
+	private PantallaLogin login; // objeto para la pantalla de Login
+	private PantallaJuegoFacil juegoFacil; // objeto para la pantalla de modo Fácil
+	private PantallaJuegoDificil juegoDificil; // objeto para la pantalla de modo Experto
+	private PantallaNivel nivel; // objeto para la pantalla de nivel
+	private PantallaCategoria categoria; // objeto para la pantalla de categoría
+	private PantallaAciertov2 acierto; // objeto para la pantalla de acierto
+	private PantallaFallo fallo; // objeto para la pantalla de fallo
+	private PantallaRanking ranking; // objeto para la pantalla de ranking
+	protected Jugador jugador; // objeto para jugador
+	protected String[] opcionesCancionActual; // array que guarda las opciones de la canción para elegir entre ellas.
+	protected ArrayList<Cancion> cancionesAJugar; // ArrayList que guarda las canciones de cada partida.
+	protected Partida nuevaPartida; // objeto para crear una nueva partida cuando empezamos
+	protected String[] nombresRanking; // array que guarda los nombres de los 5 jugadores con más puntuación.
+	protected short[] puntosRanking; // array con el top 5 de puntuaciones
 
 	/**
 	 * constructor sin argumentos.
@@ -61,7 +58,6 @@ public class Ventana extends JFrame implements FuncionesVentana {
 			Image imagen = ImageIO.read(new File("./imagenes/icono.png"));
 			this.setIconImage(imagen);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -72,6 +68,10 @@ public class Ventana extends JFrame implements FuncionesVentana {
 		this.setVisible(true); // Con esto se puede ver la ventana
 
 	}
+
+	/**
+	 * método para ir a la pantalla de registro
+	 */
 
 	public void irARegistro() {
 		if (this.registro == null) {
@@ -84,6 +84,10 @@ public class Ventana extends JFrame implements FuncionesVentana {
 		this.registro.setVisible(true);
 	}
 
+	/**
+	 * método para ir a la pantalla de Login
+	 */
+
 	public void irALogin() {
 		if (this.login == null) {
 			this.login = new PantallaLogin(this);
@@ -95,6 +99,9 @@ public class Ventana extends JFrame implements FuncionesVentana {
 		this.login.setVisible(true);
 	}
 
+	/**
+	 * método para ir a la pantalla de Inicio
+	 */
 	public void irInicio() {
 		if (this.inicio == null) {
 			this.inicio = new PantallaInicio(this);
@@ -105,6 +112,10 @@ public class Ventana extends JFrame implements FuncionesVentana {
 		this.setContentPane(inicio);
 		this.inicio.setVisible(true);
 	}
+
+	/**
+	 * método para ir a la pantalla del juego en modo fácil
+	 */
 
 	public void irFacil() {
 		if (this.juegoFacil == null) {
@@ -117,6 +128,10 @@ public class Ventana extends JFrame implements FuncionesVentana {
 		this.juegoFacil.setVisible(true);
 	}
 
+	/**
+	 * método para ir a la pantalla del juego en modo experto
+	 */
+
 	public void irAExperto() {
 		if (this.juegoDificil == null) {
 			this.juegoDificil = new PantallaJuegoDificil(this);
@@ -127,6 +142,10 @@ public class Ventana extends JFrame implements FuncionesVentana {
 		this.setContentPane(juegoDificil);
 		this.juegoDificil.setVisible(true);
 	}
+
+	/**
+	 * método para ir a la pantalla de elección de Categoría
+	 */
 
 	public void irACategoria() {
 		if (this.categoria == null) {
@@ -139,6 +158,10 @@ public class Ventana extends JFrame implements FuncionesVentana {
 		this.categoria.setVisible(true);
 	}
 
+	/**
+	 * método para ir a la pantalla de elección de nivel
+	 */
+
 	public void irANivel() {
 		if (this.nivel == null) {
 			this.nivel = new PantallaNivel(this);
@@ -149,6 +172,10 @@ public class Ventana extends JFrame implements FuncionesVentana {
 		this.setContentPane(nivel);
 		this.nivel.setVisible(true);
 	}
+
+	/**
+	 * método para ir a la pantalla de Ranking
+	 */
 
 	public void irARanking() {
 		if (this.ranking == null) {
@@ -161,6 +188,10 @@ public class Ventana extends JFrame implements FuncionesVentana {
 		this.ranking.setVisible(true);
 	}
 
+	/**
+	 * método para ir a la pantalla de acierto (version alternativa)
+	 */
+
 	@Override
 	public void irAciertoV2() {
 		if (this.acierto == null) {
@@ -171,8 +202,12 @@ public class Ventana extends JFrame implements FuncionesVentana {
 		}
 		this.setContentPane(acierto);
 		this.acierto.setVisible(true);
-		
+
 	}
+
+	/**
+	 * método para ir a la pantalla de fallo
+	 */
 
 	@Override
 	public void irFallo() {
@@ -184,9 +219,7 @@ public class Ventana extends JFrame implements FuncionesVentana {
 		}
 		this.setContentPane(fallo);
 		this.fallo.setVisible(true);
-		
+
 	}
-	
-	
 
 }

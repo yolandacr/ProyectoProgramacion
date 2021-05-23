@@ -1,8 +1,8 @@
+//DOCUMENTACION OK
+
 package InterfacesGraficas;
 
 import javax.swing.JPanel;
-import java.awt.BorderLayout;
-import java.awt.GridLayout;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import Clases.Cancion;

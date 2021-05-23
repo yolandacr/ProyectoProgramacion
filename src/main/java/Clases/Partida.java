@@ -1,3 +1,4 @@
+//DOCUMENTACION OK
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -37,12 +38,12 @@ public class Partida {
 		this.fecha = fecha;
 		this.cancionesPartida = cancionesPartida;
 	}
-	
-	
+
 	/**
 	 * metodo constructor para el ranking
-	 * @param jugador
-	 * @param puntosPartida
+	 * 
+	 * @param jugador       objeto jugador con el nombre
+	 * @param puntosPartida puntos obtenidos en la partida
 	 */
 
 	public Partida(Jugador jugador, short puntosPartida) {
@@ -50,9 +51,6 @@ public class Partida {
 		this.jugador = jugador;
 		this.puntosPartida = puntosPartida;
 	}
-
-
-
 
 	/**
 	 * método getter para el objeto jugador
@@ -111,7 +109,7 @@ public class Partida {
 	/**
 	 * metodo getter para las canciones de la partida
 	 * 
-	 * @return
+	 * @return un arraylist con todas las canciones con las que se va a jugar
 	 */
 
 	public ArrayList<Cancion> getCancionesPartida() {
@@ -121,21 +119,11 @@ public class Partida {
 	/**
 	 * metodo setter para las canciones de la partida
 	 * 
-	 * @param cancionesPartida
+	 * @param cancionesPartida establece nuevos valores para las cancioens
 	 */
 
 	public void setCancionesPartida(ArrayList<Cancion> cancionesPartida) {
 		this.cancionesPartida = cancionesPartida;
-	}
-
-	/**
-	 * metodo de impresion de objetos
-	 */
-
-	@Override
-	public String toString() {
-		return "Partida [jugador=" + jugador + ", puntosPartida=" + puntosPartida + ", fecha=" + fecha
-				+ ", cancionesPartida=" + cancionesPartida + "]";
 	}
 
 }

@@ -1,3 +1,5 @@
+//DOCUMENTACION OK
+
 package InterfacesGraficas;
 
 import javax.swing.JPanel;
@@ -22,8 +24,6 @@ import java.awt.event.MouseEvent;
  *
  */
 public class PantallaJuegoDificil extends JPanel {
-	//private Cancion cancion = new Cancion("./sonidos/ACTUALIDAD/aliceWonder.wav");// crea el objeto
-	// reproductor que reproduce el audio en el reproductor. Se tiene que borrar
 
 	private Ventana ventana;// objeto ventana base
 	private JTextField campoPuntos;// campo donde aparecen los puntos acumulados
@@ -52,7 +52,6 @@ public class PantallaJuegoDificil extends JPanel {
 		botonPlay.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
 
 			}
 		});
@@ -63,7 +62,7 @@ public class PantallaJuegoDificil extends JPanel {
 		botonStop.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
+
 			}
 		});
 		botonStop.setBounds(527, 221, 85, 21);

@@ -1,3 +1,4 @@
+//DOCUMENTACION OK
 //TODO FALLA A LA HORA DE PONER ENTEROS EN EL TEXTFIELD. PREGUNTAR A MIGUEL SI PUEDO PONER EN LA BASE DE DATOS ESE CAMPO COMO VARCHAR O UNA ALTERNATIVA
 
 package InterfacesGraficas;
@@ -8,11 +9,6 @@ import java.awt.Font;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import javax.swing.SwingConstants;
-
-import Clases.Cancion;
-import Clases.Jugador;
-import Clases.Partida;
-
 import java.awt.Insets;
 import javax.swing.JTextField;
 import javax.swing.JButton;

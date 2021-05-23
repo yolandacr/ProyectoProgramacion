@@ -1,13 +1,8 @@
+//DOCUMENTACION OK
+
 package Interfaces;
 
-import InterfacesGraficas.PantallaCategoria;
-import InterfacesGraficas.PantallaInicio;
-import InterfacesGraficas.PantallaJuegoDificil;
-import InterfacesGraficas.PantallaJuegoFacil;
-import InterfacesGraficas.PantallaLogin;
-import InterfacesGraficas.PantallaNivel;
-import InterfacesGraficas.PantallaRanking;
-import InterfacesGraficas.PantallaRegistro;
+
 
 /**
  * Interface para la clase ventana con todos los métodos a utilizar
@@ -32,7 +27,7 @@ public interface FuncionesVentana {
 
 	public void irARanking();//método para ir a la pantalla de Ranking
 	
-	public void irAciertoV2();//método para ir a la pantalla de Ranking
+	public void irAciertoV2();//método para ir a la pantalla de acierto (version alternativa)
 	
 	public void irFallo();//método para ir a la pantalla de fallo
 

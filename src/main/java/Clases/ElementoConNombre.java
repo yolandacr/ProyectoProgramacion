@@ -1,3 +1,5 @@
+//DOCUMENTACION OK
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -25,6 +27,10 @@ public abstract class ElementoConNombre {
     public ElementoConNombre(String nombre) {
         this.nombre = nombre;
     }
+    
+    /**
+     * constructor sin parámetros
+     */
 
     public ElementoConNombre() {
     }

@@ -1,6 +1,8 @@
+//DOCUMENTACION OK
+
 package InterfacesGraficas;
 
-//TODO LAS PANTALLAS ESTAN TODAS DISEÑADAS FALTA LA PARTE GROSA DEL JUEGO.
+
 
 import javax.swing.JPanel;
 import java.awt.FlowLayout;

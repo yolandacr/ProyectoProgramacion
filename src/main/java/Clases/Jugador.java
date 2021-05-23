@@ -39,6 +39,17 @@ public class Jugador extends ElementoConNombre {
 	public Jugador() {
 
 	}
+	
+	
+	
+/**
+ * metodo constructor necesario para generar el ranking
+ * @param nombre nombre del jugador
+ */
+	public Jugador(String nombre) {
+		super(nombre);
+		
+	}
 
 	/**
 	 * método getter de la contraseña

@@ -37,6 +37,22 @@ public class Partida {
 		this.fecha = fecha;
 		this.cancionesPartida = cancionesPartida;
 	}
+	
+	
+	/**
+	 * metodo constructor para el ranking
+	 * @param jugador
+	 * @param puntosPartida
+	 */
+
+	public Partida(Jugador jugador, short puntosPartida) {
+		super();
+		this.jugador = jugador;
+		this.puntosPartida = puntosPartida;
+	}
+
+
+
 
 	/**
 	 * método getter para el objeto jugador

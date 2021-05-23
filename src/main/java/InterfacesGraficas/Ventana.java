@@ -37,6 +37,8 @@ public class Ventana extends JFrame implements FuncionesVentana {
 	protected String[] opcionesCancionActual;
 	protected ArrayList<Cancion> cancionesAJugar;
 	protected Partida nuevaPartida;
+	protected String[] nombresRanking;
+	protected short[]puntosRanking;
 	/*
 	 * private PantallaNivel nivel; private PantallaCategoria categoria; private
 	 * PantallaJuego juego; private PantallaAcierto aciertoONo; private

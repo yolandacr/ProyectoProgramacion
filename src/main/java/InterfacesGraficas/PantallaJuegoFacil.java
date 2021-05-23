@@ -27,6 +27,7 @@ import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
 import java.util.Random;
+import javax.swing.SwingConstants;
 
 /**
  * clase para crear las pantallas del modo facil
@@ -73,14 +74,16 @@ public class PantallaJuegoFacil extends JPanel {
 
 		setLayout(null);
 		JLabel textoPuntos = new JLabel("Puntos:");
-		textoPuntos.setFont(new Font("Goudy Stout", Font.PLAIN, 20));
-		textoPuntos.setBounds(40, 21, 155, 42);
+		textoPuntos.setForeground(new Color(204, 51, 255));
+		textoPuntos.setFont(new Font("Goudy Stout", Font.PLAIN, 25));
+		textoPuntos.setBounds(40, 21, 192, 42);
 		add(textoPuntos);
 
 		campoPuntos = new JTextField();
+		campoPuntos.setForeground(new Color(255, 51, 255));
 		campoPuntos.setEditable(false);
-		campoPuntos.setFont(new Font("Goudy Stout", Font.PLAIN, 18));
-		campoPuntos.setBounds(205, 33, 96, 19);
+		campoPuntos.setFont(new Font("Goudy Stout", Font.PLAIN, 25));
+		campoPuntos.setBounds(252, 21, 35, 42);
 		add(campoPuntos);
 		campoPuntos.setColumns(10);
 		int puntosPartida = ventana.nuevaPartida.getPuntosPartida();
@@ -89,11 +92,13 @@ public class PantallaJuegoFacil extends JPanel {
 		campoPuntos.setText(puntos);
 
 		JButton botonOpcion1 = new JButton(actual.getOpcionesEleccion()[0]);
+		botonOpcion1.setFont(new Font("Goudy Stout", Font.PLAIN, 10));
+		botonOpcion1.setForeground(new Color(255, 51, 255));
 		botonOpcion1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 
-				if (botonOpcion1.getName() == actual.getNombre()) {
+				if (botonOpcion1.getText() == actual.getNombre()) {
 					ventana.irAciertoV2();
 				} else {
 					ventana.irFallo();
@@ -101,28 +106,32 @@ public class PantallaJuegoFacil extends JPanel {
 
 			}
 		});
-		botonOpcion1.setBounds(248, 352, 214, 21);
+		botonOpcion1.setBounds(75, 352, 337, 37);
 		add(botonOpcion1);
 
 		JButton botonOpcion2 = new JButton(actual.getOpcionesEleccion()[1]);
+		botonOpcion2.setFont(new Font("Goudy Stout", Font.PLAIN, 10));
+		botonOpcion2.setForeground(new Color(255, 51, 255));
 		botonOpcion2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if (botonOpcion2.getName() == actual.getNombre()) {
+				if (botonOpcion2.getText() == actual.getNombre()) {
 					ventana.irAciertoV2();
 				} else {
 					ventana.irFallo();
 				}
 			}
 		});
-		botonOpcion2.setBounds(556, 352, 214, 21);
+		botonOpcion2.setBounds(511, 352, 337, 37);
 		add(botonOpcion2);
 
 		JButton botonOpcion4 = new JButton(actual.getOpcionesEleccion()[2]);
+		botonOpcion4.setFont(new Font("Goudy Stout", Font.PLAIN, 10));
+		botonOpcion4.setForeground(new Color(255, 51, 255));
 		botonOpcion4.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if (botonOpcion4.getName() == actual.getNombre()) {
+				if (botonOpcion4.getText() == actual.getNombre()) {
 					ventana.irAciertoV2();
 				} else {
 					ventana.irFallo();
@@ -133,46 +142,70 @@ public class PantallaJuegoFacil extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		botonOpcion4.setBounds(556, 418, 214, 19);
+		botonOpcion4.setBounds(511, 440, 337, 37);
 		add(botonOpcion4);
 
 		JButton botonOpcion3 = new JButton(actual.getOpcionesEleccion()[3]);
+		botonOpcion3.setFont(new Font("Goudy Stout", Font.PLAIN, 10));
+		botonOpcion3.setForeground(new Color(255, 51, 255));
+		botonOpcion3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		botonOpcion3.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if (botonOpcion3.getName() == actual.getNombre()) {
+				if (botonOpcion3.getText().equalsIgnoreCase(actual.getNombre())) {
 					ventana.irAciertoV2();
 				} else {
 					ventana.irFallo();
 				}
 			}
 		});
-		botonOpcion3.setBounds(248, 417, 214, 21);
+		botonOpcion3.setBounds(75, 440, 337, 37);
 		add(botonOpcion3);
 
 		// boton play
 
 		JButton botonPlay = new JButton("Play");
+		botonPlay.setFont(new Font("Goudy Stout", Font.PLAIN, 20));
+		botonPlay.setForeground(new Color(204, 51, 255));
+		botonPlay.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		botonPlay.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				new Thread(() ->{
+				/*new Thread(() ->{
 				sonido.start();}) {}
-				.start();
+				.start();*/
+				sonido.start();
+				while (sonido.isRunning())
+					try {
+						Thread.sleep(10);
+					} catch (InterruptedException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 			}
 		});
-		botonPlay.setBounds(685, 111, 85, 21);
+		botonPlay.setBounds(276, 148, 136, 57);
 		add(botonPlay);
 
 		JButton botonStop = new JButton("Stop");
+		botonStop.setFont(new Font("Goudy Stout", Font.PLAIN, 20));
+		botonStop.setForeground(new Color(204, 51, 255));
 		botonStop.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				sonido.stop();
 			}
 		});
-		botonStop.setBounds(833, 111, 85, 21);
+		botonStop.setBounds(511, 148, 136, 57);
 		add(botonStop);
+		
+		
 	}
 
 }

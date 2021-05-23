@@ -15,9 +15,13 @@ import javax.swing.JLayeredPane;
 import com.jgoodies.forms.layout.FormSpecs;
 import javax.swing.JButton;
 import java.awt.Font;
+import java.awt.Image;
 
 public class ProbandoFondo extends JPanel {
 	private Ventana ventana;
+	
+	
+	ImageIcon imagen=new ImageIcon(getClass().getResource("imagenFondo.jpg").getFile());
 	public ProbandoFondo(Ventana v) {
 		this.ventana=v;
 		
@@ -30,7 +34,7 @@ public class ProbandoFondo extends JPanel {
 		
 		JLabel imagenFondo = new JLabel("New label");
 		imagenFondo.setHorizontalAlignment(SwingConstants.CENTER);
-		imagenFondo.setIcon(new ImageIcon("C:\\Users\\reena\\Desktop\\TRIMESTRE 3\\PROGRAMACION\\ProyectoRockola\\imagenes\\imagenFondo.jpg"));
+		imagenFondo.setIcon(imagen);
 		add(imagenFondo, "name_428059014633200");
 		
 		JPanel panelTransparente = new JPanel();
@@ -63,11 +67,7 @@ public class ProbandoFondo extends JPanel {
 		JButton botonPrueba = new JButton("Boton Prueba");
 		botonPrueba.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		panelTransparente.add(botonPrueba, "12, 8");
-		/*JLayeredPane panelSuperpuesto = new JLayeredPane();
-		panelSuperpuesto.setBackground(new Color(Color.TRANSLUCENT));
-		panelSuperpuesto.setOpaque(false);
-		panelSuperpuesto.setBounds(0, 10, 440, 290);
-		panelFondo.add(panelSuperpuesto);*/
+		
 		
 		
 	}

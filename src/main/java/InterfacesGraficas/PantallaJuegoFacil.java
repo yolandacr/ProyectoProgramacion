@@ -83,9 +83,10 @@ public class PantallaJuegoFacil extends JPanel {
 		campoPuntos.setBounds(252, 21, 35, 42);
 		add(campoPuntos);
 		campoPuntos.setColumns(10);
+		
+		//establecemos los puntos a los de la partida. Empezarán en 0
 		int puntosPartida = ventana.nuevaPartida.getPuntosPartida();
 		String puntos = Integer.toString(puntosPartida);
-
 		campoPuntos.setText(puntos);
 
 		JButton botonOpcion1 = new JButton(actual.getOpcionesEleccion()[0]);

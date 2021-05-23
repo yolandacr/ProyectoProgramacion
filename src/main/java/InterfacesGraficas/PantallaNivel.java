@@ -63,6 +63,8 @@ public class PantallaNivel extends JPanel {
 		botonExperto.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				LocalDateTime fechaActual = LocalDateTime.now();
+				ventana.nuevaPartida = new Partida(ventana.jugador, (short) 0, fechaActual, ventana.cancionesAJugar);
 				ventana.irAExperto();
 			}
 		});

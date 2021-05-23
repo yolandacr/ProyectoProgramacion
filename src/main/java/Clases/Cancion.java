@@ -27,32 +27,33 @@ public class Cancion extends ElementoConNombre {
 	private String[] opcionesEleccion;// representa a las distintas opciones de elección del modo fácil.
 	private int año;// año de la canción
 	private String disco;// disco al que pertenece
-	private Image imagen;// imagen del disco al que pertenece
 	private String ruta;// ruta del archivo de audio en String
+	private String rutaImagen;// ruta de la imagen del disco
 
 
 	/**
 	 * constructor con todos los parámetros para crear las canciones del arraylist
 	 * en cada categoria
 	 * 
-	 * @param autor
-	 * @param categoria
-	 * @param opcionesEleccion
-	 * @param año
-	 * @param disco
-	 * @param imagen
-	 * @param ruta
-	 * @param audioClip
-	 * @param audioStream
+	 * @param autor autor de la cancion string
+	 * @param categoria categoria cancion String
+	 * @param opcionesEleccion array con las opciones a elegir. solo una es correcta
+	 * @param año año de publicacion de la cancion
+	 * @param disco disco al que pertenece
+	 * @param ruta ruta relativa del archivo de audio
+	 * @param audioClip clip reproducible
+	 * @param audioStream medio por donde reproducir
+	 * @param rutaImagen string con la ruta relativa de la imagen del disco
 	 */
 
-	public Cancion(String nombre, String autor, String categoria, int año, String disco, String ruta) {
+	public Cancion(String nombre, String autor, String categoria, int año, String disco, String ruta, String rutaImagen) {
 		super(nombre);
 		this.autor = autor;
 		this.categoria = categoria;
 		this.año = año;
 		this.disco = disco;
 		this.ruta = ruta;
+		this.rutaImagen=rutaImagen;
 
 	}
 
@@ -65,12 +66,11 @@ public class Cancion extends ElementoConNombre {
 	 * @param nombre nombre de la canción
 	 */
 
-	public Cancion(String nombre, String autor, short año, String disco, Image imagen) {
+	public Cancion(String nombre, String autor, short año, String disco) {
 		super(nombre);
 		this.autor = autor;
 		this.año = año;
 		this.disco = disco;
-		this.imagen = imagen;
 	}
 
 	/**

@@ -1,4 +1,4 @@
-//DOCUMENTACION OK
+//DOCUMENTACION OK PREGUNTAR COMO HAGO EL SELECT DE 10 RANDOM
 
 package InterfacesGraficas;
 
@@ -64,7 +64,7 @@ public class PantallaCategoria extends JPanel {
 						ventana.cancionesAJugar.add(
 								new Cancion(cancionesResult.getString("nombre"), cancionesResult.getString("autor"),
 										cancionesResult.getString("categoria"), cancionesResult.getInt("año"),
-										cancionesResult.getString("disco"), cancionesResult.getString("ruta")));
+										cancionesResult.getString("disco"), cancionesResult.getString("ruta"),cancionesResult.getString("ruta_imagen")));
 
 						Connection conexion1 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root",
 								"1234");
@@ -156,7 +156,7 @@ public class PantallaCategoria extends JPanel {
 						ventana.cancionesAJugar.add(
 								new Cancion(cancionesResult.getString("nombre"), cancionesResult.getString("autor"),
 										cancionesResult.getString("categoria"), cancionesResult.getInt("año"),
-										cancionesResult.getString("disco"), cancionesResult.getString("ruta")));
+										cancionesResult.getString("disco"), cancionesResult.getString("ruta"),cancionesResult.getString("ruta_imagen")));
 
 						Connection conexion1 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root",
 								"1234");

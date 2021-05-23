@@ -6,6 +6,10 @@ import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
 import java.awt.Color;
+import com.jgoodies.forms.layout.FormLayout;
+import com.jgoodies.forms.layout.ColumnSpec;
+import com.jgoodies.forms.layout.RowSpec;
+import javax.swing.JLayeredPane;
 
 public class ProbandoFondo extends JPanel {
 	private Ventana ventana;
@@ -21,18 +25,21 @@ public class ProbandoFondo extends JPanel {
 		
 		JLabel imagenFondo = new JLabel("New label");
 		imagenFondo.setHorizontalAlignment(SwingConstants.CENTER);
-		imagenFondo.setIcon(new ImageIcon("C:\\Users\\reena\\Desktop\\TRIMESTRE 3\\PROGRAMACION\\ProyectoRockola\\ProyectoProgramacion\\imagenes\\imagenFondo.jpg"));
+		imagenFondo.setIcon(new ImageIcon("C:\\Users\\reena\\Desktop\\TRIMESTRE 3\\PROGRAMACION\\ProyectoRockola\\imagenes\\imagenFondo.jpg"));
 		add(imagenFondo, "name_428059014633200");
 		
 		JPanel panelTransparente = new JPanel();
-		panelTransparente.setBackground(new Color(Color.TRANSLUCENT));
-		add(panelTransparente, "name_428721491217500");
 		panelTransparente.setOpaque(false);
-		panelTransparente.setLayout(new CardLayout(0, 0));
+		add(panelTransparente, "name_428721491217500");
+		panelTransparente.setLayout(null) ;
+		panelTransparente.setBackground(new Color(0, 0, 0, 0));
+		
+		/*JLayeredPane panelSuperpuesto = new JLayeredPane();
+		panelSuperpuesto.setBackground(new Color(Color.TRANSLUCENT));
+		panelSuperpuesto.setOpaque(false);
+		panelSuperpuesto.setBounds(0, 10, 440, 290);
+		panelFondo.add(panelSuperpuesto);*/
 		
 		
 	}
-	
-	
-
 }

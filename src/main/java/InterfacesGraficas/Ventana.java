@@ -41,6 +41,8 @@ public class Ventana extends JFrame implements FuncionesVentana {
 	protected Partida nuevaPartida; // objeto para crear una nueva partida cuando empezamos
 	protected String[] nombresRanking; // array que guarda los nombres de los 5 jugadores con más puntuación.
 	protected short[] puntosRanking; // array con el top 5 de puntuaciones
+	
+	private ProbandoFondo fondo;//BORRAR cuando funcione lo del fondo
 
 	/**
 	 * constructor sin argumentos.
@@ -219,6 +221,20 @@ public class Ventana extends JFrame implements FuncionesVentana {
 		}
 		this.setContentPane(fallo);
 		this.fallo.setVisible(true);
+
+	}
+	
+	//metodo para probar paneles transparentes. Borrar luego
+	
+	public void irFondo() {
+		if (this.fondo == null) {
+			this.fondo = new ProbandoFondo(this);
+		}
+		if (fondo!= null) {
+			this.fondo.setVisible(false);
+		}
+		this.setContentPane(fondo);
+		this.fondo.setVisible(true);
 
 	}
 

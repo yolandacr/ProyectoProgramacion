@@ -79,6 +79,19 @@ public class PantallaInicio extends JPanel {
 		gbc_textoBienvenida2.gridx = 1;
 		gbc_textoBienvenida2.gridy = 1;
 		add(textoBienvenida2, gbc_textoBienvenida2);
+		
+		JButton botonIrFondo = new JButton("Ir a Prueba Fondo");
+		botonIrFondo.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				ventana.irFondo();
+			}
+		});
+		GridBagConstraints gbc_botonIrFondo = new GridBagConstraints();
+		gbc_botonIrFondo.insets = new Insets(0, 0, 5, 5);
+		gbc_botonIrFondo.gridx = 0;
+		gbc_botonIrFondo.gridy = 3;
+		add(botonIrFondo, gbc_botonIrFondo);
 		botonRegistro.setForeground(new Color(153, 51, 255));
 		botonRegistro.setFont(new Font("Goudy Stout", Font.BOLD, 25));
 		GridBagConstraints gbc_botonRegistro = new GridBagConstraints();

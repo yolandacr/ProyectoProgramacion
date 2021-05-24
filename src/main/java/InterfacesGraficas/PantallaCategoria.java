@@ -55,7 +55,8 @@ public class PantallaCategoria extends JPanel {
 
 				try {
 					ventana.cancionesAJugar = new ArrayList<Cancion>();
-					Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root", "1234");
+					/*Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root", "1234");*/
+					Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root", "admin");
 					Statement smt = conexion.createStatement();
 					ResultSet cancionesResult = smt
 							.executeQuery("select * from cancion where categoria='" + "ACTUALIDAD" + "' limit 10");

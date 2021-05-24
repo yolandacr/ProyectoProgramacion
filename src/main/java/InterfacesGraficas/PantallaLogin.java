@@ -114,8 +114,12 @@ public class PantallaLogin extends JPanel {
 				} else { // no estan en blanco y pasa a validar
 
 					try {
+						/*Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root",
+								"1234");*/
+						
 						Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root",
-								"1234");
+								"admin");
+						
 						Statement smt = conexion.createStatement();
 
 						ResultSet loginResult = smt.executeQuery("select * from jugador where nombre='"

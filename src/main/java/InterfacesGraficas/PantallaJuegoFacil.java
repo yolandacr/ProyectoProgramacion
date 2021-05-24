@@ -72,10 +72,7 @@ public class PantallaJuegoFacil extends JPanel {
 			e2.printStackTrace();
 		}
 		
-		//instanciamos el hilo
 		
-		/*hiloMusical=new Hilos();
-		hiloMusical.recibeSonido(sonido);*/
 		
 		///
 
@@ -189,7 +186,11 @@ public class PantallaJuegoFacil extends JPanel {
 		botonPlay.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				//hiloMusical.start();
+				//instanciamos el hilo
+				
+				/*hiloMusical=new Hilos();
+				hiloMusical.recibeSonido(sonido);
+				hiloMusical.start();*/
 				/*
 				 * new Thread(() ->{ sonido.start();}) {} .start();
 				 */

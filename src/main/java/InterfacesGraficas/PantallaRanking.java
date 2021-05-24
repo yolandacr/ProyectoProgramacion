@@ -34,16 +34,16 @@ public class PantallaRanking extends JPanel {
 	private JTextField nombreRanking3; // campo de los datos del jugador en la posicion 3
 	private JTextField nombreRanking4; // campo de los datos del jugador en la posicion 4
 	private JTextField nombreRanking5; // campo de los datos del jugador en la posicion 5
-	private JTextField campoPuntos2; //campo de puntos para la posicion 2
-	private JTextField campoPuntos4;  //campo de puntos para la posicion 4
-	private JTextField campoPuntos1;  //campo de puntos para la posicion 1
-	private JTextField campoPuntos3;  //campo de puntos para la posicion 3
-	private JTextField campoPuntos5; //campo de puntos para la posicion 5
-	private JLabel etiquetaPuntos1;
-	private JLabel etiquetaPuntos2;
-	private JLabel etiquetaPuntos3;
-	private JLabel etiquetaPuntos4;
-	private JLabel etiquetaPuntos5;
+	private JTextField campoPuntos2; // campo de puntos para la posicion 2
+	private JTextField campoPuntos4; // campo de puntos para la posicion 4
+	private JTextField campoPuntos1; // campo de puntos para la posicion 1
+	private JTextField campoPuntos3; // campo de puntos para la posicion 3
+	private JTextField campoPuntos5; // campo de puntos para la posicion 5
+	private JLabel etiquetaPuntos1; // texto "pts" al lado de la posicion 1
+	private JLabel etiquetaPuntos2; // texto "pts" al lado de la posicion 2
+	private JLabel etiquetaPuntos3; // texto "pts" al lado de la posicion 3
+	private JLabel etiquetaPuntos4; // texto "pts" al lado de la posicion 4
+	private JLabel etiquetaPuntos5; // texto "pts" al lado de la posicion 5
 
 	/**
 	 * metodo constructor
@@ -58,7 +58,7 @@ public class PantallaRanking extends JPanel {
 		try {
 			Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root", "1234");
 			Statement smt = conexion.createStatement();
-			ResultSet rankingResult = smt
+			ResultSet rankingResult = smt // hacemos la consulta
 					.executeQuery("SELECT nombre_jugador,puntos FROM rockola.partida order by puntos desc limit 5");
 
 			byte contador = 0;
@@ -66,6 +66,7 @@ public class PantallaRanking extends JPanel {
 			ventana.puntosRanking = new short[5];
 
 			while (rankingResult.next()) {
+				// guardamos en cada array
 				ventana.nombresRanking[contador] = rankingResult.getString("nombre_jugador");
 				ventana.puntosRanking[contador] = rankingResult.getShort("puntos");
 
@@ -76,22 +77,22 @@ public class PantallaRanking extends JPanel {
 		} catch (SQLException e1) {
 			e1.printStackTrace();
 		}
-				setLayout(null);
-		
-				JLabel textoPuntuaciones = new JLabel("Cuadro de Honor");
-				textoPuntuaciones.setBounds(286, 117, 432, 35);
-				textoPuntuaciones.setForeground(new Color(255, 51, 255));
-				textoPuntuaciones.setFont(new Font("Goudy Stout", Font.PLAIN, 25));
-				textoPuntuaciones.setHorizontalAlignment(SwingConstants.CENTER);
-				add(textoPuntuaciones);
-		
-				// posicion 1
-		
-				JLabel textoPosicion1 = new JLabel("1.");
-				textoPosicion1.setBounds(77, 269, 25, 28);
-				textoPosicion1.setForeground(new Color(255, 51, 255));
-				textoPosicion1.setFont(new Font("Goudy Stout", Font.PLAIN, 20));
-				add(textoPosicion1);
+		setLayout(null);
+
+		JLabel textoPuntuaciones = new JLabel("Cuadro de Honor");
+		textoPuntuaciones.setBounds(286, 117, 432, 35);
+		textoPuntuaciones.setForeground(new Color(255, 51, 255));
+		textoPuntuaciones.setFont(new Font("Goudy Stout", Font.PLAIN, 25));
+		textoPuntuaciones.setHorizontalAlignment(SwingConstants.CENTER);
+		add(textoPuntuaciones);
+
+		// posicion 1
+
+		JLabel textoPosicion1 = new JLabel("1.");
+		textoPosicion1.setBounds(77, 269, 25, 28);
+		textoPosicion1.setForeground(new Color(255, 51, 255));
+		textoPosicion1.setFont(new Font("Goudy Stout", Font.PLAIN, 20));
+		add(textoPosicion1);
 
 		nombreRanking1 = new JTextField();
 		nombreRanking1.setBounds(112, 266, 267, 34);
@@ -112,20 +113,20 @@ public class PantallaRanking extends JPanel {
 		add(campoPuntos1);
 		campoPuntos1.setColumns(10);
 		campoPuntos1.setText(String.valueOf(ventana.puntosRanking[0]));
-		
+
 		etiquetaPuntos1 = new JLabel("PTS");
 		etiquetaPuntos1.setBounds(869, 266, 100, 34);
 		etiquetaPuntos1.setForeground(new Color(204, 51, 255));
 		etiquetaPuntos1.setFont(new Font("Goudy Stout", Font.PLAIN, 20));
 		add(etiquetaPuntos1);
-		
-				// posicion 2
-		
-				JLabel textoPosicion2 = new JLabel("2.");
-				textoPosicion2.setBounds(77, 307, 25, 28);
-				textoPosicion2.setForeground(new Color(204, 51, 255));
-				textoPosicion2.setFont(new Font("Goudy Stout", Font.PLAIN, 20));
-				add(textoPosicion2);
+
+		// posicion 2
+
+		JLabel textoPosicion2 = new JLabel("2.");
+		textoPosicion2.setBounds(77, 307, 25, 28);
+		textoPosicion2.setForeground(new Color(204, 51, 255));
+		textoPosicion2.setFont(new Font("Goudy Stout", Font.PLAIN, 20));
+		add(textoPosicion2);
 
 		nombreRanking2 = new JTextField();
 		nombreRanking2.setBounds(112, 305, 267, 34);
@@ -146,20 +147,20 @@ public class PantallaRanking extends JPanel {
 		add(campoPuntos2);
 		campoPuntos2.setColumns(10);
 		campoPuntos2.setText(String.valueOf(ventana.puntosRanking[1]));
-		
+
 		etiquetaPuntos2 = new JLabel("pts");
 		etiquetaPuntos2.setBounds(869, 310, 68, 28);
 		etiquetaPuntos2.setFont(new Font("Goudy Stout", Font.PLAIN, 20));
 		etiquetaPuntos2.setForeground(new Color(255, 51, 255));
 		add(etiquetaPuntos2);
-		
-				// POSICION 3
-		
-				JLabel textoPosicion3 = new JLabel("3.");
-				textoPosicion3.setBounds(77, 346, 25, 28);
-				textoPosicion3.setForeground(new Color(255, 51, 255));
-				textoPosicion3.setFont(new Font("Goudy Stout", Font.PLAIN, 20));
-				add(textoPosicion3);
+
+		// POSICION 3
+
+		JLabel textoPosicion3 = new JLabel("3.");
+		textoPosicion3.setBounds(77, 346, 25, 28);
+		textoPosicion3.setForeground(new Color(255, 51, 255));
+		textoPosicion3.setFont(new Font("Goudy Stout", Font.PLAIN, 20));
+		add(textoPosicion3);
 
 		nombreRanking3 = new JTextField();
 		nombreRanking3.setBounds(112, 344, 267, 34);
@@ -180,19 +181,19 @@ public class PantallaRanking extends JPanel {
 		add(campoPuntos3);
 		campoPuntos3.setColumns(10);
 		campoPuntos3.setText(String.valueOf(ventana.puntosRanking[2]));
-		
+
 		etiquetaPuntos3 = new JLabel("pts");
 		etiquetaPuntos3.setBounds(869, 348, 68, 28);
 		etiquetaPuntos3.setForeground(new Color(204, 51, 255));
 		etiquetaPuntos3.setFont(new Font("Goudy Stout", Font.PLAIN, 20));
 		add(etiquetaPuntos3);
-		
-				// POSICION 4
-				JLabel textoPosicion4 = new JLabel("4.");
-				textoPosicion4.setBounds(77, 385, 25, 28);
-				textoPosicion4.setForeground(new Color(204, 51, 255));
-				textoPosicion4.setFont(new Font("Goudy Stout", Font.PLAIN, 20));
-				add(textoPosicion4);
+
+		// POSICION 4
+		JLabel textoPosicion4 = new JLabel("4.");
+		textoPosicion4.setBounds(77, 385, 25, 28);
+		textoPosicion4.setForeground(new Color(204, 51, 255));
+		textoPosicion4.setFont(new Font("Goudy Stout", Font.PLAIN, 20));
+		add(textoPosicion4);
 
 		nombreRanking4 = new JTextField();
 		nombreRanking4.setBounds(112, 383, 267, 34);
@@ -223,20 +224,20 @@ public class PantallaRanking extends JPanel {
 				ventana.irInicio();
 			}
 		});
-		
+
 		etiquetaPuntos4 = new JLabel("pts");
 		etiquetaPuntos4.setBounds(869, 386, 68, 28);
 		etiquetaPuntos4.setForeground(new Color(255, 51, 255));
 		etiquetaPuntos4.setFont(new Font("Goudy Stout", Font.PLAIN, 20));
 		add(etiquetaPuntos4);
-		
-				// POSICION 5
-		
-				JLabel textoPosicion5 = new JLabel("5.");
-				textoPosicion5.setBounds(77, 424, 25, 28);
-				textoPosicion5.setForeground(new Color(255, 51, 255));
-				textoPosicion5.setFont(new Font("Goudy Stout", Font.PLAIN, 20));
-				add(textoPosicion5);
+
+		// POSICION 5
+
+		JLabel textoPosicion5 = new JLabel("5.");
+		textoPosicion5.setBounds(77, 424, 25, 28);
+		textoPosicion5.setForeground(new Color(255, 51, 255));
+		textoPosicion5.setFont(new Font("Goudy Stout", Font.PLAIN, 20));
+		add(textoPosicion5);
 
 		nombreRanking5 = new JTextField();
 		nombreRanking5.setBounds(112, 422, 267, 34);
@@ -257,7 +258,7 @@ public class PantallaRanking extends JPanel {
 		campoPuntos5.setEditable(false);
 		add(campoPuntos5);
 		campoPuntos5.setColumns(10);
-		
+
 		etiquetaPuntos5 = new JLabel("pts");
 		etiquetaPuntos5.setBounds(869, 425, 68, 28);
 		etiquetaPuntos5.setForeground(new Color(204, 51, 255));

@@ -20,6 +20,7 @@ import javax.swing.JButton;
 import javax.swing.JTextField;
 
 import Clases.Cancion;
+import Hilos.Hilos;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -44,6 +45,8 @@ public class PantallaJuegoFacil extends JPanel {
 	private Cancion actual;// cancion con la que se juega en el momento dado
 	private File archivoSonido;// archivo de sonido
 	private Clip sonido;// objeto reproducible del sonido
+	
+	private Hilos hiloMusical;
 
 	/**
 	 * metodo constructor
@@ -68,6 +71,13 @@ public class PantallaJuegoFacil extends JPanel {
 			// TODO Auto-generated catch block
 			e2.printStackTrace();
 		}
+		
+		//instanciamos el hilo
+		
+		/*hiloMusical=new Hilos();
+		hiloMusical.recibeSonido(sonido);*/
+		
+		///
 
 		setLayout(null);
 		JLabel textoPuntos = new JLabel("Puntos:");
@@ -118,6 +128,7 @@ public class PantallaJuegoFacil extends JPanel {
 				} else {
 					ventana.irFallo();
 				}
+				//hiloMusical.stop();
 			}
 		});
 		botonOpcion2.setBounds(511, 352, 337, 37);
@@ -134,6 +145,7 @@ public class PantallaJuegoFacil extends JPanel {
 				} else {
 					ventana.irFallo();
 				}
+				//hiloMusical.stop();
 			}
 		});
 		botonOpcion4.addActionListener(new ActionListener() {
@@ -158,6 +170,8 @@ public class PantallaJuegoFacil extends JPanel {
 				} else {
 					ventana.irFallo();
 				}
+				
+				//hiloMusical.stop();
 			}
 		});
 		botonOpcion3.setBounds(75, 440, 337, 37);
@@ -175,17 +189,12 @@ public class PantallaJuegoFacil extends JPanel {
 		botonPlay.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				//hiloMusical.start();
 				/*
 				 * new Thread(() ->{ sonido.start();}) {} .start();
 				 */
 				sonido.start();
-				while (sonido.isRunning())
-					try {
-						Thread.sleep(10);
-					} catch (InterruptedException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
+				
 			}
 		});
 		botonPlay.setBounds(276, 148, 136, 57);

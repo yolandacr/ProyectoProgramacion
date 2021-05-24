@@ -176,6 +176,50 @@ public class PantallaCategoria extends JPanel {
 		add(boton90, gbc_boton90);
 
 		JButton boton2000 = new JButton("Años 2000");
+		boton2000.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				try {
+					ventana.cancionesAJugar = new ArrayList<Cancion>();
+					Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root", "1234");
+					Statement smt = conexion.createStatement();
+					ResultSet cancionesResult = smt
+							.executeQuery("select * from cancion where categoria='" + "AÑOS2000" + "' limit 10");
+
+					while (cancionesResult.next()) {
+						ventana.cancionesAJugar.add(
+								new Cancion(cancionesResult.getString("nombre"), cancionesResult.getString("autor"),
+										cancionesResult.getString("categoria"), cancionesResult.getInt("año"),
+										cancionesResult.getString("disco"), cancionesResult.getString("ruta"),cancionesResult.getString("ruta_imagen")));
+
+						Connection conexion1 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root",
+								"1234");
+						Statement smt1 = conexion1.createStatement();
+						ResultSet opcionesResult = smt1
+								.executeQuery("select nombre from opciones where nombre_cancion='"
+										+ cancionesResult.getString("nombre") + "'");
+
+						byte contador = 0;
+						ventana.opcionesCancionActual = new String[4];
+
+						while (opcionesResult.next()) {
+							ventana.opcionesCancionActual[contador] = opcionesResult.getString("nombre");
+							contador++;
+							ventana.cancionesAJugar.get(ventana.cancionesAJugar.size() - 1)
+									.setOpcionesEleccion(ventana.opcionesCancionActual);
+						}
+
+						smt1.close();
+					}
+					smt.close();
+
+					ventana.irANivel();
+
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
 		boton2000.setFont(new Font("Goudy Stout", Font.PLAIN, 20));
 		boton2000.setForeground(new Color(255, 51, 255));
 		GridBagConstraints gbc_boton2000 = new GridBagConstraints();

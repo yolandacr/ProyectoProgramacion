@@ -115,7 +115,7 @@ public class PantallaRanking extends JPanel {
 		campoPuntos1.setColumns(10);
 		campoPuntos1.setText(String.valueOf(ventana.puntosRanking[0]));
 
-		etiquetaPuntos1 = new JLabel("PTS");
+		etiquetaPuntos1 = new JLabel("pts");
 		etiquetaPuntos1.setBounds(869, 266, 100, 34);
 		etiquetaPuntos1.setForeground(new Color(204, 51, 255));
 		etiquetaPuntos1.setFont(new Font("Goudy Stout", Font.PLAIN, 20));

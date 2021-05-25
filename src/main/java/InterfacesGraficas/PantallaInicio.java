@@ -126,7 +126,7 @@ public class PantallaInicio extends JPanel {
 				ventana.irARanking();
 			}
 		});
-		botonRanking.setFont(new Font("Goudy Stout", Font.PLAIN, 25));
+		botonRanking.setFont(new Font("Dialog", Font.BOLD, 25));
 		botonRanking.setForeground(new Color(153, 51, 255));
 		GridBagConstraints gbc_botonRanking = new GridBagConstraints();
 		gbc_botonRanking.insets = new Insets(0, 0, 5, 5);

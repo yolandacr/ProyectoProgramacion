@@ -45,8 +45,7 @@ public class PantallaJuegoFacil extends JPanel {
 	private Cancion actual;// cancion con la que se juega en el momento dado
 	private File archivoSonido;// archivo de sonido
 	private Clip sonido;// objeto reproducible del sonido
-	
-	private Hilos hiloMusical;
+	private Hilos hiloMusical;// variable que contendrá la ejecución de la musica
 
 	/**
 	 * metodo constructor
@@ -58,20 +57,11 @@ public class PantallaJuegoFacil extends JPanel {
 		this.ventana = v;
 
 		Random r = new Random();
-		actual = ventana.cancionesAJugar.get(r.nextInt(10));
+		actual = ventana.cancionesAJugar.get(r.nextInt(ventana.cancionesAJugar.size()));
 
 		// creacion del file y el stream por donde se va a reproducir
 
-		AudioInputStream audioInputStream;
-		try {
-			audioInputStream = AudioSystem.getAudioInputStream(new File(actual.getRuta()));
-			sonido = AudioSystem.getClip();
-			sonido.open(audioInputStream);
-		} catch (UnsupportedAudioFileException | IOException | LineUnavailableException e2) {
-			// TODO Auto-generated catch block
-			e2.printStackTrace();
-		}
-		
+	
 		
 		
 		///
@@ -103,7 +93,7 @@ public class PantallaJuegoFacil extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 
-				if (botonOpcion1.getText() == actual.getNombre()) {
+				if (botonOpcion1.getText().equalsIgnoreCase(actual.getNombre())) {
 					ventana.irAciertoV2();
 				} else {
 					ventana.irFallo();
@@ -120,12 +110,12 @@ public class PantallaJuegoFacil extends JPanel {
 		botonOpcion2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if (botonOpcion2.getText() == actual.getNombre()) {
+				if (botonOpcion2.getText().equalsIgnoreCase(actual.getNombre())) {
 					ventana.irAciertoV2();
 				} else {
 					ventana.irFallo();
 				}
-				//hiloMusical.stop();
+				hiloMusical.stop();
 			}
 		});
 		botonOpcion2.setBounds(511, 352, 337, 37);
@@ -137,12 +127,12 @@ public class PantallaJuegoFacil extends JPanel {
 		botonOpcion4.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if (botonOpcion4.getText() == actual.getNombre()) {
+				if (botonOpcion4.getText().equalsIgnoreCase(actual.getNombre())) {
 					ventana.irAciertoV2();
 				} else {
 					ventana.irFallo();
 				}
-				//hiloMusical.stop();
+				hiloMusical.stop();
 			}
 		});
 		botonOpcion4.addActionListener(new ActionListener() {
@@ -168,7 +158,7 @@ public class PantallaJuegoFacil extends JPanel {
 					ventana.irFallo();
 				}
 				
-				//hiloMusical.stop();
+			hiloMusical.stop();
 			}
 		});
 		botonOpcion3.setBounds(75, 440, 337, 37);
@@ -176,6 +166,7 @@ public class PantallaJuegoFacil extends JPanel {
 
 		// boton play
 
+		JButton botonStop = new JButton("Stop");
 		JButton botonPlay = new JButton("Play");
 		botonPlay.setFont(new Font("Goudy Stout", Font.PLAIN, 20));
 		botonPlay.setForeground(new Color(204, 51, 255));
@@ -188,26 +179,21 @@ public class PantallaJuegoFacil extends JPanel {
 			public void mouseClicked(MouseEvent e) {
 				//instanciamos el hilo
 				
-				/*hiloMusical=new Hilos();
-				hiloMusical.recibeSonido(sonido);
-				hiloMusical.start();*/
-				/*
-				 * new Thread(() ->{ sonido.start();}) {} .start();
-				 */
-				sonido.start();
+				hiloMusical=new Hilos(actual.getRuta(),botonPlay,botonStop);
+				hiloMusical.start();
+				
 				
 			}
 		});
 		botonPlay.setBounds(276, 148, 136, 57);
 		add(botonPlay);
 
-		JButton botonStop = new JButton("Stop");
 		botonStop.setFont(new Font("Goudy Stout", Font.PLAIN, 20));
 		botonStop.setForeground(new Color(204, 51, 255));
 		botonStop.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				sonido.stop();
+				hiloMusical.parar();
 			}
 		});
 		botonStop.setBounds(511, 148, 136, 57);

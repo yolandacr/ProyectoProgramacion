@@ -22,6 +22,7 @@ public class ProbandoFondo extends JPanel {
 	
 	
 	ImageIcon imagen=new ImageIcon(getClass().getResource("imagenFondo.jpg").getFile());
+	
 	public ProbandoFondo(Ventana v) {
 		this.ventana=v;
 		

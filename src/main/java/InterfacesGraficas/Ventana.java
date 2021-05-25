@@ -3,6 +3,8 @@
 package InterfacesGraficas;
 
 import java.awt.Cursor;
+import java.awt.Font;
+import java.awt.GraphicsEnvironment;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
@@ -43,12 +45,18 @@ public class Ventana extends JFrame implements FuncionesVentana {
 	protected short[] puntosRanking; // array con el top 5 de puntuaciones
 	
 	private ProbandoFondo fondo;//BORRAR cuando funcione lo del fondo
+	
+	
+	
+	
+	
 
 	/**
 	 * constructor sin argumentos.
 	 */
 
 	public Ventana() {
+		
 		this.setSize(1000, 700);
 		this.setResizable(false);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);

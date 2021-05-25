@@ -50,7 +50,7 @@ public class PantallaJuegoDificil extends JPanel {
 		this.ventana = v;
 		
 		Random r = new Random();
-		actual = ventana.cancionesAJugar.get(r.nextInt(10));
+		actual = ventana.cancionesAJugar.get(r.nextInt(ventana.cancionesAJugar.size()));
 		
 		
 		

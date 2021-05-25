@@ -20,6 +20,7 @@ import javax.swing.JButton;
 import javax.swing.JTextField;
 
 import Clases.Cancion;
+import Clases.CancionJugada;
 import Hilos.Hilos;
 
 import java.awt.event.ActionListener;
@@ -58,13 +59,12 @@ public class PantallaJuegoFacil extends JPanel {
 
 		Random r = new Random();
 		actual = ventana.cancionesAJugar.get(r.nextInt(ventana.cancionesAJugar.size()));
-
-		// creacion del file y el stream por donde se va a reproducir
-
-	
+		if (ventana.cancionesJugadas!=null&&ventana.cancionesJugadas.contains(actual)){
+			ventana.cancionesAJugar.get(r.nextInt(ventana.cancionesAJugar.size()));
+		}
 		
 		
-		///
+
 
 		setLayout(null);
 		JLabel textoPuntos = new JLabel("Puntos:");
@@ -82,9 +82,9 @@ public class PantallaJuegoFacil extends JPanel {
 		campoPuntos.setColumns(10);
 		
 		//establecemos los puntos a los de la partida. Empezarán en 0
-		int puntosPartida = ventana.nuevaPartida.getPuntosPartida();
-		String puntos = Integer.toString(puntosPartida);
-		campoPuntos.setText(puntos);
+		
+		
+		campoPuntos.setText(String.valueOf(ventana.nuevaPartida.getPuntosPartida()));
 
 		JButton botonOpcion1 = new JButton(actual.getOpcionesEleccion()[0]);
 		botonOpcion1.setFont(new Font("Goudy Stout", Font.PLAIN, 10));
@@ -95,8 +95,15 @@ public class PantallaJuegoFacil extends JPanel {
 
 				if (botonOpcion1.getText().equalsIgnoreCase(actual.getNombre())) {
 					ventana.irAciertoV2();
+					ventana.totalAciertos++;
+					ventana.cancionesJugadas.add(new CancionJugada(actual.getNombre(),actual.getAutor(),actual.getCategoria(),actual.getAño()
+							,actual.getDisco(),actual.getRuta(),actual.getRutaImagen(),true));
+					ventana.cancionesAJugar.remove(actual);
 				} else {
 					ventana.irFallo();
+					ventana.cancionesJugadas.add(new CancionJugada(actual.getNombre(),actual.getAutor(),actual.getCategoria(),actual.getAño()
+							,actual.getDisco(),actual.getRuta(),actual.getRutaImagen(),false));
+					ventana.cancionesAJugar.remove(actual);
 				}
 
 			}
@@ -112,10 +119,18 @@ public class PantallaJuegoFacil extends JPanel {
 			public void mouseClicked(MouseEvent e) {
 				if (botonOpcion2.getText().equalsIgnoreCase(actual.getNombre())) {
 					ventana.irAciertoV2();
+					ventana.totalAciertos++;
+					ventana.cancionesJugadas.add(new CancionJugada(actual.getNombre(),actual.getAutor(),actual.getCategoria(),actual.getAño()
+							,actual.getDisco(),actual.getRuta(),actual.getRutaImagen(),true));
+					ventana.cancionesAJugar.remove(actual);
+					
 				} else {
 					ventana.irFallo();
+					ventana.cancionesJugadas.add(new CancionJugada(actual.getNombre(),actual.getAutor(),actual.getCategoria(),actual.getAño()
+							,actual.getDisco(),actual.getRuta(),actual.getRutaImagen(),false));
+					ventana.cancionesAJugar.remove(actual);
 				}
-				hiloMusical.stop();
+				hiloMusical.parar();
 			}
 		});
 		botonOpcion2.setBounds(511, 352, 337, 37);
@@ -129,10 +144,17 @@ public class PantallaJuegoFacil extends JPanel {
 			public void mouseClicked(MouseEvent e) {
 				if (botonOpcion4.getText().equalsIgnoreCase(actual.getNombre())) {
 					ventana.irAciertoV2();
+					ventana.totalAciertos++;
+					ventana.cancionesJugadas.add(new CancionJugada(actual.getNombre(),actual.getAutor(),actual.getCategoria(),actual.getAño()
+							,actual.getDisco(),actual.getRuta(),actual.getRutaImagen(),true));
+					ventana.cancionesAJugar.remove(actual);
 				} else {
 					ventana.irFallo();
+					ventana.cancionesJugadas.add(new CancionJugada(actual.getNombre(),actual.getAutor(),actual.getCategoria(),actual.getAño()
+							,actual.getDisco(),actual.getRuta(),actual.getRutaImagen(),false));
+					ventana.cancionesAJugar.remove(actual);
 				}
-				hiloMusical.stop();
+				hiloMusical.parar();
 			}
 		});
 		botonOpcion4.addActionListener(new ActionListener() {
@@ -154,11 +176,18 @@ public class PantallaJuegoFacil extends JPanel {
 			public void mouseClicked(MouseEvent e) {
 				if (botonOpcion3.getText().equalsIgnoreCase(actual.getNombre())) {
 					ventana.irAciertoV2();
+					ventana.totalAciertos++;
+					ventana.cancionesJugadas.add(new CancionJugada(actual.getNombre(),actual.getAutor(),actual.getCategoria(),actual.getAño()
+							,actual.getDisco(),actual.getRuta(),actual.getRutaImagen(),true));
+					ventana.cancionesAJugar.remove(actual);
 				} else {
 					ventana.irFallo();
+					ventana.cancionesJugadas.add(new CancionJugada(actual.getNombre(),actual.getAutor(),actual.getCategoria(),actual.getAño()
+							,actual.getDisco(),actual.getRuta(),actual.getRutaImagen(),false));
+					ventana.cancionesAJugar.remove(actual);
 				}
 				
-			hiloMusical.stop();
+			hiloMusical.parar();
 			}
 		});
 		botonOpcion3.setBounds(75, 440, 337, 37);

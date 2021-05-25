@@ -35,6 +35,7 @@ public class CancionJugada extends Cancion {
 		this.aciertoONo = aciertoONo;
 	}
 	
+	
 	/**
 	 * metodo getter de aciertoONo
 	 * @return

@@ -211,4 +211,14 @@ public class Cancion extends ElementoConNombre {
 		this.ruta = ruta;
 	}
 
+	public String getRutaImagen() {
+		return rutaImagen;
+	}
+
+	public void setRutaImagen(String rutaImagen) {
+		this.rutaImagen = rutaImagen;
+	}
+	
+	
+
 }

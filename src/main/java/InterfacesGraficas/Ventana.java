@@ -14,6 +14,7 @@ import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
 import Clases.Cancion;
+import Clases.CancionJugada;
 import Clases.Jugador;
 import Clases.Partida;
 import Interfaces.FuncionesVentana;
@@ -43,6 +44,9 @@ public class Ventana extends JFrame implements FuncionesVentana {
 	protected Partida nuevaPartida; // objeto para crear una nueva partida cuando empezamos
 	protected String[] nombresRanking; // array que guarda los nombres de los 5 jugadores con más puntuación.
 	protected short[] puntosRanking; // array con el top 5 de puntuaciones
+	protected ArrayList <CancionJugada> cancionesJugadas;
+	protected byte totalAciertos;
+	
 	
 	private ProbandoFondo fondo;//BORRAR cuando funcione lo del fondo
 	

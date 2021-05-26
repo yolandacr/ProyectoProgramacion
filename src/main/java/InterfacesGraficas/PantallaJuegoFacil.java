@@ -58,7 +58,10 @@ public class PantallaJuegoFacil extends JPanel {
 		this.ventana = v;
 
 		Random r = new Random();
+		
+		
 		actual = ventana.cancionesAJugar.get(r.nextInt(ventana.cancionesAJugar.size()));
+		
 		if (ventana.cancionesJugadas!=null&&ventana.cancionesJugadas.contains(actual)){
 			ventana.cancionesAJugar.get(r.nextInt(ventana.cancionesAJugar.size()));
 		}
@@ -92,6 +95,7 @@ public class PantallaJuegoFacil extends JPanel {
 		botonOpcion1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+			
 
 				if (botonOpcion1.getText().equalsIgnoreCase(actual.getNombre())) {
 					ventana.irAciertoV2();
@@ -105,6 +109,8 @@ public class PantallaJuegoFacil extends JPanel {
 							,actual.getDisco(),actual.getRuta(),actual.getRutaImagen(),false));
 					ventana.cancionesAJugar.remove(actual);
 				}
+				hiloMusical.parar();
+	
 
 			}
 		});
@@ -124,13 +130,16 @@ public class PantallaJuegoFacil extends JPanel {
 							,actual.getDisco(),actual.getRuta(),actual.getRutaImagen(),true));
 					ventana.cancionesAJugar.remove(actual);
 					
+					
 				} else {
 					ventana.irFallo();
 					ventana.cancionesJugadas.add(new CancionJugada(actual.getNombre(),actual.getAutor(),actual.getCategoria(),actual.getAño()
 							,actual.getDisco(),actual.getRuta(),actual.getRutaImagen(),false));
 					ventana.cancionesAJugar.remove(actual);
+					
 				}
 				hiloMusical.parar();
+				
 			}
 		});
 		botonOpcion2.setBounds(511, 352, 337, 37);
@@ -155,6 +164,7 @@ public class PantallaJuegoFacil extends JPanel {
 					ventana.cancionesAJugar.remove(actual);
 				}
 				hiloMusical.parar();
+				
 			}
 		});
 		botonOpcion4.addActionListener(new ActionListener() {
@@ -188,6 +198,7 @@ public class PantallaJuegoFacil extends JPanel {
 				}
 				
 			hiloMusical.parar();
+			
 			}
 		});
 		botonOpcion3.setBounds(75, 440, 337, 37);
@@ -227,7 +238,14 @@ public class PantallaJuegoFacil extends JPanel {
 		});
 		botonStop.setBounds(511, 148, 136, 57);
 		add(botonStop);
+		
+		
 
 	}
+	
+	
+
+	
+	
 
 }

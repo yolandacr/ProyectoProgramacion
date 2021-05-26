@@ -55,8 +55,8 @@ public class PantallaCategoria extends JPanel {
 
 				try {
 					ventana.cancionesAJugar = new ArrayList<Cancion>();
-					Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root", "1234");
-					/*Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root", "admin");*/
+					//Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root", "1234");
+					Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root", "admin");
 					
 					Statement smt = conexion.createStatement();
 					ResultSet cancionesResult = smt
@@ -68,8 +68,8 @@ public class PantallaCategoria extends JPanel {
 										cancionesResult.getString("categoria"), cancionesResult.getInt("año"),
 										cancionesResult.getString("disco"), cancionesResult.getString("ruta"),cancionesResult.getString("ruta_imagen")));
 
-						Connection conexion1 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root","1234");
-						//Connection conexion1 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root","admin");
+						//Connection conexion1 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root","1234");
+						Connection conexion1 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root","admin");
 						Statement smt1 = conexion1.createStatement();
 						ResultSet opcionesResult = smt1
 								.executeQuery("select nombre from opciones where nombre_cancion='"
@@ -128,8 +128,8 @@ public class PantallaCategoria extends JPanel {
 			public void mouseClicked(MouseEvent e) {
 				try {
 					ventana.cancionesAJugar = new ArrayList<Cancion>();
-					Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root", "1234");
-					//Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root", "admin");
+					//Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root", "1234");
+					Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root", "admin");
 					Statement smt = conexion.createStatement();
 					ResultSet cancionesResult = smt
 							.executeQuery("select * from cancion where categoria='" + "AÑOS90" + "' limit 10");
@@ -140,8 +140,8 @@ public class PantallaCategoria extends JPanel {
 										cancionesResult.getString("categoria"), cancionesResult.getInt("año"),
 										cancionesResult.getString("disco"), cancionesResult.getString("ruta"),cancionesResult.getString("ruta_imagen")));
 
-				Connection conexion1 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root","1234");
-				//Connection conexion1 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root","admin");
+				//Connection conexion1 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root","1234");
+				Connection conexion1 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root","admin");
 						
 						Statement smt1 = conexion1.createStatement();
 						ResultSet opcionesResult = smt1
@@ -184,8 +184,8 @@ public class PantallaCategoria extends JPanel {
 			public void mouseClicked(MouseEvent e) {
 				try {
 					ventana.cancionesAJugar = new ArrayList<Cancion>();
-					Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root", "1234");
-					//Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root", "admin");
+					//Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root", "1234");
+					Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root", "admin");
 					Statement smt = conexion.createStatement();
 					ResultSet cancionesResult = smt
 							.executeQuery("select * from cancion where categoria='" + "AÑOS2000" + "' limit 10");
@@ -196,9 +196,8 @@ public class PantallaCategoria extends JPanel {
 										cancionesResult.getString("categoria"), cancionesResult.getInt("año"),
 										cancionesResult.getString("disco"), cancionesResult.getString("ruta"),cancionesResult.getString("ruta_imagen")));
 
-						Connection conexion1 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root",
-								"1234");
-						//Connection conexion1 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root", "admin");
+						//Connection conexion1 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root","1234");
+						Connection conexion1 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root", "admin");
 						Statement smt1 = conexion1.createStatement();
 						ResultSet opcionesResult = smt1
 								.executeQuery("select nombre from opciones where nombre_cancion='"
@@ -240,8 +239,8 @@ public class PantallaCategoria extends JPanel {
 			public void mouseClicked(MouseEvent e) {
 				try {
 					ventana.cancionesAJugar = new ArrayList<Cancion>();
-					Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root", "1234");
-					//Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root", "admin");
+					//Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root", "1234");
+					Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root", "admin");
 					Statement smt = conexion.createStatement();
 					ResultSet cancionesResult = smt
 							.executeQuery("select * from cancion where categoria='" + "AÑOS80" + "' limit 10");
@@ -252,8 +251,8 @@ public class PantallaCategoria extends JPanel {
 										cancionesResult.getString("categoria"), cancionesResult.getInt("año"),
 										cancionesResult.getString("disco"), cancionesResult.getString("ruta"),cancionesResult.getString("ruta_imagen")));
 
-						Connection conexion1 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root","1234");
-						//Connection conexion1 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root", "admin");
+						//Connection conexion1 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root","1234");
+						Connection conexion1 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root", "admin");
 						Statement smt1 = conexion1.createStatement();
 						ResultSet opcionesResult = smt1
 								.executeQuery("select nombre from opciones where nombre_cancion='"

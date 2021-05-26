@@ -93,9 +93,7 @@ public class PantallaJuegoDificil extends JPanel {
 		botonPlay.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				/*
-				 * new Thread(() ->{ sonido.start();}) {} .start();
-				 */
+				
 				sonido.start();
 				while (sonido.isRunning())
 					try {

@@ -80,7 +80,7 @@ public class PantallaJuegoFacil extends JPanel {
 		campoPuntos.setForeground(new Color(255, 51, 255));
 		campoPuntos.setEditable(false);
 		campoPuntos.setFont(new Font("Goudy Stout", Font.PLAIN, 25));
-		campoPuntos.setBounds(252, 21, 35, 42);
+		campoPuntos.setBounds(252, 21, 88, 42);
 		add(campoPuntos);
 		campoPuntos.setColumns(10);
 		
@@ -110,8 +110,7 @@ public class PantallaJuegoFacil extends JPanel {
 					ventana.cancionesAJugar.remove(actual);
 				}
 				hiloMusical.parar();
-	
-
+	           
 			}
 		});
 		botonOpcion1.setBounds(75, 352, 337, 37);
@@ -139,7 +138,7 @@ public class PantallaJuegoFacil extends JPanel {
 					
 				}
 				hiloMusical.parar();
-				
+			
 			}
 		});
 		botonOpcion2.setBounds(511, 352, 337, 37);
@@ -164,7 +163,6 @@ public class PantallaJuegoFacil extends JPanel {
 					ventana.cancionesAJugar.remove(actual);
 				}
 				hiloMusical.parar();
-				
 			}
 		});
 		botonOpcion4.addActionListener(new ActionListener() {
@@ -198,7 +196,6 @@ public class PantallaJuegoFacil extends JPanel {
 				}
 				
 			hiloMusical.parar();
-			
 			}
 		});
 		botonOpcion3.setBounds(75, 440, 337, 37);

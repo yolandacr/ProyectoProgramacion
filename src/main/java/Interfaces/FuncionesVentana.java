@@ -30,5 +30,7 @@ public interface FuncionesVentana {
 	public void irAciertoV2();//método para ir a la pantalla de acierto (version alternativa)
 	
 	public void irFallo();//método para ir a la pantalla de fallo
+	
+	public void siguienteCancion();// metodo para resetear la pantalla y que cambie de cancion
 
 }

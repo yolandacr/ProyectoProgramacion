@@ -80,6 +80,7 @@ public class PantallaAciertov2 extends JPanel {
 											@Override
 											public void mouseClicked(MouseEvent e) {
 												ventana.nuevaPartida.setPuntosPartida((short) (ventana.nuevaPartida.getPuntosPartida()+50));
+												ventana.siguienteCancion();
 												ventana.irFacil();
 											}
 										});

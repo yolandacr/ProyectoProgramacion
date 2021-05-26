@@ -142,6 +142,13 @@ public class Ventana extends JFrame implements FuncionesVentana {
 		this.setContentPane(juegoFacil);
 		this.juegoFacil.setVisible(true);
 	}
+	
+	/**
+	 * este método resetea la pantalla de juego y la prepara para la proxima ronda
+	 */
+	public void siguienteCancion() {
+		this.juegoFacil=null;
+	}
 
 	/**
 	 * método para ir a la pantalla del juego en modo experto

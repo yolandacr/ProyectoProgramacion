@@ -50,8 +50,7 @@ public class PantallaNivel extends JPanel {
 		botonFacil.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				LocalDateTime fechaActual = LocalDateTime.now();
-				ventana.nuevaPartida = new Partida(ventana.jugador, (short) 0, fechaActual, ventana.cancionesAJugar,botonFacil.getText());
+				ventana.nuevaPartida = new Partida(ventana.jugador, (short) 0,  ventana.cancionesAJugar,botonFacil.getText());
 				ventana.irFacil();
 			}
 		});
@@ -63,8 +62,7 @@ public class PantallaNivel extends JPanel {
 		botonExperto.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				LocalDateTime fechaActual = LocalDateTime.now();
-				ventana.nuevaPartida = new Partida(ventana.jugador, (short) 0, fechaActual, ventana.cancionesAJugar,botonExperto.getText());
+				ventana.nuevaPartida = new Partida(ventana.jugador, (short) 0,  ventana.cancionesAJugar,botonExperto.getText());
 				ventana.irAExperto();
 			}
 		});

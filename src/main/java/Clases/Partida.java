@@ -37,12 +37,12 @@ public class Partida {
 	 */
 	
 	
-	public Partida(Jugador jugador, short puntosPartida, LocalDateTime fecha, ArrayList<Cancion> cancionesPartida,
+	public Partida(Jugador jugador, short puntosPartida, ArrayList<Cancion> cancionesPartida,
 			String nivel) {
 		super();
 		this.jugador = jugador;
 		this.puntosPartida = puntosPartida;
-		this.fecha = fecha;
+		this.fecha = LocalDateTime.now();
 		this.cancionesPartida = cancionesPartida;
 		this.nivel = nivel;
 	}

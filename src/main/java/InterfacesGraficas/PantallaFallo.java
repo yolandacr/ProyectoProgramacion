@@ -58,13 +58,17 @@ public class PantallaFallo extends JPanel {
 									@Override
 									public void mouseClicked(MouseEvent e) {
 										
-										ventana.siguienteCancion();
-										if(ventana.nuevaPartida.getNivel().equalsIgnoreCase("Fácil")) {
-									
-										ventana.irFacil();}
-										else {
+										if(ventana.cancionesAJugar.size()>0) {
+											if(ventana.nuevaPartida.getNivel().equalsIgnoreCase("Fácil")) {
+												ventana.siguienteCancion();
+													ventana.irFacil();}
+													else {
+														ventana.siguienteCancion();
+														ventana.irAExperto();
+													}
 											
-											ventana.irAExperto();
+										}else {
+											ventana.irFin();
 										}
 									}
 								});

@@ -27,7 +27,7 @@ import java.awt.Color;
  * @author yolanda cordero
  *
  */
-public class PantallaRanking extends JPanel {
+public class PantallaRanking extends PanelMadre {
 	private Ventana ventana; // jframe base sobre el que trabajamos
 	private JTextField nombreRanking1; // campo de los datos del jugador en la posicion 1
 	private JTextField nombreRanking2; // campo de los datos del jugador en la posicion 2
@@ -96,6 +96,7 @@ public class PantallaRanking extends JPanel {
 		add(textoPosicion1);
 
 		nombreRanking1 = new JTextField();
+		nombreRanking1.setBackground(Color.BLACK);
 		nombreRanking1.setBounds(112, 266, 267, 34);
 		nombreRanking1.setHorizontalAlignment(SwingConstants.CENTER);
 		nombreRanking1.setFont(new Font("Goudy Stout", Font.PLAIN, 20));
@@ -106,6 +107,7 @@ public class PantallaRanking extends JPanel {
 		nombreRanking1.setText(ventana.nombresRanking[0]);
 
 		campoPuntos1 = new JTextField();
+		campoPuntos1.setBackground(Color.BLACK);
 		campoPuntos1.setBounds(395, 266, 464, 34);
 		campoPuntos1.setHorizontalAlignment(SwingConstants.CENTER);
 		campoPuntos1.setForeground(new Color(255, 51, 255));
@@ -130,6 +132,7 @@ public class PantallaRanking extends JPanel {
 		add(textoPosicion2);
 
 		nombreRanking2 = new JTextField();
+		nombreRanking2.setBackground(Color.BLACK);
 		nombreRanking2.setBounds(112, 305, 267, 34);
 		nombreRanking2.setHorizontalAlignment(SwingConstants.CENTER);
 		nombreRanking2.setFont(new Font("Goudy Stout", Font.PLAIN, 20));
@@ -140,6 +143,7 @@ public class PantallaRanking extends JPanel {
 		nombreRanking2.setText(ventana.nombresRanking[1]);
 
 		campoPuntos2 = new JTextField();
+		campoPuntos2.setBackground(Color.BLACK);
 		campoPuntos2.setBounds(395, 305, 464, 34);
 		campoPuntos2.setHorizontalAlignment(SwingConstants.CENTER);
 		campoPuntos2.setForeground(new Color(204, 51, 255));
@@ -164,6 +168,7 @@ public class PantallaRanking extends JPanel {
 		add(textoPosicion3);
 
 		nombreRanking3 = new JTextField();
+		nombreRanking3.setBackground(Color.BLACK);
 		nombreRanking3.setBounds(112, 344, 267, 34);
 		nombreRanking3.setHorizontalAlignment(SwingConstants.CENTER);
 		nombreRanking3.setFont(new Font("Goudy Stout", Font.PLAIN, 20));
@@ -174,6 +179,7 @@ public class PantallaRanking extends JPanel {
 		nombreRanking3.setText(ventana.nombresRanking[2]);
 
 		campoPuntos3 = new JTextField();
+		campoPuntos3.setBackground(Color.BLACK);
 		campoPuntos3.setBounds(395, 344, 464, 34);
 		campoPuntos3.setHorizontalAlignment(SwingConstants.CENTER);
 		campoPuntos3.setForeground(new Color(255, 51, 255));
@@ -197,6 +203,7 @@ public class PantallaRanking extends JPanel {
 		add(textoPosicion4);
 
 		nombreRanking4 = new JTextField();
+		nombreRanking4.setBackground(Color.BLACK);
 		nombreRanking4.setBounds(112, 383, 267, 34);
 		nombreRanking4.setHorizontalAlignment(SwingConstants.CENTER);
 		nombreRanking4.setFont(new Font("Goudy Stout", Font.PLAIN, 20));
@@ -207,6 +214,7 @@ public class PantallaRanking extends JPanel {
 		nombreRanking4.setText(ventana.nombresRanking[3]);
 
 		campoPuntos4 = new JTextField();
+		campoPuntos4.setBackground(Color.BLACK);
 		campoPuntos4.setBounds(395, 383, 464, 34);
 		campoPuntos4.setHorizontalAlignment(SwingConstants.CENTER);
 		campoPuntos4.setForeground(new Color(204, 51, 255));
@@ -215,8 +223,10 @@ public class PantallaRanking extends JPanel {
 		add(campoPuntos4);
 		campoPuntos4.setColumns(10);
 		campoPuntos4.setText(String.valueOf(ventana.puntosRanking[3]));
+		
+		//boton inicio
 
-		JButton botonInicio = new JButton("Inicio");
+		JButton botonInicio = new BotonMadre("Inicio");
 		botonInicio.setBounds(379, 504, 243, 43);
 		botonInicio.setForeground(new Color(204, 51, 255));
 		botonInicio.addMouseListener(new MouseAdapter() {
@@ -241,6 +251,7 @@ public class PantallaRanking extends JPanel {
 		add(textoPosicion5);
 
 		nombreRanking5 = new JTextField();
+		nombreRanking5.setBackground(Color.BLACK);
 		nombreRanking5.setBounds(112, 422, 267, 34);
 		nombreRanking5.setHorizontalAlignment(SwingConstants.CENTER);
 		nombreRanking5.setFont(new Font("Goudy Stout", Font.PLAIN, 20));
@@ -251,6 +262,7 @@ public class PantallaRanking extends JPanel {
 		nombreRanking5.setText(ventana.nombresRanking[4]);
 
 		campoPuntos5 = new JTextField();
+		campoPuntos5.setBackground(Color.BLACK);
 		campoPuntos5.setBounds(395, 422, 464, 34);
 		campoPuntos5.setHorizontalAlignment(SwingConstants.CENTER);
 		campoPuntos5.setForeground(new Color(255, 51, 255));

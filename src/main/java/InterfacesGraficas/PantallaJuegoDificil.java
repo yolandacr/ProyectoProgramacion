@@ -159,7 +159,7 @@ public class PantallaJuegoDificil extends JPanel {
 							,actual.getDisco(),actual.getRuta(),actual.getRutaImagen(),false));
 					
 				}
-				hiloMusical.parar();
+				if(hiloMusical!=null) {hiloMusical.parar();}
 				
 			}
 		});

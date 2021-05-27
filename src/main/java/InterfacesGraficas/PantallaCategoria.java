@@ -28,7 +28,7 @@ import java.util.ArrayList;
  * @author Yolanda Cordero
  *
  */
-public class PantallaCategoria extends JPanel {
+public class PantallaCategoria extends PanelMadre {
 
     private Ventana ventana;// objeto ventana base
 
@@ -46,15 +46,15 @@ public class PantallaCategoria extends JPanel {
         gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
         setLayout(gridBagLayout);
 
-        JButton botonActualidad = new JButton("Actualidad");
+        JButton botonActualidad = new BotonMadre("Actualidad");
         botonActualidad.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
 
                 try {
                     ventana.cancionesAJugar = new ArrayList<Cancion>();
-                    Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root", "1234");
-                    //Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root", "admin");
+                    //Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root", "1234");
+                    Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root", "admin");
 
                     Statement smt = conexion.createStatement();
                     ResultSet cancionesResult = smt
@@ -66,8 +66,8 @@ public class PantallaCategoria extends JPanel {
                                         cancionesResult.getString("categoria"), cancionesResult.getInt("año"),
                                         cancionesResult.getString("disco"), cancionesResult.getString("ruta"), cancionesResult.getString("ruta_imagen")));
 
-                        Connection conexion1 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root","1234");
-                        //Connection conexion1 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root", "admin");
+                        //Connection conexion1 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root","1234");
+                        Connection conexion1 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root", "admin");
                         Statement smt1 = conexion1.createStatement();
                         ResultSet opcionesResult = smt1
                                 .executeQuery("select nombre from opciones where nombre_cancion='"
@@ -120,14 +120,14 @@ public class PantallaCategoria extends JPanel {
         gbc_botonActualidad.gridy = 3;
         add(botonActualidad, gbc_botonActualidad);
 
-        JButton boton90 = new JButton("Años 90");
+        JButton boton90 = new BotonMadre("Años 90");
         boton90.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 try {
                     ventana.cancionesAJugar = new ArrayList<Cancion>();
-                    Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root", "1234");
-                    //Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root", "admin");
+                    //Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root", "1234");
+                    Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root", "admin");
                     Statement smt = conexion.createStatement();
                     ResultSet cancionesResult = smt
                             .executeQuery("select * from cancion where categoria='" + "AÑOS90" + "' limit 10");
@@ -138,8 +138,8 @@ public class PantallaCategoria extends JPanel {
                                         cancionesResult.getString("categoria"), cancionesResult.getInt("año"),
                                         cancionesResult.getString("disco"), cancionesResult.getString("ruta"), cancionesResult.getString("ruta_imagen")));
 
-                        Connection conexion1 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root","1234");
-                        //Connection conexion1 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root", "admin");
+                       // Connection conexion1 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root","1234");
+                        Connection conexion1 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root", "admin");
 
                         Statement smt1 = conexion1.createStatement();
                         ResultSet opcionesResult = smt1
@@ -176,7 +176,7 @@ public class PantallaCategoria extends JPanel {
         gbc_boton90.gridy = 3;
         add(boton90, gbc_boton90);
 
-        JButton boton2000 = new JButton("Años 2000");
+        JButton boton2000 = new BotonMadre("Años 2000");
         boton2000.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -231,7 +231,7 @@ public class PantallaCategoria extends JPanel {
         gbc_boton2000.gridy = 5;
         add(boton2000, gbc_boton2000);
 
-        JButton boton80 = new JButton("Años 80");
+        JButton boton80 = new BotonMadre("Años 80");
         boton80.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {

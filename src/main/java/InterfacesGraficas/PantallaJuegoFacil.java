@@ -39,7 +39,7 @@ import javax.swing.SwingConstants;
  *
  */
 
-public class PantallaJuegoFacil extends JPanel {
+public class PantallaJuegoFacil extends PanelMadre {
 
 	private Ventana ventana;// objeto ventana base
 	private JTextField campoPuntos;// campo donde aparecen los puntos acumulados
@@ -73,14 +73,15 @@ public class PantallaJuegoFacil extends JPanel {
 		JLabel textoPuntos = new JLabel("Puntos:");
 		textoPuntos.setForeground(new Color(204, 51, 255));
 		textoPuntos.setFont(new Font("Goudy Stout", Font.PLAIN, 25));
-		textoPuntos.setBounds(40, 21, 192, 42);
+		textoPuntos.setBounds(10, 21, 86, 42);
 		add(textoPuntos);
 
 		campoPuntos = new JTextField();
+		campoPuntos.setBackground(Color.BLACK);
 		campoPuntos.setForeground(new Color(255, 51, 255));
 		campoPuntos.setEditable(false);
 		campoPuntos.setFont(new Font("Goudy Stout", Font.PLAIN, 25));
-		campoPuntos.setBounds(252, 21, 88, 42);
+		campoPuntos.setBounds(97, 22, 58, 42);
 		add(campoPuntos);
 		campoPuntos.setColumns(10);
 		
@@ -89,7 +90,7 @@ public class PantallaJuegoFacil extends JPanel {
 		
 		campoPuntos.setText(String.valueOf(ventana.nuevaPartida.getPuntosPartida()));
 
-		JButton botonOpcion1 = new JButton(actual.getOpcionesEleccion()[0]);
+		JButton botonOpcion1 = new BotonMadre(actual.getOpcionesEleccion()[0]);
 		botonOpcion1.setFont(new Font("Goudy Stout", Font.PLAIN, 10));
 		botonOpcion1.setForeground(new Color(255, 51, 255));
 		botonOpcion1.addMouseListener(new MouseAdapter() {
@@ -98,43 +99,49 @@ public class PantallaJuegoFacil extends JPanel {
 			
 
 				if (botonOpcion1.getText().equalsIgnoreCase(actual.getNombre())) {
-					ventana.irAciertoV2();
-					ventana.totalAciertos++;
+					
 					ventana.cancionesJugadas.add(new CancionJugada(actual.getNombre(),actual.getAutor(),actual.getCategoria(),actual.getAño()
 							,actual.getDisco(),actual.getRuta(),actual.getRutaImagen(),true));
 					ventana.cancionesAJugar.remove(actual);
+					ventana.irAciertoV2();
+					
+					
 				} else {
-					ventana.irFallo();
+				
 					ventana.cancionesJugadas.add(new CancionJugada(actual.getNombre(),actual.getAutor(),actual.getCategoria(),actual.getAño()
 							,actual.getDisco(),actual.getRuta(),actual.getRutaImagen(),false));
 					ventana.cancionesAJugar.remove(actual);
+					ventana.irFallo();
+					
 				}
-				hiloMusical.parar();
+				if(hiloMusical!=null) {hiloMusical.parar();}
 	           
 			}
 		});
 		botonOpcion1.setBounds(75, 352, 337, 37);
 		add(botonOpcion1);
 
-		JButton botonOpcion2 = new JButton(actual.getOpcionesEleccion()[1]);
+		JButton botonOpcion2 = new BotonMadre(actual.getOpcionesEleccion()[1]);
 		botonOpcion2.setFont(new Font("Goudy Stout", Font.PLAIN, 10));
 		botonOpcion2.setForeground(new Color(255, 51, 255));
 		botonOpcion2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (botonOpcion2.getText().equalsIgnoreCase(actual.getNombre())) {
-					ventana.irAciertoV2();
-					ventana.totalAciertos++;
+					
 					ventana.cancionesJugadas.add(new CancionJugada(actual.getNombre(),actual.getAutor(),actual.getCategoria(),actual.getAño()
 							,actual.getDisco(),actual.getRuta(),actual.getRutaImagen(),true));
 					ventana.cancionesAJugar.remove(actual);
-					
+					ventana.irAciertoV2();
+				
 					
 				} else {
-					ventana.irFallo();
+				
 					ventana.cancionesJugadas.add(new CancionJugada(actual.getNombre(),actual.getAutor(),actual.getCategoria(),actual.getAño()
 							,actual.getDisco(),actual.getRuta(),actual.getRutaImagen(),false));
 					ventana.cancionesAJugar.remove(actual);
+					ventana.irFallo();
+					
 					
 				}
 				hiloMusical.parar();
@@ -144,23 +151,28 @@ public class PantallaJuegoFacil extends JPanel {
 		botonOpcion2.setBounds(511, 352, 337, 37);
 		add(botonOpcion2);
 
-		JButton botonOpcion4 = new JButton(actual.getOpcionesEleccion()[2]);
+		JButton botonOpcion4 = new BotonMadre(actual.getOpcionesEleccion()[2]);
 		botonOpcion4.setFont(new Font("Goudy Stout", Font.PLAIN, 10));
 		botonOpcion4.setForeground(new Color(255, 51, 255));
 		botonOpcion4.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (botonOpcion4.getText().equalsIgnoreCase(actual.getNombre())) {
-					ventana.irAciertoV2();
-					ventana.totalAciertos++;
+					
 					ventana.cancionesJugadas.add(new CancionJugada(actual.getNombre(),actual.getAutor(),actual.getCategoria(),actual.getAño()
 							,actual.getDisco(),actual.getRuta(),actual.getRutaImagen(),true));
 					ventana.cancionesAJugar.remove(actual);
+					ventana.irAciertoV2();
+					
+					
 				} else {
-					ventana.irFallo();
+				
 					ventana.cancionesJugadas.add(new CancionJugada(actual.getNombre(),actual.getAutor(),actual.getCategoria(),actual.getAño()
 							,actual.getDisco(),actual.getRuta(),actual.getRutaImagen(),false));
 					ventana.cancionesAJugar.remove(actual);
+					ventana.irFallo();
+					
+					
 				}
 				hiloMusical.parar();
 			}
@@ -172,7 +184,7 @@ public class PantallaJuegoFacil extends JPanel {
 		botonOpcion4.setBounds(511, 440, 337, 37);
 		add(botonOpcion4);
 
-		JButton botonOpcion3 = new JButton(actual.getOpcionesEleccion()[3]);
+		JButton botonOpcion3 = new BotonMadre(actual.getOpcionesEleccion()[3]);
 		botonOpcion3.setFont(new Font("Goudy Stout", Font.PLAIN, 10));
 		botonOpcion3.setForeground(new Color(255, 51, 255));
 		botonOpcion3.addActionListener(new ActionListener() {
@@ -183,19 +195,23 @@ public class PantallaJuegoFacil extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (botonOpcion3.getText().equalsIgnoreCase(actual.getNombre())) {
-					ventana.irAciertoV2();
+					
 					ventana.totalAciertos++;
 					ventana.cancionesJugadas.add(new CancionJugada(actual.getNombre(),actual.getAutor(),actual.getCategoria(),actual.getAño()
 							,actual.getDisco(),actual.getRuta(),actual.getRutaImagen(),true));
 					ventana.cancionesAJugar.remove(actual);
+					ventana.irAciertoV2();
+					
 				} else {
-					ventana.irFallo();
+				
 					ventana.cancionesJugadas.add(new CancionJugada(actual.getNombre(),actual.getAutor(),actual.getCategoria(),actual.getAño()
 							,actual.getDisco(),actual.getRuta(),actual.getRutaImagen(),false));
 					ventana.cancionesAJugar.remove(actual);
+					ventana.irFallo();
+					
 				}
 				
-			hiloMusical.parar();
+			if(hiloMusical!=null) {hiloMusical.parar();}
 			}
 		});
 		botonOpcion3.setBounds(75, 440, 337, 37);
@@ -203,8 +219,8 @@ public class PantallaJuegoFacil extends JPanel {
 
 		// boton play
 
-		JButton botonStop = new JButton("Stop");
-		JButton botonPlay = new JButton("Play");
+		JButton botonStop = new BotonMadre("Stop");
+		JButton botonPlay = new BotonMadre("Play");
 		botonPlay.setFont(new Font("Goudy Stout", Font.PLAIN, 20));
 		botonPlay.setForeground(new Color(204, 51, 255));
 		botonPlay.addActionListener(new ActionListener() {

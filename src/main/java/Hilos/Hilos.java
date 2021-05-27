@@ -43,6 +43,7 @@ public class Hilos extends Thread {
 	
 	public void parar() {
 		sonido.stop();
+		sonido.close();
 		botonPlay.setEnabled(true);
 		botonStop.setEnabled(false);
 	}

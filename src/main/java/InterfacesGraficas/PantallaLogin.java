@@ -37,7 +37,7 @@ import java.util.ArrayList;
  *
  */
 
-public class PantallaLogin extends JPanel {
+public class PantallaLogin extends PanelMadre {
 	private JTextField campoNombre;// donde ingresamos el nombre a grabar
 	private JTextField campoContraseña;// donde ingresamos la contraseña a grabar
 	private Ventana ventana;// objeto ventana base
@@ -60,7 +60,7 @@ public class PantallaLogin extends JPanel {
 		JLabel etiquetaNombre = new JLabel("Nombre:");
 		etiquetaNombre.setForeground(new Color(153, 51, 255));
 		etiquetaNombre.setHorizontalAlignment(SwingConstants.CENTER);
-		etiquetaNombre.setFont(new Font("Goudy Stout", Font.PLAIN, 20));
+		etiquetaNombre.setFont(new Font("Dialog", Font.PLAIN, 25));
 		GridBagConstraints gbc_etiquetaNombre = new GridBagConstraints();
 		gbc_etiquetaNombre.insets = new Insets(0, 0, 5, 5);
 		gbc_etiquetaNombre.gridx = 2;
@@ -68,6 +68,9 @@ public class PantallaLogin extends JPanel {
 		add(etiquetaNombre, gbc_etiquetaNombre);
 
 		campoNombre = new JTextField();
+		campoNombre.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		campoNombre.setForeground(new Color(255, 51, 255));
+		campoNombre.setBackground(Color.BLACK);
 		campoNombre.setText("YOLANDA");
 		campoNombre.setHorizontalAlignment(SwingConstants.CENTER);
 		GridBagConstraints gbc_campoNombre = new GridBagConstraints();
@@ -83,7 +86,7 @@ public class PantallaLogin extends JPanel {
 		JLabel etiquetaContraseña = new JLabel("Constraseña:");
 		etiquetaContraseña.setForeground(new Color(153, 51, 255));
 		etiquetaContraseña.setHorizontalAlignment(SwingConstants.CENTER);
-		etiquetaContraseña.setFont(new Font("Goudy Stout", Font.PLAIN, 20));
+		etiquetaContraseña.setFont(new Font("Dialog", Font.PLAIN, 25));
 		GridBagConstraints gbc_etiquetaContraseña = new GridBagConstraints();
 		gbc_etiquetaContraseña.insets = new Insets(0, 0, 5, 5);
 		gbc_etiquetaContraseña.gridx = 2;
@@ -91,6 +94,9 @@ public class PantallaLogin extends JPanel {
 		add(etiquetaContraseña, gbc_etiquetaContraseña);
 
 		campoContraseña = new JTextField();
+		campoContraseña.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		campoContraseña.setForeground(Color.MAGENTA);
+		campoContraseña.setBackground(Color.BLACK);
 		campoContraseña.setText("CORDERO");
 		campoContraseña.setHorizontalAlignment(SwingConstants.CENTER);
 		GridBagConstraints gbc_campoContraseña = new GridBagConstraints();
@@ -103,7 +109,7 @@ public class PantallaLogin extends JPanel {
 
 		// botón registro
 
-		JButton botonLogin = new JButton("Acceder");
+		JButton botonLogin = new BotonMadre("Acceder");
 		botonLogin.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -114,9 +120,9 @@ public class PantallaLogin extends JPanel {
 				} else { // no estan en blanco y pasa a validar
 
 					try {
-						Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root","1234");
+						//Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root","1234");
 						
-						//Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root","admin");
+						Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root","admin");
 						
 						Statement smt = conexion.createStatement();
 
@@ -163,7 +169,7 @@ public class PantallaLogin extends JPanel {
 
 		// botón volver
 
-		JButton botonVolver = new JButton("Volver");
+		JButton botonVolver = new BotonMadre("Volver");
 		botonVolver.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {

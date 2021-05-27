@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import java.awt.FlowLayout;
 import javax.swing.JButton;
 import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
@@ -16,11 +17,15 @@ import java.awt.Font;
 import java.awt.Graphics;
 
 import javax.swing.SwingConstants;
+import javax.swing.border.Border;
+import javax.swing.border.MatteBorder;
+
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.CardLayout;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
@@ -38,7 +43,7 @@ import java.awt.event.MouseEvent;
  *
  */
 
-public class PantallaInicio extends JPanel {
+public class PantallaInicio extends PanelMadre {
 	private Ventana ventana;// variable de onjeto ventana para pasarla por parámetros al constructor.
 
 	/**
@@ -58,7 +63,11 @@ public class PantallaInicio extends JPanel {
 
 		// botón de nuevo usuario
 
-		JButton botonRegistro = new JButton("Nuevo Usuario");
+		JButton botonRegistro = new BotonMadre("Nuevo Usuario");
+		
+		
+		
+		
 		botonRegistro.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -75,21 +84,6 @@ public class PantallaInicio extends JPanel {
 		gbc_textoBienvenida2.gridx = 1;
 		gbc_textoBienvenida2.gridy = 1;
 		add(textoBienvenida2, gbc_textoBienvenida2);
-		
-		JButton botonIrFondo = new JButton("Ir a Prueba Fondo");
-		botonIrFondo.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				ventana.irFondo();
-			}
-		});
-		GridBagConstraints gbc_botonIrFondo = new GridBagConstraints();
-		gbc_botonIrFondo.insets = new Insets(0, 0, 5, 5);
-		gbc_botonIrFondo.gridx = 0;
-		gbc_botonIrFondo.gridy = 3;
-		add(botonIrFondo, gbc_botonIrFondo);
-		botonRegistro.setForeground(new Color(153, 51, 255));
-		botonRegistro.setFont(new Font("Goudy Stout", Font.BOLD, 25));
 		GridBagConstraints gbc_botonRegistro = new GridBagConstraints();
 		gbc_botonRegistro.anchor = GridBagConstraints.NORTH;
 		gbc_botonRegistro.insets = new Insets(0, 0, 5, 5);
@@ -99,7 +93,7 @@ public class PantallaInicio extends JPanel {
 
 		// Botón acceder
 
-		JButton botonLogin = new JButton("Login");
+		JButton botonLogin = new BotonMadre("Login");
 		botonLogin.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -115,7 +109,7 @@ public class PantallaInicio extends JPanel {
 		gbc_botonLogin.gridy = 4;
 		add(botonLogin, gbc_botonLogin);
 
-		JButton botonRanking = new JButton("Ver Ranking");
+		JButton botonRanking = new BotonMadre("Ver Ranking");
 		botonRanking.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {

@@ -5,6 +5,7 @@ package InterfacesGraficas;
 import javax.swing.JPanel;
 import java.awt.CardLayout;
 import javax.swing.JLabel;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
 import java.awt.Color;
@@ -15,60 +16,40 @@ import javax.swing.JLayeredPane;
 import com.jgoodies.forms.layout.FormSpecs;
 import javax.swing.JButton;
 import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
+import java.io.File;
+import java.io.IOException;
 
-public class ProbandoFondo extends JPanel {
+public class ProbandoFondo extends PanelMadre {
 	private Ventana ventana;
 	
 	
-	ImageIcon imagen=new ImageIcon(getClass().getResource("imagenFondo.jpg").getFile());
 	
+	
+
+
+
 	public ProbandoFondo(Ventana v) {
+		setBackground(new Color(0, 204, 51));
 		this.ventana=v;
+		GridBagLayout gridBagLayout = new GridBagLayout();
+		gridBagLayout.columnWidths = new int[]{0, 0, 0};
+		gridBagLayout.rowHeights = new int[]{0, 0, 0};
+		gridBagLayout.columnWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
+		setLayout(gridBagLayout);
 		
-		setLayout(new CardLayout(0, 0));
-		
-		JPanel panelFondo = new JPanel();
-		panelFondo.setBackground(Color.BLACK);
-		add(panelFondo, "name_428196733529700");
-		panelFondo.setLayout(null);
-		
-		JLabel imagenFondo = new JLabel("New label");
-		imagenFondo.setHorizontalAlignment(SwingConstants.CENTER);
-		imagenFondo.setIcon(imagen);
-		add(imagenFondo, "name_428059014633200");
-		
-		JPanel panelTransparente = new JPanel();
-		panelTransparente.setOpaque(false);
-		panelTransparente.setBackground( new Color(255, 0, 0, 20) );
-		add(panelTransparente, "name_428721491217500");
-		panelTransparente.setLayout(new FormLayout(new ColumnSpec[] {
-				FormSpecs.RELATED_GAP_COLSPEC,
-				FormSpecs.DEFAULT_COLSPEC,
-				FormSpecs.RELATED_GAP_COLSPEC,
-				FormSpecs.DEFAULT_COLSPEC,
-				FormSpecs.RELATED_GAP_COLSPEC,
-				FormSpecs.DEFAULT_COLSPEC,
-				FormSpecs.RELATED_GAP_COLSPEC,
-				FormSpecs.DEFAULT_COLSPEC,
-				FormSpecs.RELATED_GAP_COLSPEC,
-				FormSpecs.DEFAULT_COLSPEC,
-				FormSpecs.RELATED_GAP_COLSPEC,
-				FormSpecs.DEFAULT_COLSPEC,},
-			new RowSpec[] {
-				FormSpecs.RELATED_GAP_ROWSPEC,
-				FormSpecs.DEFAULT_ROWSPEC,
-				FormSpecs.RELATED_GAP_ROWSPEC,
-				FormSpecs.DEFAULT_ROWSPEC,
-				FormSpecs.RELATED_GAP_ROWSPEC,
-				FormSpecs.DEFAULT_ROWSPEC,
-				FormSpecs.RELATED_GAP_ROWSPEC,
-				FormSpecs.DEFAULT_ROWSPEC,}));
-		
-		JButton botonPrueba = new JButton("Boton Prueba");
-		botonPrueba.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		panelTransparente.add(botonPrueba, "12, 8");
-		
+		JButton btnNewButton = new JButton("New button");
+		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
+		gbc_btnNewButton.gridx = 1;
+		gbc_btnNewButton.gridy = 1;
+		add(btnNewButton, gbc_btnNewButton);
+		this.repaint();
+		ventana.repaint();
 		
 		
 	}

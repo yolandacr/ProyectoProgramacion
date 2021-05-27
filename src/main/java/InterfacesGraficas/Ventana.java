@@ -38,6 +38,7 @@ public class Ventana extends JFrame implements FuncionesVentana {
 	private PantallaAciertov2 acierto; // objeto para la pantalla de acierto
 	private PantallaFallo fallo; // objeto para la pantalla de fallo
 	private PantallaRanking ranking; // objeto para la pantalla de ranking
+	private PantallaFinPartida fin;
 	protected Jugador jugador; // objeto para jugador
 	protected String[] opcionesCancionActual; // array que guarda las opciones de la canción para elegir entre ellas.
 	protected ArrayList<Cancion> cancionesAJugar; // ArrayList que guarda las canciones de cada partida.
@@ -62,6 +63,7 @@ public class Ventana extends JFrame implements FuncionesVentana {
 
 	public Ventana() {
 		
+		this.cancionesJugadas=new ArrayList<CancionJugada>();
 		this.setSize(1000, 700);
 		this.setResizable(false);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -245,17 +247,19 @@ public class Ventana extends JFrame implements FuncionesVentana {
 
 	}
 	
-	//metodo para probar paneles transparentes. Borrar luego
+	/**
+	 * metodo para ir al final del juego
+	 */
 	
-	public void irFondo() {
-		if (this.fondo == null) {
-			this.fondo = new ProbandoFondo(this);
+	public void irFin() {
+		if (this.fin == null) {
+			this.fin = new PantallaFinPartida(this);
 		}
-		if (fondo!= null) {
-			this.fondo.setVisible(false);
+		if (fin!= null) {
+			this.fin.setVisible(false);
 		}
-		this.setContentPane(fondo);
-		this.fondo.setVisible(true);
+		this.setContentPane(fin);
+		this.fin.setVisible(true);
 
 	}
 

@@ -32,7 +32,7 @@ import java.sql.Statement;
  *
  */
 
-public class PantallaRegistro extends JPanel {
+public class PantallaRegistro extends PanelMadre {
 	private JTextField campoNombre;//donde ingresamos el nombre a grabar
 	private JTextField campoContraseña;// donde ingresamos la contraseña a grabar
 	private Ventana ventana;//objeto ventana base
@@ -97,7 +97,7 @@ public class PantallaRegistro extends JPanel {
 		
 		// botón registro
 		
-		JButton botonRegistrar = new JButton("Registrar");
+		JButton botonRegistrar = new BotonMadre("Registrar");
 		botonRegistrar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -122,7 +122,7 @@ public class PantallaRegistro extends JPanel {
 								"insert into Jugador " + "values('" + campoNombre.getText() + "'," + "'"
 										+ campoContraseña.getText() +  "')");
 						JOptionPane.showMessageDialog(ventana, "El usuario se ha registrado correctamente", "Registro correcto",
-								JOptionPane.YES_OPTION);
+								JOptionPane.INFORMATION_MESSAGE);
 
 						smt.close();
 						conexion.close();
@@ -149,7 +149,7 @@ public class PantallaRegistro extends JPanel {
 		
 		//botón volver
 		
-		JButton botonVolver = new JButton("Volver");
+		JButton botonVolver = new BotonMadre("Volver");
 		botonVolver.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -163,7 +163,7 @@ public class PantallaRegistro extends JPanel {
 		});
 		botonVolver.setFont(new Font("Goudy Stout", Font.PLAIN, 25));
 		GridBagConstraints gbc_botonVolver = new GridBagConstraints();
-		gbc_botonVolver.fill = GridBagConstraints.HORIZONTAL;
+		gbc_botonVolver.anchor = GridBagConstraints.EAST;
 		gbc_botonVolver.insets = new Insets(0, 0, 5, 5);
 		gbc_botonVolver.gridx = 3;
 		gbc_botonVolver.gridy = 5;

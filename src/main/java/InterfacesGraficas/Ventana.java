@@ -148,6 +148,7 @@ public class Ventana extends JFrame implements FuncionesVentana {
 	 */
 	public void siguienteCancion() {
 		this.juegoFacil=null;
+		this.juegoDificil=null;
 	}
 
 	/**

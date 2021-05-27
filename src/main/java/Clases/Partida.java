@@ -23,21 +23,31 @@ public class Partida {
 	private short puntosPartida;// puntos almacenados en la partida.
 	private LocalDateTime fecha;// fecha en la que se realizó la partida.
 	private ArrayList<Cancion> cancionesPartida;// canciones que son jugadas en esta partida.
+	private String nivel; //nivel de juego elegido
 
+	
+	
 	/**
-	 * método constructor para las partidas jugadas.
-	 * 
-	 * @param jugador       jugador que la realizó
+	 * método constructor para crear nuevas partidas
+	 * @param jugador jugador que está logueado
 	 * @param puntosPartida puntos conseguidos en la partida
-	 * @param fecha         fecha de la partida y hora
-	 * @param cancionJugada canciones que ya han sido jugadas en la aprtida
+	 * @param fecha fecha de la partida y hora
+	 * @param cancionesPartida canciones con las que se va a jugar
+	 * @param nivel de dificultad elegido
 	 */
-	public Partida(Jugador jugador, short puntosPartida, LocalDateTime fecha, ArrayList<Cancion> cancionesPartida) {
+	
+	
+	public Partida(Jugador jugador, short puntosPartida, LocalDateTime fecha, ArrayList<Cancion> cancionesPartida,
+			String nivel) {
+		super();
 		this.jugador = jugador;
 		this.puntosPartida = puntosPartida;
 		this.fecha = fecha;
 		this.cancionesPartida = cancionesPartida;
+		this.nivel = nivel;
 	}
+	
+	
 
 	/**
 	 * metodo constructor para el ranking
@@ -51,6 +61,11 @@ public class Partida {
 		this.jugador = jugador;
 		this.puntosPartida = puntosPartida;
 	}
+
+	
+	
+
+	
 
 	/**
 	 * método getter para el objeto jugador
@@ -125,5 +140,19 @@ public class Partida {
 	public void setCancionesPartida(ArrayList<Cancion> cancionesPartida) {
 		this.cancionesPartida = cancionesPartida;
 	}
+
+
+
+	public String getNivel() {
+		return nivel;
+	}
+
+
+
+	public void setNivel(String nivel) {
+		this.nivel = nivel;
+	}
+	
+	
 
 }

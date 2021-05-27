@@ -17,6 +17,8 @@ import javax.swing.JButton;
 import javax.swing.JTextField;
 
 import Clases.Cancion;
+import Clases.CancionJugada;
+import Hilos.Hilos;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -40,6 +42,7 @@ public class PantallaJuegoDificil extends JPanel {
 	private File archivoSonido;// archivo de sonido
 	private Clip sonido;// objeto reproducible del sonido
 	private JTextField campoRespuesta;
+	private Hilos hiloMusical;// variable que contendrá la ejecución de la musica
 
 	/**
 	 * metodo constructor
@@ -87,34 +90,38 @@ public class PantallaJuegoDificil extends JPanel {
 		String puntos = Integer.toString(puntosPartida);
 		campoPuntos.setText(puntos);
 
+		JButton botonStop = new JButton("Stop");
 		JButton botonPlay = new JButton("Play");
+		
+		
 		botonPlay.setForeground(new Color(255, 51, 255));
 		botonPlay.setFont(new Font("Goudy Stout", Font.PLAIN, 25));
 		botonPlay.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
+			
+		
 				
-				sonido.start();
-				while (sonido.isRunning())
-					try {
-						Thread.sleep(10);
-					} catch (InterruptedException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					//instanciamos el hilo
+					
+					hiloMusical=new Hilos(actual.getRuta(),botonPlay,botonStop);
+					hiloMusical.start();
+					
+					
+				}
 
-			}
+			
 		});
 		botonPlay.setBounds(223, 210, 177, 51);
 		add(botonPlay);
 
-		JButton botonStop = new JButton("Stop");
+		
 		botonStop.setForeground(new Color(255, 51, 255));
 		botonStop.setFont(new Font("Goudy Stout", Font.PLAIN, 25));
 		botonStop.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				sonido.stop();
+				hiloMusical.parar();
 
 			}
 		});
@@ -138,11 +145,21 @@ public class PantallaJuegoDificil extends JPanel {
 		botonOk.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(campoRespuesta.getText().equalsIgnoreCase(actual.getNombre())) {
+				if (campoRespuesta.getText().equalsIgnoreCase(actual.getNombre())) {
+					ventana.cancionesAJugar.remove(actual);
 					ventana.irAciertoV2();
-				}else {
+					ventana.totalAciertos++;
+					ventana.cancionesJugadas.add(new CancionJugada(actual.getNombre(),actual.getAutor(),actual.getCategoria(),actual.getAño()
+							,actual.getDisco(),actual.getRuta(),actual.getRutaImagen(),true));
+			
+				} else {
+					ventana.cancionesAJugar.remove(actual);
 					ventana.irFallo();
+					ventana.cancionesJugadas.add(new CancionJugada(actual.getNombre(),actual.getAutor(),actual.getCategoria(),actual.getAño()
+							,actual.getDisco(),actual.getRuta(),actual.getRutaImagen(),false));
+					
 				}
+				hiloMusical.parar();
 				
 			}
 		});

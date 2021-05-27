@@ -5,13 +5,8 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
-import javax.swing.JTextField;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
-import com.jgoodies.forms.layout.FormLayout;
-import com.jgoodies.forms.layout.ColumnSpec;
-import com.jgoodies.forms.layout.RowSpec;
-import com.jgoodies.forms.layout.FormSpecs;
 import java.awt.Color;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
@@ -75,25 +70,42 @@ public class PantallaAciertov2 extends JPanel {
 								gbc_texto3.gridy = 4;
 								add(texto3, gbc_texto3);
 								
+								JLabel textoPuntos;
+								
+								if(ventana.nuevaPartida.getNivel().equalsIgnoreCase("Fácil")) {
+									textoPuntos = new JLabel("+50 PTS");
+								}else {
+									textoPuntos = new JLabel("+100 PTS");	
+								}
+								
+								textoPuntos.setFont(new Font("Goudy Stout", Font.PLAIN, 35));
+								textoPuntos.setForeground(new Color(204, 51, 255));
+								textoPuntos.setHorizontalAlignment(SwingConstants.CENTER);
+								GridBagConstraints gbc_textoPuntos = new GridBagConstraints();
+								gbc_textoPuntos.insets = new Insets(0, 0, 5, 5);
+								gbc_textoPuntos.gridx = 1;
+								gbc_textoPuntos.gridy = 6;
+								add(textoPuntos, gbc_textoPuntos);
+								
 										JButton botonSiguiente = new JButton("Siguiente");
 										botonSiguiente.addMouseListener(new MouseAdapter() {
 											@Override
 											public void mouseClicked(MouseEvent e) {
-												ventana.nuevaPartida.setPuntosPartida((short) (ventana.nuevaPartida.getPuntosPartida()+50));
-												ventana.siguienteCancion();
-												ventana.irFacil();
+												
+												
+											if(ventana.nuevaPartida.getNivel().equalsIgnoreCase("Fácil")) {
+											ventana.nuevaPartida.setPuntosPartida((short) (ventana.nuevaPartida.getPuntosPartida()+50));
+											ventana.siguienteCancion();
+												ventana.irFacil();}
+												else {
+													ventana.nuevaPartida.setPuntosPartida((short) (ventana.nuevaPartida.getPuntosPartida()+100));
+													ventana.siguienteCancion();
+													ventana.irAExperto();
+												}
 											}
 										});
 										
-										JLabel textoPuntos = new JLabel("+50 PTS");
-										textoPuntos.setFont(new Font("Goudy Stout", Font.PLAIN, 35));
-										textoPuntos.setForeground(new Color(204, 51, 255));
-										textoPuntos.setHorizontalAlignment(SwingConstants.CENTER);
-										GridBagConstraints gbc_textoPuntos = new GridBagConstraints();
-										gbc_textoPuntos.insets = new Insets(0, 0, 5, 5);
-										gbc_textoPuntos.gridx = 1;
-										gbc_textoPuntos.gridy = 6;
-										add(textoPuntos, gbc_textoPuntos);
+										
 										botonSiguiente.setForeground(new Color(255, 51, 255));
 										botonSiguiente.setFont(new Font("Goudy Stout", Font.PLAIN, 25));
 										GridBagConstraints gbc_botonSiguiente = new GridBagConstraints();

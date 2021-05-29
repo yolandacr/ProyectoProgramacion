@@ -45,7 +45,7 @@ public class PantallaJuegoDificil extends PanelMadre {
 	public PantallaJuegoDificil(Ventana v) {
 		this.ventana = v;
 		
-		ventana.cancionesPartida = new ArrayList<Cancion>();
+		
 
 		Random r = new Random();
 		actual = ventana.cancionesCategoria.get(r.nextInt(ventana.cancionesCategoria.size()));

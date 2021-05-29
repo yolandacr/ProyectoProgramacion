@@ -49,7 +49,7 @@ public class Ventana extends JFrame implements FuncionesVentana {
 	 */
 
 	public Ventana() {
-		
+		cancionesPartida= new ArrayList<Cancion>();
 		
 		this.setSize(1000, 700);// tamaño de la ventana en píxeles
 		this.setResizable(false); // indica que no se puede modificar el tamaño

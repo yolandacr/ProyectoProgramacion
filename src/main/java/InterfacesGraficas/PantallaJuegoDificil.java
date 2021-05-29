@@ -17,6 +17,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Random;
 import javax.swing.SwingConstants;
 
@@ -43,6 +44,8 @@ public class PantallaJuegoDificil extends PanelMadre {
 	 */
 	public PantallaJuegoDificil(Ventana v) {
 		this.ventana = v;
+		
+		ventana.cancionesPartida = new ArrayList<Cancion>();
 
 		Random r = new Random();
 		actual = ventana.cancionesCategoria.get(r.nextInt(ventana.cancionesCategoria.size()));

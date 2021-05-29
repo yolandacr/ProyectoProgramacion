@@ -14,6 +14,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Random;
 
 /**
@@ -38,6 +39,7 @@ public class PantallaJuegoFacil extends PanelMadre {
 	 * @param v jframe base
 	 */
 	public PantallaJuegoFacil(Ventana v) {
+		ventana.cancionesPartida= new ArrayList<Cancion>();
 
 		this.ventana = v;
 

@@ -41,14 +41,16 @@ public class Ventana extends JFrame implements FuncionesVentana {
 	protected Partida nuevaPartida; // objeto para crear una nueva partida cuando empezamos
 	protected String[] nombresRanking; // array que guarda los nombres de los 5 jugadores con más puntuación.
 	protected short[] puntosRanking; // array con el top 5 de puntuaciones
+	
+	
 
 	/**
 	 * constructor sin argumentos para instanciar objetos Ventana.
 	 */
 
 	public Ventana() {
-		cancionesPartida=new ArrayList<Cancion>();
-
+		
+		
 		this.setSize(1000, 700);// tamaño de la ventana en píxeles
 		this.setResizable(false); // indica que no se puede modificar el tamaño
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);// cierra el programa cuando cerramos en la "x"

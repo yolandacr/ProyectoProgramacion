@@ -63,10 +63,7 @@ public class PantallaAciertov2 extends PanelMadre {
 
 		if (ventana.nuevaPartida.getNivel().equalsIgnoreCase("Fácil")) {
 			textoPuntos = new JLabel("+50 PTS");
-		}
-
-		if (ventana.nuevaPartida.getNivel().equalsIgnoreCase("Experto")) {
-
+		} else {
 			textoPuntos = new JLabel("+100 PTS");
 		}
 
@@ -92,11 +89,12 @@ public class PantallaAciertov2 extends PanelMadre {
 						ventana.nuevaPartida.setPuntosPartida((short) (ventana.nuevaPartida.getPuntosPartida() + 50));
 						ventana.irFin();
 
-					}
-					if (ventana.nuevaPartida.getNivel().equalsIgnoreCase("Experto")) {
+					} else {
 						ventana.nuevaPartida.setPuntosPartida((short) (ventana.nuevaPartida.getPuntosPartida() + 100));
 						ventana.irFin();
+
 					}
+
 					ventana.irFin();
 				} else {
 					if (ventana.nuevaPartida.getNivel().equalsIgnoreCase("Fácil")) {

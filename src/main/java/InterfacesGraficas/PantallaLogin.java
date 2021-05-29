@@ -108,7 +108,7 @@ public class PantallaLogin extends PanelMadre {
 		botonLogin.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if (campoNombre.getText().isBlank() || campoContraseña.getText().isBlank()) {
+				if (campoNombre.getText().isBlank() || String.valueOf(campoContraseña.getPassword()).isBlank()) {
 					JOptionPane.showMessageDialog(ventana, "Todos los campos deben" + " estar rellenos",
 							"No pudo insertarse", JOptionPane.ERROR_MESSAGE);
 
@@ -125,7 +125,7 @@ public class PantallaLogin extends PanelMadre {
 						Statement smt = conexion.createStatement();
 
 						ResultSet loginResult = smt.executeQuery("select * from jugador where nombre='"
-								+ campoNombre.getText() + "' AND " + "contraseña='" + campoContraseña.getText() + "'");
+								+ campoNombre.getText() + "' AND " + "contraseña='" + String.valueOf(campoContraseña.getPassword()) + "'");
 
 						if (loginResult.next() == true) {
 							String nombre = loginResult.getString("nombre");
@@ -145,7 +145,7 @@ public class PantallaLogin extends PanelMadre {
 						smt.close();
 						conexion.close();
 					} catch (SQLException e1) {
-						// TODO Auto-generated catch block
+						
 						e1.printStackTrace();
 					}
 

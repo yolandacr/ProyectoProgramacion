@@ -102,13 +102,13 @@ public class PantallaRegistro extends PanelMadre {
 		botonRegistrar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if (campoNombre.getText().isBlank() || campoContraseña.getText().isBlank()) {
+				if (campoNombre.getText().isBlank() || String.valueOf(campoContraseña.getPassword()).isBlank()) {
 					JOptionPane.showMessageDialog(ventana, "Todos los campos deben" + " estar rellenos",
 							"No pudo insertarse", JOptionPane.ERROR_MESSAGE);
 
 				} else { // Todo relleno, se puede insertar
 					try {
-						Jugador jugador = new Jugador(campoNombre.getText(), campoContraseña.getText());
+						Jugador jugador = new Jugador(campoNombre.getText(), String.valueOf(campoContraseña.getPassword()));
 						Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root",
 								"1234");
 
@@ -120,7 +120,7 @@ public class PantallaRegistro extends PanelMadre {
 
 						Statement smt = conexion.createStatement();
 						smt.executeUpdate("insert into Jugador " + "values('" + campoNombre.getText() + "'," + "'"
-								+ campoContraseña.getText() + "')");
+								+ String.valueOf(campoContraseña.getPassword()) + "')");
 						JOptionPane.showMessageDialog(ventana, "El usuario se ha registrado correctamente",
 								"Registro correcto", JOptionPane.INFORMATION_MESSAGE);
 

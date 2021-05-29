@@ -14,6 +14,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDateTime;
 import java.awt.Insets;
 import javax.swing.JTextField;
 
@@ -27,6 +28,7 @@ import javax.swing.JTextField;
 public class PantallaFinPartida extends PanelMadre {
 	private Ventana ventana;// variable de objeto ventana para pasarla por parámetros al constructor.
 	private JTextField campoPuntos;
+	
 
 	/**
 	 * consctructor de pantallas de acierto version alternativa
@@ -78,13 +80,17 @@ public class PantallaFinPartida extends PanelMadre {
 					Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root", "1234");
 
 					Statement smt = conexion.createStatement();
-					smt.executeUpdate("insert into partida values (" + ventana.nuevaPartida.getPuntosPartida() + ",'"
-							+ ventana.nuevaPartida.getFecha() + "','" + ventana.nuevaPartida.getJugador().getNombre()
+					smt.executeUpdate("insert into partida values ("+(int)ventana.nuevaPartida.getPuntosPartida() + ",'"
+							+ LocalDateTime.now() + "','" + ventana.nuevaPartida.getJugador().getNombre()
 							+ "');");
+					
+					smt.close();
+					conexion.close();
+					
 				} catch (SQLException e1) {
 					e1.printStackTrace();
 				}
-
+				
 				ventana.irARanking();
 			}
 		});

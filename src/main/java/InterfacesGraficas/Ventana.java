@@ -1,20 +1,15 @@
-//DOCUMENTACION OK
+
 
 package InterfacesGraficas;
 
 import java.awt.Cursor;
-import java.awt.Font;
-import java.awt.GraphicsEnvironment;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
-
 import Clases.Cancion;
-import Clases.CancionJugada;
 import Clases.Jugador;
 import Clases.Partida;
 import Interfaces.FuncionesVentana;
@@ -38,38 +33,31 @@ public class Ventana extends JFrame implements FuncionesVentana {
 	private PantallaAciertov2 acierto; // objeto para la pantalla de acierto
 	private PantallaFallo fallo; // objeto para la pantalla de fallo
 	private PantallaRanking ranking; // objeto para la pantalla de ranking
-	private PantallaFinPartida fin;
+	private PantallaFinPartida fin;// objeto de la pantalla de fin de juego
 	protected Jugador jugador; // objeto para jugador
 	protected String[] opcionesCancionActual; // array que guarda las opciones de la canción para elegir entre ellas.
-	protected ArrayList<Cancion> cancionesAJugar; // ArrayList que guarda las canciones de cada partida.
+	protected ArrayList<Cancion> cancionesCategoria; // ArrayList que guarda las canciones de toda la categoria.
+	protected ArrayList<Cancion> cancionesPartida; // ArrayList que guarda las canciones de la partida.
 	protected Partida nuevaPartida; // objeto para crear una nueva partida cuando empezamos
 	protected String[] nombresRanking; // array que guarda los nombres de los 5 jugadores con más puntuación.
 	protected short[] puntosRanking; // array con el top 5 de puntuaciones
-	protected ArrayList <CancionJugada> cancionesJugadas;//arraylist con las canciones que ya he jugado y su resultado
-	protected byte totalAciertos;//total de aciertos que he obtenido en la partida
-	
-	
-	private ProbandoFondo fondo;//BORRAR cuando funcione lo del fondo
-	
-	
-	
-	
-	
-	
 
 	/**
-	 * constructor sin argumentos.
+	 * constructor sin argumentos para instanciar objetos Ventana.
 	 */
 
 	public Ventana() {
-		
-		this.cancionesJugadas=new ArrayList<CancionJugada>();
-		this.setSize(1000, 700);
-		this.setResizable(false);
-		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		cancionesPartida=new ArrayList<Cancion>();
+
+		this.setSize(1000, 700);// tamaño de la ventana en píxeles
+		this.setResizable(false); // indica que no se puede modificar el tamaño
+		this.setDefaultCloseOperation(EXIT_ON_CLOSE);// cierra el programa cuando cerramos en la "x"
+
 		this.setTitle("Rockola Boomer");
 		this.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		this.setLocation(200, 100);
+
+		// creamos el icono del juego
 
 		try {
 			Image imagen = ImageIO.read(new File("./imagenes/icono.png"));
@@ -144,13 +132,13 @@ public class Ventana extends JFrame implements FuncionesVentana {
 		this.setContentPane(juegoFacil);
 		this.juegoFacil.setVisible(true);
 	}
-	
+
 	/**
 	 * este método resetea la pantalla de juego y la prepara para la proxima ronda
 	 */
 	public void siguienteCancion() {
-		this.juegoFacil=null;
-		this.juegoDificil=null;
+		this.juegoFacil = null;
+		this.juegoDificil = null;
 	}
 
 	/**
@@ -246,16 +234,16 @@ public class Ventana extends JFrame implements FuncionesVentana {
 		this.fallo.setVisible(true);
 
 	}
-	
+
 	/**
 	 * metodo para ir al final del juego
 	 */
-	
+
 	public void irFin() {
 		if (this.fin == null) {
 			this.fin = new PantallaFinPartida(this);
 		}
-		if (fin!= null) {
+		if (fin != null) {
 			this.fin.setVisible(false);
 		}
 		this.setContentPane(fin);

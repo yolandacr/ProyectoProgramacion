@@ -1,36 +1,20 @@
 
-//TODO PREGUNTAR A MIGUEL SI NO SERIA MEJOR UN ARRAYLIST PARA HACER LOS BOTONES CN CONTENIDO RANDOM Y ASI BORRAR EL QUE YA SALIERA
-// peta al pulsar botones. creo q es fallo de los hilos
 package InterfacesGraficas;
 
-import javax.swing.JPanel;
-
-import java.applet.AudioClip;
-import java.awt.BorderLayout;
 import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.Color;
-
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JButton;
 import javax.swing.JTextField;
-
 import Clases.Cancion;
-import Clases.CancionJugada;
 import Hilos.Hilos;
-
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
-import java.io.IOException;
 import java.util.Random;
-import javax.swing.SwingConstants;
 
 /**
  * clase para crear las pantallas del modo facil
@@ -58,22 +42,16 @@ public class PantallaJuegoFacil extends PanelMadre {
 		this.ventana = v;
 
 		Random r = new Random();
-		
-		
-		actual = ventana.cancionesAJugar.get(r.nextInt(ventana.cancionesAJugar.size()));
-		
-		if (ventana.cancionesJugadas!=null&&ventana.cancionesJugadas.contains(actual)){
-			ventana.cancionesAJugar.get(r.nextInt(ventana.cancionesAJugar.size()));
-		}
-		
-		
 
+		actual = ventana.cancionesCategoria.get(r.nextInt(ventana.cancionesCategoria.size()));
+
+		ventana.cancionesPartida.add(actual);
 
 		setLayout(null);
 		JLabel textoPuntos = new JLabel("Puntos:");
 		textoPuntos.setForeground(new Color(204, 51, 255));
 		textoPuntos.setFont(new Font("Goudy Stout", Font.PLAIN, 25));
-		textoPuntos.setBounds(10, 21, 86, 42);
+		textoPuntos.setBounds(10, 21, 200, 42);
 		add(textoPuntos);
 
 		campoPuntos = new JTextField();
@@ -81,14 +59,15 @@ public class PantallaJuegoFacil extends PanelMadre {
 		campoPuntos.setForeground(new Color(255, 51, 255));
 		campoPuntos.setEditable(false);
 		campoPuntos.setFont(new Font("Goudy Stout", Font.PLAIN, 25));
-		campoPuntos.setBounds(97, 22, 58, 42);
+		campoPuntos.setBounds(206, 22, 101, 42);
 		add(campoPuntos);
 		campoPuntos.setColumns(10);
-		
-		//establecemos los puntos a los de la partida. Empezarán en 0
-		
-		
+
+		// establecemos los puntos a los de la partida. Empezarán en 0
+
 		campoPuntos.setText(String.valueOf(ventana.nuevaPartida.getPuntosPartida()));
+
+		// opcion 1
 
 		JButton botonOpcion1 = new BotonMadre(actual.getOpcionesEleccion()[0]);
 		botonOpcion1.setFont(new Font("Goudy Stout", Font.PLAIN, 10));
@@ -96,30 +75,26 @@ public class PantallaJuegoFacil extends PanelMadre {
 		botonOpcion1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-			
 
 				if (botonOpcion1.getText().equalsIgnoreCase(actual.getNombre())) {
-					
-					ventana.cancionesJugadas.add(new CancionJugada(actual.getNombre(),actual.getAutor(),actual.getCategoria(),actual.getAño()
-							,actual.getDisco(),actual.getRuta(),actual.getRutaImagen(),true));
-					ventana.cancionesAJugar.remove(actual);
+					ventana.cancionesCategoria.remove(actual);
 					ventana.irAciertoV2();
-					
-					
+
 				} else {
-				
-					ventana.cancionesJugadas.add(new CancionJugada(actual.getNombre(),actual.getAutor(),actual.getCategoria(),actual.getAño()
-							,actual.getDisco(),actual.getRuta(),actual.getRutaImagen(),false));
-					ventana.cancionesAJugar.remove(actual);
+					ventana.cancionesCategoria.remove(actual);
 					ventana.irFallo();
-					
+
 				}
-				if(hiloMusical!=null) {hiloMusical.parar();}
-	           
+				if (hiloMusical != null) {
+					hiloMusical.parar();
+				}
+
 			}
 		});
 		botonOpcion1.setBounds(75, 352, 337, 37);
 		add(botonOpcion1);
+
+		// opcion 2
 
 		JButton botonOpcion2 = new BotonMadre(actual.getOpcionesEleccion()[1]);
 		botonOpcion2.setFont(new Font("Goudy Stout", Font.PLAIN, 10));
@@ -128,28 +103,22 @@ public class PantallaJuegoFacil extends PanelMadre {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (botonOpcion2.getText().equalsIgnoreCase(actual.getNombre())) {
-					
-					ventana.cancionesJugadas.add(new CancionJugada(actual.getNombre(),actual.getAutor(),actual.getCategoria(),actual.getAño()
-							,actual.getDisco(),actual.getRuta(),actual.getRutaImagen(),true));
-					ventana.cancionesAJugar.remove(actual);
+					ventana.cancionesCategoria.remove(actual);
 					ventana.irAciertoV2();
-				
-					
+
 				} else {
-				
-					ventana.cancionesJugadas.add(new CancionJugada(actual.getNombre(),actual.getAutor(),actual.getCategoria(),actual.getAño()
-							,actual.getDisco(),actual.getRuta(),actual.getRutaImagen(),false));
-					ventana.cancionesAJugar.remove(actual);
+					ventana.cancionesCategoria.remove(actual);
 					ventana.irFallo();
-					
-					
+
 				}
 				hiloMusical.parar();
-			
+
 			}
 		});
 		botonOpcion2.setBounds(511, 352, 337, 37);
 		add(botonOpcion2);
+
+		// opcion 3
 
 		JButton botonOpcion4 = new BotonMadre(actual.getOpcionesEleccion()[2]);
 		botonOpcion4.setFont(new Font("Goudy Stout", Font.PLAIN, 10));
@@ -158,21 +127,12 @@ public class PantallaJuegoFacil extends PanelMadre {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (botonOpcion4.getText().equalsIgnoreCase(actual.getNombre())) {
-					
-					ventana.cancionesJugadas.add(new CancionJugada(actual.getNombre(),actual.getAutor(),actual.getCategoria(),actual.getAño()
-							,actual.getDisco(),actual.getRuta(),actual.getRutaImagen(),true));
-					ventana.cancionesAJugar.remove(actual);
+					ventana.cancionesCategoria.remove(actual);
 					ventana.irAciertoV2();
-					
-					
 				} else {
-				
-					ventana.cancionesJugadas.add(new CancionJugada(actual.getNombre(),actual.getAutor(),actual.getCategoria(),actual.getAño()
-							,actual.getDisco(),actual.getRuta(),actual.getRutaImagen(),false));
-					ventana.cancionesAJugar.remove(actual);
+					ventana.cancionesCategoria.remove(actual);
 					ventana.irFallo();
-					
-					
+
 				}
 				hiloMusical.parar();
 			}
@@ -183,6 +143,8 @@ public class PantallaJuegoFacil extends PanelMadre {
 		});
 		botonOpcion4.setBounds(511, 440, 337, 37);
 		add(botonOpcion4);
+
+		// opcion 4
 
 		JButton botonOpcion3 = new BotonMadre(actual.getOpcionesEleccion()[3]);
 		botonOpcion3.setFont(new Font("Goudy Stout", Font.PLAIN, 10));
@@ -195,29 +157,26 @@ public class PantallaJuegoFacil extends PanelMadre {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (botonOpcion3.getText().equalsIgnoreCase(actual.getNombre())) {
-					
-					ventana.totalAciertos++;
-					ventana.cancionesJugadas.add(new CancionJugada(actual.getNombre(),actual.getAutor(),actual.getCategoria(),actual.getAño()
-							,actual.getDisco(),actual.getRuta(),actual.getRutaImagen(),true));
-					ventana.cancionesAJugar.remove(actual);
+
+					ventana.cancionesCategoria.remove(actual);
 					ventana.irAciertoV2();
-					
+
 				} else {
-				
-					ventana.cancionesJugadas.add(new CancionJugada(actual.getNombre(),actual.getAutor(),actual.getCategoria(),actual.getAño()
-							,actual.getDisco(),actual.getRuta(),actual.getRutaImagen(),false));
-					ventana.cancionesAJugar.remove(actual);
+
+					ventana.cancionesCategoria.remove(actual);
 					ventana.irFallo();
-					
+
 				}
-				
-			if(hiloMusical!=null) {hiloMusical.parar();}
+
+				if (hiloMusical != null) {
+					hiloMusical.parar();
+				}
 			}
 		});
 		botonOpcion3.setBounds(75, 440, 337, 37);
 		add(botonOpcion3);
 
-		// boton play
+		// boton play y stop
 
 		JButton botonStop = new BotonMadre("Stop");
 		JButton botonPlay = new BotonMadre("Play");
@@ -230,12 +189,11 @@ public class PantallaJuegoFacil extends PanelMadre {
 		botonPlay.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				//instanciamos el hilo
-				
-				hiloMusical=new Hilos(actual.getRuta(),botonPlay,botonStop);
+				// instanciamos el hilo
+
+				hiloMusical = new Hilos(actual.getRuta(), botonPlay, botonStop);
 				hiloMusical.start();
-				
-				
+
 			}
 		});
 		botonPlay.setBounds(276, 148, 136, 57);
@@ -251,14 +209,7 @@ public class PantallaJuegoFacil extends PanelMadre {
 		});
 		botonStop.setBounds(511, 148, 136, 57);
 		add(botonStop);
-		
-		
 
 	}
-	
-	
-
-	
-	
 
 }

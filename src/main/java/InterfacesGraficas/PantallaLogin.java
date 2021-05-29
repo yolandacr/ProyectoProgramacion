@@ -1,23 +1,18 @@
-//DOCUMENTACION OK
+
 package InterfacesGraficas;
 
-import javax.swing.JPanel;
-import java.awt.GridLayout;
+import javax.swing.JPasswordField;
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-
 import java.awt.GridBagConstraints;
 import java.awt.Font;
 import javax.swing.JTextField;
 import java.awt.Insets;
 import javax.swing.SwingConstants;
 import Clases.Jugador;
-
 import java.awt.Color;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
-
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
@@ -27,7 +22,6 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
 
 /**
  * La siguiente clase es la Interface gráfica de la pantalla para que el jugador
@@ -39,7 +33,7 @@ import java.util.ArrayList;
 
 public class PantallaLogin extends PanelMadre {
 	private JTextField campoNombre;// donde ingresamos el nombre a grabar
-	private JTextField campoContraseña;// donde ingresamos la contraseña a grabar
+	private JPasswordField campoContraseña;// donde ingresamos la contraseña a grabar
 	private Ventana ventana;// objeto ventana base
 
 	/**
@@ -60,17 +54,18 @@ public class PantallaLogin extends PanelMadre {
 		JLabel etiquetaNombre = new JLabel("Nombre:");
 		etiquetaNombre.setForeground(new Color(153, 51, 255));
 		etiquetaNombre.setHorizontalAlignment(SwingConstants.CENTER);
-		etiquetaNombre.setFont(new Font("Dialog", Font.PLAIN, 25));
+		etiquetaNombre.setFont(new Font("Goudy Stout", Font.PLAIN, 25));
 		GridBagConstraints gbc_etiquetaNombre = new GridBagConstraints();
+		gbc_etiquetaNombre.anchor = GridBagConstraints.WEST;
 		gbc_etiquetaNombre.insets = new Insets(0, 0, 5, 5);
 		gbc_etiquetaNombre.gridx = 2;
 		gbc_etiquetaNombre.gridy = 2;
 		add(etiquetaNombre, gbc_etiquetaNombre);
 
 		campoNombre = new JTextField();
-		campoNombre.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		campoNombre.setFont(new Font("Goudy Stout", Font.PLAIN, 20));
 		campoNombre.setForeground(new Color(255, 51, 255));
-		campoNombre.setBackground(Color.BLACK);
+		campoNombre.setBackground(new Color(255, 255, 255));
 		campoNombre.setText("YOLANDA");
 		campoNombre.setHorizontalAlignment(SwingConstants.CENTER);
 		GridBagConstraints gbc_campoNombre = new GridBagConstraints();
@@ -86,17 +81,17 @@ public class PantallaLogin extends PanelMadre {
 		JLabel etiquetaContraseña = new JLabel("Constraseña:");
 		etiquetaContraseña.setForeground(new Color(153, 51, 255));
 		etiquetaContraseña.setHorizontalAlignment(SwingConstants.CENTER);
-		etiquetaContraseña.setFont(new Font("Dialog", Font.PLAIN, 25));
+		etiquetaContraseña.setFont(new Font("Goudy Stout", Font.PLAIN, 25));
 		GridBagConstraints gbc_etiquetaContraseña = new GridBagConstraints();
 		gbc_etiquetaContraseña.insets = new Insets(0, 0, 5, 5);
 		gbc_etiquetaContraseña.gridx = 2;
 		gbc_etiquetaContraseña.gridy = 3;
 		add(etiquetaContraseña, gbc_etiquetaContraseña);
 
-		campoContraseña = new JTextField();
-		campoContraseña.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		campoContraseña = new JPasswordField();
+		campoContraseña.setFont(new Font("Goudy Stout", Font.PLAIN, 20));
 		campoContraseña.setForeground(Color.MAGENTA);
-		campoContraseña.setBackground(Color.BLACK);
+		campoContraseña.setBackground(new Color(255, 255, 255));
 		campoContraseña.setText("CORDERO");
 		campoContraseña.setHorizontalAlignment(SwingConstants.CENTER);
 		GridBagConstraints gbc_campoContraseña = new GridBagConstraints();
@@ -120,10 +115,13 @@ public class PantallaLogin extends PanelMadre {
 				} else { // no estan en blanco y pasa a validar
 
 					try {
-						//Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root","1234");
-						
-						Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root","admin");
-						
+						Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root",
+								"1234");
+
+						// Connection conexion =
+						// DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola",
+						// "root","admin");
+
 						Statement smt = conexion.createStatement();
 
 						ResultSet loginResult = smt.executeQuery("select * from jugador where nombre='"
@@ -134,7 +132,7 @@ public class PantallaLogin extends PanelMadre {
 							String contraseña = loginResult.getString("contraseña");
 							ventana.jugador = new Jugador(nombre, contraseña);
 
-							JOptionPane.showMessageDialog(null, "Bienvenido " + nombre, "Mensaje",
+							JOptionPane.showMessageDialog(null, "Bienvenid@ " + nombre, "Mensaje",
 									JOptionPane.INFORMATION_MESSAGE);
 							ventana.irACategoria();
 

@@ -1,7 +1,6 @@
-//DOCUMENTACION OK PREGUNTAR COMO HAGO EL SELECT DE 10 RANDOM
+
 package InterfacesGraficas;
 
-import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import Clases.Cancion;
@@ -23,268 +22,299 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 /**
- * Clase para la pantalla de categoría de juego extiende de JPanel
+ * Clase para la pantalla de categoría de juego extiende de PanelMadre
  *
  * @author Yolanda Cordero
  *
  */
 public class PantallaCategoria extends PanelMadre {
 
-    private Ventana ventana;// objeto ventana base
+	private Ventana ventana;// objeto ventana base
 
-    /**
-     * metodo constructor
-     *
-     * @param v objeto ventana jframe base
-     */
-    public PantallaCategoria(Ventana v) {
-        this.ventana = v;
-        GridBagLayout gridBagLayout = new GridBagLayout();
-        gridBagLayout.columnWidths = new int[]{209, 275, 50, 275, 0, 0};
-        gridBagLayout.rowHeights = new int[]{80, 35, 187, 56, 51, 53, 0};
-        gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
-        gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-        setLayout(gridBagLayout);
+	/**
+	 * metodo constructor
+	 *
+	 * @param v objeto ventana jframe base
+	 */
+	public PantallaCategoria(Ventana v) {
+		this.ventana = v;
+		GridBagLayout gridBagLayout = new GridBagLayout();
+		gridBagLayout.columnWidths = new int[] { 209, 275, 50, 275, 0, 0 };
+		gridBagLayout.rowHeights = new int[] { 80, 35, 187, 56, 51, 53, 0 };
+		gridBagLayout.columnWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE };
+		gridBagLayout.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
+		setLayout(gridBagLayout);
 
-        JButton botonActualidad = new BotonMadre("Actualidad");
-        botonActualidad.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
+		// boton actualidad
 
-                try {
-                    ventana.cancionesAJugar = new ArrayList<Cancion>();
-                    //Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root", "1234");
-                    Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root", "admin");
+		JButton botonActualidad = new BotonMadre("Actualidad");
+		botonActualidad.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// creamos y rellenamos el arraylist de las canciones de la categoría
 
-                    Statement smt = conexion.createStatement();
-                    ResultSet cancionesResult = smt
-                            .executeQuery("select * from cancion where categoria='" + "ACTUALIDAD'");
+				try {
+					ventana.cancionesCategoria = new ArrayList<Cancion>();
+					Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root", "1234");
+					// Connection conexion =
+					// DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root",
+					// "admin");
 
-                    while (cancionesResult.next()) {
-                        ventana.cancionesAJugar.add(
-                                new Cancion(cancionesResult.getString("nombre"), cancionesResult.getString("autor"),
-                                        cancionesResult.getString("categoria"), cancionesResult.getInt("año"),
-                                        cancionesResult.getString("disco"), cancionesResult.getString("ruta"), cancionesResult.getString("ruta_imagen")));
+					Statement smt = conexion.createStatement();
+					ResultSet cancionesResult = smt
+							.executeQuery("select * from cancion where categoria='" + "ACTUALIDAD'");
 
-                        //Connection conexion1 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root","1234");
-                        Connection conexion1 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root", "admin");
-                        Statement smt1 = conexion1.createStatement();
-                        ResultSet opcionesResult = smt1
-                                .executeQuery("select nombre from opciones where nombre_cancion='"
-                                        + cancionesResult.getString("nombre") + "'");
+					while (cancionesResult.next()) {
+						ventana.cancionesCategoria.add(
+								new Cancion(cancionesResult.getString("nombre"), cancionesResult.getString("autor"),
+										cancionesResult.getString("categoria"), (short) cancionesResult.getInt("año"),
+										cancionesResult.getString("disco"), cancionesResult.getString("ruta")));
 
-                        byte contador = 0;
-                        ventana.opcionesCancionActual = new String[4];
+						Connection conexion1 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root",
+								"1234");
+						// Connection conexion1 =
+						// DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root",
+						// "admin");
+						Statement smt1 = conexion1.createStatement();
+						ResultSet opcionesResult = smt1
+								.executeQuery("select nombre from opciones where nombre_cancion='"
+										+ cancionesResult.getString("nombre") + "'");
 
-                        while (opcionesResult.next()) {
-                            ventana.opcionesCancionActual[contador] = opcionesResult.getString("nombre");
-                            contador++;
-                            ventana.cancionesAJugar.get(ventana.cancionesAJugar.size() - 1)
-                                    .setOpcionesEleccion(ventana.opcionesCancionActual);
-                        }
+						// creamos y rellenamos el array de opciones
 
-                        smt1.close();
-                    }
-                    smt.close();
+						byte contador = 0;
+						ventana.opcionesCancionActual = new String[4];
 
-                    ventana.irANivel();
+						while (opcionesResult.next()) {
+							ventana.opcionesCancionActual[contador] = opcionesResult.getString("nombre");
+							contador++;
+							ventana.cancionesCategoria.get(ventana.cancionesCategoria.size() - 1)
+									.setOpcionesEleccion(ventana.opcionesCancionActual);
+						}
 
-                } catch (SQLException e1) {
-                    e1.printStackTrace();
-                }
+						smt1.close();
+					}
+					smt.close();
 
-            }
-        });
-        botonActualidad.setFont(new Font("Goudy Stout", Font.PLAIN, 20));
-        botonActualidad.setForeground(new Color(255, 51, 255));
-        botonActualidad.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-            }
-        });
+					ventana.irANivel();
 
-        JLabel textoCategoria = new JLabel("Elige la categoría");
-        textoCategoria.setFont(new Font("Goudy Stout", Font.PLAIN, 25));
-        textoCategoria.setForeground(new Color(204, 51, 255));
-        textoCategoria.setHorizontalAlignment(SwingConstants.CENTER);
-        GridBagConstraints gbc_textoCategoria = new GridBagConstraints();
-        gbc_textoCategoria.anchor = GridBagConstraints.NORTH;
-        gbc_textoCategoria.insets = new Insets(0, 0, 5, 5);
-        gbc_textoCategoria.gridwidth = 3;
-        gbc_textoCategoria.gridx = 1;
-        gbc_textoCategoria.gridy = 1;
-        add(textoCategoria, gbc_textoCategoria);
-        GridBagConstraints gbc_botonActualidad = new GridBagConstraints();
-        gbc_botonActualidad.fill = GridBagConstraints.BOTH;
-        gbc_botonActualidad.insets = new Insets(0, 0, 5, 5);
-        gbc_botonActualidad.gridx = 1;
-        gbc_botonActualidad.gridy = 3;
-        add(botonActualidad, gbc_botonActualidad);
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
 
-        JButton boton90 = new BotonMadre("Años 90");
-        boton90.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                try {
-                    ventana.cancionesAJugar = new ArrayList<Cancion>();
-                    //Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root", "1234");
-                    Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root", "admin");
-                    Statement smt = conexion.createStatement();
-                    ResultSet cancionesResult = smt
-                            .executeQuery("select * from cancion where categoria='" + "AÑOS90" + "' limit 10");
+			}
+		});
+		botonActualidad.setFont(new Font("Goudy Stout", Font.PLAIN, 20));
+		botonActualidad.setForeground(new Color(255, 51, 255));
+		botonActualidad.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 
-                    while (cancionesResult.next()) {
-                        ventana.cancionesAJugar.add(
-                                new Cancion(cancionesResult.getString("nombre"), cancionesResult.getString("autor"),
-                                        cancionesResult.getString("categoria"), cancionesResult.getInt("año"),
-                                        cancionesResult.getString("disco"), cancionesResult.getString("ruta"), cancionesResult.getString("ruta_imagen")));
+		JLabel textoCategoria = new JLabel("Elige la categoría");
+		textoCategoria.setFont(new Font("Goudy Stout", Font.PLAIN, 25));
+		textoCategoria.setForeground(new Color(204, 51, 255));
+		textoCategoria.setHorizontalAlignment(SwingConstants.CENTER);
+		GridBagConstraints gbc_textoCategoria = new GridBagConstraints();
+		gbc_textoCategoria.anchor = GridBagConstraints.NORTH;
+		gbc_textoCategoria.insets = new Insets(0, 0, 5, 5);
+		gbc_textoCategoria.gridwidth = 3;
+		gbc_textoCategoria.gridx = 1;
+		gbc_textoCategoria.gridy = 1;
+		add(textoCategoria, gbc_textoCategoria);
+		GridBagConstraints gbc_botonActualidad = new GridBagConstraints();
+		gbc_botonActualidad.fill = GridBagConstraints.BOTH;
+		gbc_botonActualidad.insets = new Insets(0, 0, 5, 5);
+		gbc_botonActualidad.gridx = 1;
+		gbc_botonActualidad.gridy = 3;
+		add(botonActualidad, gbc_botonActualidad);
 
-                       // Connection conexion1 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root","1234");
-                        Connection conexion1 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root", "admin");
+		// boton años 90
 
-                        Statement smt1 = conexion1.createStatement();
-                        ResultSet opcionesResult = smt1
-                                .executeQuery("select nombre from opciones where nombre_cancion='"
-                                        + cancionesResult.getString("nombre") + "'");
+		JButton boton90 = new BotonMadre("Años 90");
+		boton90.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				try {
+					ventana.cancionesCategoria = new ArrayList<Cancion>();
+					Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root", "1234");
+					// Connection conexion =
+					// DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root",
+					// "admin");
+					Statement smt = conexion.createStatement();
+					ResultSet cancionesResult = smt.executeQuery("select * from cancion where categoria='" + "AÑOS90'");
 
-                        byte contador = 0;
-                        ventana.opcionesCancionActual = new String[4];
+					while (cancionesResult.next()) {
+						ventana.cancionesCategoria.add(
+								new Cancion(cancionesResult.getString("nombre"), cancionesResult.getString("autor"),
+										cancionesResult.getString("categoria"), (short) cancionesResult.getInt("año"),
+										cancionesResult.getString("disco"), cancionesResult.getString("ruta")));
 
-                        while (opcionesResult.next()) {
-                            ventana.opcionesCancionActual[contador] = opcionesResult.getString("nombre");
-                            contador++;
-                            ventana.cancionesAJugar.get(ventana.cancionesAJugar.size() - 1)
-                                    .setOpcionesEleccion(ventana.opcionesCancionActual);
-                        }
+						Connection conexion1 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root",
+								"1234");
+						// Connection conexion1 =
+						// DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root",
+						// "admin");
 
-                        smt1.close();
-                    }
-                    smt.close();
+						Statement smt1 = conexion1.createStatement();
+						ResultSet opcionesResult = smt1
+								.executeQuery("select nombre from opciones where nombre_cancion='"
+										+ cancionesResult.getString("nombre") + "'");
 
-                    ventana.irANivel();
+						byte contador = 0;
+						ventana.opcionesCancionActual = new String[4];
 
-                } catch (SQLException e1) {
-                    e1.printStackTrace();
-                }
-            }
-        });
-        boton90.setFont(new Font("Goudy Stout", Font.PLAIN, 20));
-        boton90.setForeground(new Color(255, 51, 255));
-        GridBagConstraints gbc_boton90 = new GridBagConstraints();
-        gbc_boton90.fill = GridBagConstraints.BOTH;
-        gbc_boton90.insets = new Insets(0, 0, 5, 5);
-        gbc_boton90.gridx = 3;
-        gbc_boton90.gridy = 3;
-        add(boton90, gbc_boton90);
+						while (opcionesResult.next()) {
+							ventana.opcionesCancionActual[contador] = opcionesResult.getString("nombre");
+							contador++;
+							ventana.cancionesCategoria.get(ventana.cancionesCategoria.size() - 1)
+									.setOpcionesEleccion(ventana.opcionesCancionActual);
+						}
 
-        JButton boton2000 = new BotonMadre("Años 2000");
-        boton2000.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                try {
-                    ventana.cancionesAJugar = new ArrayList<Cancion>();
-                    //Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root", "1234");
-                    Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root", "admin");
-                    Statement smt = conexion.createStatement();
-                    ResultSet cancionesResult = smt
-                            .executeQuery("select * from cancion where categoria='" + "AÑOS2000" + "' limit 10");
+						smt1.close();
+					}
+					smt.close();
 
-                    while (cancionesResult.next()) {
-                        ventana.cancionesAJugar.add(
-                                new Cancion(cancionesResult.getString("nombre"), cancionesResult.getString("autor"),
-                                        cancionesResult.getString("categoria"), cancionesResult.getInt("año"),
-                                        cancionesResult.getString("disco"), cancionesResult.getString("ruta"), cancionesResult.getString("ruta_imagen")));
+					ventana.irANivel();
 
-                        //Connection conexion1 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root","1234");
-                        Connection conexion1 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root", "admin");
-                        Statement smt1 = conexion1.createStatement();
-                        ResultSet opcionesResult = smt1
-                                .executeQuery("select nombre from opciones where nombre_cancion='"
-                                        + cancionesResult.getString("nombre") + "'");
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
+		boton90.setFont(new Font("Goudy Stout", Font.PLAIN, 20));
+		boton90.setForeground(new Color(255, 51, 255));
+		GridBagConstraints gbc_boton90 = new GridBagConstraints();
+		gbc_boton90.fill = GridBagConstraints.BOTH;
+		gbc_boton90.insets = new Insets(0, 0, 5, 5);
+		gbc_boton90.gridx = 3;
+		gbc_boton90.gridy = 3;
+		add(boton90, gbc_boton90);
 
-                        byte contador = 0;
-                        ventana.opcionesCancionActual = new String[4];
+		// boton 2000
 
-                        while (opcionesResult.next()) {
-                            ventana.opcionesCancionActual[contador] = opcionesResult.getString("nombre");
-                            contador++;
-                            ventana.cancionesAJugar.get(ventana.cancionesAJugar.size() - 1)
-                                    .setOpcionesEleccion(ventana.opcionesCancionActual);
-                        }
+		JButton boton2000 = new BotonMadre("Años 2000");
+		boton2000.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				try {
+					ventana.cancionesCategoria = new ArrayList<Cancion>();
+					Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root", "1234");
+					// Connection conexion =
+					// DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root",
+					// "admin");
+					Statement smt = conexion.createStatement();
+					ResultSet cancionesResult = smt
+							.executeQuery("select * from cancion where categoria='" + "AÑOS2000'");
 
-                        smt1.close();
-                    }
-                    smt.close();
+					while (cancionesResult.next()) {
+						ventana.cancionesCategoria.add(
+								new Cancion(cancionesResult.getString("nombre"), cancionesResult.getString("autor"),
+										cancionesResult.getString("categoria"), (short) cancionesResult.getInt("año"),
+										cancionesResult.getString("disco"), cancionesResult.getString("ruta")));
 
-                    ventana.irANivel();
+						Connection conexion1 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root",
+								"1234");
+						// Connection conexion1 =
+						// DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root",
+						// "admin");
+						Statement smt1 = conexion1.createStatement();
+						ResultSet opcionesResult = smt1
+								.executeQuery("select nombre from opciones where nombre_cancion='"
+										+ cancionesResult.getString("nombre") + "'");
 
-                } catch (SQLException e1) {
-                    e1.printStackTrace();
-                }
-            }
-        });
-        boton2000.setFont(new Font("Goudy Stout", Font.PLAIN, 20));
-        boton2000.setForeground(new Color(255, 51, 255));
-        GridBagConstraints gbc_boton2000 = new GridBagConstraints();
-        gbc_boton2000.fill = GridBagConstraints.BOTH;
-        gbc_boton2000.insets = new Insets(0, 0, 0, 5);
-        gbc_boton2000.gridx = 1;
-        gbc_boton2000.gridy = 5;
-        add(boton2000, gbc_boton2000);
+						byte contador = 0;
+						ventana.opcionesCancionActual = new String[4];
 
-        JButton boton80 = new BotonMadre("Años 80");
-        boton80.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                try {
-                    ventana.cancionesAJugar = new ArrayList<Cancion>();
-                    //Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root", "1234");
-                    Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root", "admin");
-                    Statement smt = conexion.createStatement();
-                    ResultSet cancionesResult = smt
-                            .executeQuery("select * from cancion where categoria='" + "AÑOS80" + "' limit 10");
+						while (opcionesResult.next()) {
+							ventana.opcionesCancionActual[contador] = opcionesResult.getString("nombre");
+							contador++;
+							ventana.cancionesCategoria.get(ventana.cancionesCategoria.size() - 1)
+									.setOpcionesEleccion(ventana.opcionesCancionActual);
+						}
 
-                    while (cancionesResult.next()) {
-                        ventana.cancionesAJugar.add(
-                                new Cancion(cancionesResult.getString("nombre"), cancionesResult.getString("autor"),
-                                        cancionesResult.getString("categoria"), cancionesResult.getInt("año"),
-                                        cancionesResult.getString("disco"), cancionesResult.getString("ruta"), cancionesResult.getString("ruta_imagen")));
+						smt1.close();
+					}
+					smt.close();
 
-                        //Connection conexion1 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root","1234");
-                        Connection conexion1 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root", "admin");
-                        Statement smt1 = conexion1.createStatement();
-                        ResultSet opcionesResult = smt1
-                                .executeQuery("select nombre from opciones where nombre_cancion='"
-                                        + cancionesResult.getString("nombre") + "'");
+					ventana.irANivel();
 
-                        byte contador = 0;
-                        ventana.opcionesCancionActual = new String[4];
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
+		boton2000.setFont(new Font("Goudy Stout", Font.PLAIN, 20));
+		boton2000.setForeground(new Color(255, 51, 255));
+		GridBagConstraints gbc_boton2000 = new GridBagConstraints();
+		gbc_boton2000.fill = GridBagConstraints.BOTH;
+		gbc_boton2000.insets = new Insets(0, 0, 0, 5);
+		gbc_boton2000.gridx = 1;
+		gbc_boton2000.gridy = 5;
+		add(boton2000, gbc_boton2000);
 
-                        while (opcionesResult.next()) {
-                            ventana.opcionesCancionActual[contador] = opcionesResult.getString("nombre");
-                            contador++;
-                            ventana.cancionesAJugar.get(ventana.cancionesAJugar.size() - 1)
-                                    .setOpcionesEleccion(ventana.opcionesCancionActual);
-                        }
+		// boton años 80
 
-                        smt1.close();
-                    }
-                    smt.close();
+		JButton boton80 = new BotonMadre("Años 80");
+		boton80.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				try {
+					ventana.cancionesCategoria = new ArrayList<Cancion>();
+					Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root", "1234");
+					// Connection conexion =
+					// DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root",
+					// "admin");
+					Statement smt = conexion.createStatement();
+					ResultSet cancionesResult = smt.executeQuery("select * from cancion where categoria='" + "AÑOS80'");
 
-                    ventana.irANivel();
+					while (cancionesResult.next()) {
+						// public Cancion(String nombre, String autor, String categoria, short año,
+						// String disco, String ruta) {
+						ventana.cancionesCategoria.add(
+								new Cancion(cancionesResult.getString("nombre"), cancionesResult.getString("autor"),
+										cancionesResult.getString("categoria"), (short) cancionesResult.getInt("año"),
+										cancionesResult.getString("disco"), cancionesResult.getString("ruta")));
 
-                } catch (SQLException e1) {
-                    e1.printStackTrace();
-                }
-            }
-        });
-        boton80.setFont(new Font("Goudy Stout", Font.PLAIN, 20));
-        boton80.setForeground(new Color(255, 51, 255));
-        GridBagConstraints gbc_boton80 = new GridBagConstraints();
-        gbc_boton80.insets = new Insets(0, 0, 0, 5);
-        gbc_boton80.fill = GridBagConstraints.BOTH;
-        gbc_boton80.gridx = 3;
-        gbc_boton80.gridy = 5;
-        add(boton80, gbc_boton80);
-    }
+						Connection conexion1 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root",
+								"1234");
+						// Connection conexion1 =
+						// DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root",
+						// "admin");
+						Statement smt1 = conexion1.createStatement();
+						ResultSet opcionesResult = smt1
+								.executeQuery("select nombre from opciones where nombre_cancion='"
+										+ cancionesResult.getString("nombre") + "'");
+
+						byte contador = 0;
+						ventana.opcionesCancionActual = new String[4];
+
+						while (opcionesResult.next()) {
+							ventana.opcionesCancionActual[contador] = opcionesResult.getString("nombre");
+							contador++;
+							ventana.cancionesCategoria.get(ventana.cancionesCategoria.size() - 1)
+									.setOpcionesEleccion(ventana.opcionesCancionActual);
+						}
+
+						smt1.close();
+					}
+					smt.close();
+
+					ventana.irANivel();
+
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
+		boton80.setFont(new Font("Goudy Stout", Font.PLAIN, 20));
+		boton80.setForeground(new Color(255, 51, 255));
+		GridBagConstraints gbc_boton80 = new GridBagConstraints();
+		gbc_boton80.insets = new Insets(0, 0, 0, 5);
+		gbc_boton80.fill = GridBagConstraints.BOTH;
+		gbc_boton80.gridx = 3;
+		gbc_boton80.gridy = 5;
+		add(boton80, gbc_boton80);
+	}
 
 }

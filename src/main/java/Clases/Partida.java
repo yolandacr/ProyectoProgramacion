@@ -1,4 +1,4 @@
-//DOCUMENTACION OK
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -17,7 +17,6 @@ import java.util.Scanner;
  */
 public class Partida {
 
-	Scanner sc = new Scanner(System.in);
 
 	private Jugador jugador;// objeto jugador de la partida
 	private short puntosPartida;// puntos almacenados en la partida.
@@ -51,7 +50,6 @@ public class Partida {
 
 	/**
 	 * metodo constructor para el ranking
-	 * 
 	 * @param jugador       objeto jugador con el nombre
 	 * @param puntosPartida puntos obtenidos en la partida
 	 */
@@ -65,11 +63,8 @@ public class Partida {
 	
 	
 
-	
-
 	/**
 	 * método getter para el objeto jugador
-	 *
 	 * @return un objeto jugador
 	 */
 	public Jugador getJugador() {
@@ -104,7 +99,7 @@ public class Partida {
 	}
 
 	/**
-	 * método getterpara la fecha
+	 * método getter para la fecha
 	 *
 	 * @return un objeto fecha
 	 */
@@ -142,13 +137,20 @@ public class Partida {
 	}
 
 
+	/**
+	 * metodo getter de nivel
+	 * @return un string con el nivel de juego
+	 */
 
 	public String getNivel() {
 		return nivel;
 	}
 
 
-
+/**
+ *  metodo setter de nivel
+ * @param nivel nuevo valor para el string de nivel
+ */
 	public void setNivel(String nivel) {
 		this.nivel = nivel;
 	}

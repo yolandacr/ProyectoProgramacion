@@ -1,26 +1,15 @@
-//DOCUMENTACION OK
+
 package InterfacesGraficas;
 
-import javax.swing.JPanel;
-import java.awt.GridBagLayout;
 import javax.swing.JLabel;
-import java.awt.GridBagConstraints;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JButton;
-import java.awt.Insets;
-import java.awt.BorderLayout;
 import javax.swing.SwingConstants;
-
-import Clases.Cancion;
-import Clases.Jugador;
 import Clases.Partida;
-
 import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
 
 /**
  * clase para la pantalla nivel
@@ -28,7 +17,7 @@ import java.util.ArrayList;
  * @author yolanda cordero
  *
  */
-public class PantallaNivel extends JPanel {
+public class PantallaNivel extends PanelMadre {
 	private Ventana ventana;// objeto ventana base
 
 	/**
@@ -46,11 +35,14 @@ public class PantallaNivel extends JPanel {
 		botonSelecciona.setForeground(new Color(204, 51, 255));
 		add(botonSelecciona);
 
-		JButton botonFacil = new JButton("Fácil");
+		// boton facil
+
+		JButton botonFacil = new BotonMadre("Fácil");
 		botonFacil.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				ventana.nuevaPartida = new Partida(ventana.jugador, (short) 0,  ventana.cancionesAJugar,botonFacil.getText());
+				ventana.nuevaPartida = new Partida(ventana.jugador, (short) 0, ventana.cancionesCategoria,
+						botonFacil.getText());
 				ventana.irFacil();
 			}
 		});
@@ -58,11 +50,14 @@ public class PantallaNivel extends JPanel {
 		botonFacil.setForeground(new Color(255, 51, 255));
 		add(botonFacil);
 
-		JButton botonExperto = new JButton("Experto");
+		// boton experto
+
+		JButton botonExperto = new BotonMadre("Experto");
 		botonExperto.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				ventana.nuevaPartida = new Partida(ventana.jugador, (short) 0,  ventana.cancionesAJugar,botonExperto.getText());
+				ventana.nuevaPartida = new Partida(ventana.jugador, (short) 0, ventana.cancionesCategoria,
+						botonExperto.getText());
 				ventana.irAExperto();
 			}
 		});

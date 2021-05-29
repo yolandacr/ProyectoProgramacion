@@ -1,36 +1,15 @@
-//DOCUMENTACION OK
 
 package InterfacesGraficas;
 
-
-
-import javax.swing.JPanel;
-import java.awt.FlowLayout;
 import javax.swing.JButton;
-import javax.imageio.ImageIO;
-import javax.swing.BorderFactory;
-import javax.swing.BoxLayout;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.Font;
-import java.awt.Graphics;
-
 import javax.swing.SwingConstants;
-import javax.swing.border.Border;
-import javax.swing.border.MatteBorder;
-
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.IOException;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
-import java.awt.Cursor;
-import java.awt.CardLayout;
-import java.awt.BorderLayout;
-import java.awt.GridLayout;
-import java.awt.Image;
-
 import javax.swing.JLabel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -64,10 +43,7 @@ public class PantallaInicio extends PanelMadre {
 		// botón de nuevo usuario
 
 		JButton botonRegistro = new BotonMadre("Nuevo Usuario");
-		
-		
-		
-		
+
 		botonRegistro.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -110,13 +86,17 @@ public class PantallaInicio extends PanelMadre {
 		add(botonLogin, gbc_botonLogin);
 
 		JButton botonRanking = new BotonMadre("Ver Ranking");
+		botonRanking.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		botonRanking.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				ventana.irARanking();
 			}
 		});
-		botonRanking.setFont(new Font("Dialog", Font.BOLD, 25));
+		botonRanking.setFont(new Font("Goudy Stout", Font.BOLD, 25));
 		botonRanking.setForeground(new Color(153, 51, 255));
 		GridBagConstraints gbc_botonRanking = new GridBagConstraints();
 		gbc_botonRanking.insets = new Insets(0, 0, 5, 5);

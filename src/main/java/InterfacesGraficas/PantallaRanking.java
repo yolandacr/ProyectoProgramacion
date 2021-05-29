@@ -3,13 +3,9 @@
 
 package InterfacesGraficas;
 
-import javax.swing.JPanel;
 import javax.swing.JLabel;
 import java.awt.Font;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
 import javax.swing.SwingConstants;
-import java.awt.Insets;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
@@ -56,8 +52,10 @@ public class PantallaRanking extends PanelMadre {
 
 		// generamos el ranking
 		try {
-			//Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root", "1234");
-			Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root", "admin");
+			Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root", "1234");
+			// Connection conexion =
+			// DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root",
+			// "admin");
 			Statement smt = conexion.createStatement();
 			ResultSet rankingResult = smt // hacemos la consulta
 					.executeQuery("SELECT nombre_jugador,puntos FROM rockola.partida order by puntos desc limit 5");
@@ -223,8 +221,8 @@ public class PantallaRanking extends PanelMadre {
 		add(campoPuntos4);
 		campoPuntos4.setColumns(10);
 		campoPuntos4.setText(String.valueOf(ventana.puntosRanking[3]));
-		
-		//boton inicio
+
+		// boton inicio
 
 		JButton botonInicio = new BotonMadre("Inicio");
 		botonInicio.setBounds(379, 504, 243, 43);

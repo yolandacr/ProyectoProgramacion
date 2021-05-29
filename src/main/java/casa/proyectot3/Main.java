@@ -4,12 +4,12 @@
  * and open the template in the editor.
  */
 package casa.proyectot3;
-//TODO TERMINADO EL MAIN.DOCUMENTADO
 
 /**
  * La siguiente clase es la principal de mi proyecto
  *
  * @author Yolanda Cordero
+ * @version 1.0
  */
 public class Main {
 

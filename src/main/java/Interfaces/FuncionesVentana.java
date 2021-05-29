@@ -32,5 +32,7 @@ public interface FuncionesVentana {
 	public void irFallo();//método para ir a la pantalla de fallo
 	
 	public void siguienteCancion();// metodo para resetear la pantalla y que cambie de cancion
+	
+	public void irFin();//método para ir a la pantalla de fin de juego
 
 }

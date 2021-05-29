@@ -1,7 +1,6 @@
-//DOCUMENTACION OK
+
 package InterfacesGraficas;
 
-import javax.swing.JPanel;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
@@ -25,7 +24,7 @@ import javax.swing.JTextField;
  *
  */
 
-public class PantallaFinPartida extends JPanel {
+public class PantallaFinPartida extends PanelMadre {
 	private Ventana ventana;// variable de objeto ventana para pasarla por parámetros al constructor.
 	private JTextField campoPuntos;
 
@@ -37,52 +36,34 @@ public class PantallaFinPartida extends JPanel {
 
 	public PantallaFinPartida(Ventana v) {
 		this.ventana = v;
-		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[] { 0, 0, 0, 0 };
-		gridBagLayout.rowHeights = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-		gridBagLayout.columnWeights = new double[] { 1.0, 0.0, 1.0, Double.MIN_VALUE };
-		gridBagLayout.rowWeights = new double[] { 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE };
-		setLayout(gridBagLayout);
-
-		JLabel textoFin = new JLabel("¡El juego ha terminado!");
-		textoFin.setForeground(new Color(204, 51, 255));
-		textoFin.setFont(new Font("Goudy Stout", Font.PLAIN, 40));
-		textoFin.setHorizontalAlignment(SwingConstants.CENTER);
-		GridBagConstraints gbc_textoFin = new GridBagConstraints();
-		gbc_textoFin.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textoFin.anchor = GridBagConstraints.NORTH;
-		gbc_textoFin.insets = new Insets(0, 0, 5, 5);
-		gbc_textoFin.gridx = 1;
-		gbc_textoFin.gridy = 1;
-		add(textoFin, gbc_textoFin);
 
 		JLabel textoPuntos;
+		GridBagLayout gridBagLayout = new GridBagLayout();
+		gridBagLayout.columnWidths = new int[] { 0, 0, 0, 0 };
+		gridBagLayout.rowHeights = new int[] { 0, 0, 35, 0, 41, 0, 0, 0, 0, 0, 0 };
+		gridBagLayout.columnWeights = new double[] { 1.0, 0.0, 1.0, Double.MIN_VALUE };
+		gridBagLayout.rowWeights = new double[] { 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE };
+		setLayout(gridBagLayout);
 
-		JLabel textoPuntos1 = new JLabel("Has obtenido:");
-		textoPuntos1.setHorizontalAlignment(SwingConstants.CENTER);
-		textoPuntos1.setForeground(new Color(204, 51, 255));
-		textoPuntos1.setFont(new Font("Dialog", Font.PLAIN, 30));
-		GridBagConstraints gbc_textoPuntos1 = new GridBagConstraints();
-		gbc_textoPuntos1.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textoPuntos1.insets = new Insets(0, 0, 5, 5);
-		gbc_textoPuntos1.gridx = 1;
-		gbc_textoPuntos1.gridy = 2;
-		add(textoPuntos1, gbc_textoPuntos1);
+		JLabel texto3 = new JLabel("¡El juego ha terminado!");
+		texto3.setForeground(new Color(204, 51, 255));
+		texto3.setFont(new Font("Goudy Stout", Font.PLAIN, 35));
+		GridBagConstraints gbc_texto3 = new GridBagConstraints();
+		gbc_texto3.fill = GridBagConstraints.BOTH;
+		gbc_texto3.insets = new Insets(0, 0, 5, 5);
+		gbc_texto3.gridx = 1;
+		gbc_texto3.gridy = 1;
+		add(texto3, gbc_texto3);
 
-		campoPuntos = new JTextField();
-		campoPuntos.setBackground(Color.BLACK);
-		campoPuntos.setForeground(new Color(255, 51, 255));
-		campoPuntos.setFont(new Font("Dialog", Font.PLAIN, 25));
-		campoPuntos.setEditable(false);
-		campoPuntos.setHorizontalAlignment(SwingConstants.CENTER);
-		GridBagConstraints gbc_campoPuntos = new GridBagConstraints();
-		gbc_campoPuntos.insets = new Insets(0, 0, 5, 5);
-		gbc_campoPuntos.fill = GridBagConstraints.HORIZONTAL;
-		gbc_campoPuntos.gridx = 1;
-		gbc_campoPuntos.gridy = 3;
-		add(campoPuntos, gbc_campoPuntos);
-		campoPuntos.setColumns(10);
-		campoPuntos.setText(String.valueOf(ventana.nuevaPartida.getPuntosPartida()) + " PTS");
+		JLabel textoObtenido2 = new JLabel("Has obtenido:");
+		textoObtenido2.setFont(new Font("Goudy Stout", Font.PLAIN, 30));
+		textoObtenido2.setForeground(new Color(204, 51, 255));
+		GridBagConstraints gbc_textoObtenido2 = new GridBagConstraints();
+		gbc_textoObtenido2.anchor = GridBagConstraints.NORTH;
+		gbc_textoObtenido2.insets = new Insets(0, 0, 5, 5);
+		gbc_textoObtenido2.gridx = 1;
+		gbc_textoObtenido2.gridy = 3;
+		add(textoObtenido2, gbc_textoObtenido2);
 
 		JButton botonRanking = new BotonMadre("Ver Ranking");
 		botonRanking.setHorizontalAlignment(SwingConstants.LEFT);
@@ -91,15 +72,16 @@ public class PantallaFinPartida extends JPanel {
 			public void mouseClicked(MouseEvent e) {
 
 				try {
-					Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root",
-							"admin");
+					// Connection conexion =
+					// DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola",
+					// "root","admin");
+					Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root", "1234");
 
 					Statement smt = conexion.createStatement();
-					smt.executeUpdate("insert into partida values ("
-							+ ventana.nuevaPartida.getPuntosPartida() + ",'" + ventana.nuevaPartida.getFecha() + "','"
-							+ ventana.nuevaPartida.getJugador().getNombre() + "');");
+					smt.executeUpdate("insert into partida values (" + ventana.nuevaPartida.getPuntosPartida() + ",'"
+							+ ventana.nuevaPartida.getFecha() + "','" + ventana.nuevaPartida.getJugador().getNombre()
+							+ "');");
 				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 
@@ -107,13 +89,28 @@ public class PantallaFinPartida extends JPanel {
 			}
 		});
 
+		campoPuntos = new JTextField();
+		campoPuntos.setBackground(Color.BLACK);
+		campoPuntos.setForeground(new Color(255, 51, 255));
+		campoPuntos.setFont(new Font("Goudy Stout", Font.PLAIN, 25));
+		campoPuntos.setEditable(false);
+		campoPuntos.setHorizontalAlignment(SwingConstants.CENTER);
+		GridBagConstraints gbc_campoPuntos = new GridBagConstraints();
+		gbc_campoPuntos.anchor = GridBagConstraints.NORTH;
+		gbc_campoPuntos.insets = new Insets(0, 0, 5, 5);
+		gbc_campoPuntos.gridx = 1;
+		gbc_campoPuntos.gridy = 5;
+		add(campoPuntos, gbc_campoPuntos);
+		campoPuntos.setColumns(10);
+		campoPuntos.setText(String.valueOf(ventana.nuevaPartida.getPuntosPartida()) + " PTS");
+
 		botonRanking.setForeground(new Color(255, 51, 255));
-		botonRanking.setFont(new Font("Dialog", Font.PLAIN, 30));
+		botonRanking.setFont(new Font("Goudy Stout", Font.PLAIN, 30));
 		GridBagConstraints gbc_botonRanking = new GridBagConstraints();
 		gbc_botonRanking.insets = new Insets(0, 0, 5, 5);
 		gbc_botonRanking.anchor = GridBagConstraints.NORTH;
 		gbc_botonRanking.gridx = 1;
-		gbc_botonRanking.gridy = 7;
+		gbc_botonRanking.gridy = 8;
 		add(botonRanking, gbc_botonRanking);
 
 	}

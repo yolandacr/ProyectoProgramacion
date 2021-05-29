@@ -1,8 +1,4 @@
-// DOCUMENTACION TERMINADA
- /* To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Clases;
 
 import java.awt.Image;
@@ -28,37 +24,34 @@ public class Cancion extends ElementoConNombre {
 	private int año;// año de la canción
 	private String disco;// disco al que pertenece
 	private String ruta;// ruta del archivo de audio en String
-	private String rutaImagen;// ruta de la imagen del disco
-
 
 	/**
-	 * constructor con todos los parámetros para crear las canciones del arraylist
-	 * en cada categoria
+	 * constructor sin la ruta de imagen para generar canciones en una primera
+	 * version del juego
 	 * 
-	 * @param autor autor de la cancion string
-	 * @param categoria categoria cancion String
+	 * @param nombre           nombre string de la cancion
+	 * @param autor            autor de la cancion string
+	 * @param categoria        categoria cancion String
 	 * @param opcionesEleccion array con las opciones a elegir. solo una es correcta
-	 * @param año año de publicacion de la cancion
-	 * @param disco disco al que pertenece
-	 * @param ruta ruta relativa del archivo de audio
-	 * @param audioClip clip reproducible
-	 * @param audioStream medio por donde reproducir
-	 * @param rutaImagen string con la ruta relativa de la imagen del disco
+	 * @param año              año de publicacion de la cancion
+	 * @param disco            disco al que pertenece
+	 * @param ruta             ruta relativa del archivo de audio
 	 */
 
-	public Cancion(String nombre, String autor, String categoria, int año, String disco, String ruta, String rutaImagen) {
+	public Cancion(String nombre, String autor, String categoria, String[] opcionesEleccion, int año, String disco,
+			String ruta) {
 		super(nombre);
 		this.autor = autor;
 		this.categoria = categoria;
+		this.opcionesEleccion = opcionesEleccion;
 		this.año = año;
 		this.disco = disco;
 		this.ruta = ruta;
-		this.rutaImagen=rutaImagen;
-
 	}
 
 	/**
-	 * constructor de canción para la pantalla de acierto 
+	 * constructor de canción para la pantalla de acierto
+	 * 
 	 * @param autor  autor de la cancion
 	 * @param año    año enel que se publicó la canción
 	 * @param disco  nombre del disco al que pertenece
@@ -76,12 +69,12 @@ public class Cancion extends ElementoConNombre {
 	/**
 	 * constructor para crear arrayList en Pantalla de categoría.
 	 * 
-	 * @param nombre
-	 * @param autor
-	 * @param categoria
-	 * @param año
-	 * @param disco
-	 * @param ruta
+	 * @param nombre    de la cancion
+	 * @param autor     quien la canta
+	 * @param categoria categoria musical a la que pertenece
+	 * @param año       año d epublicacion
+	 * @param disco     disco al que pertenece
+	 * @param ruta      ruta relativa del archivo wav
 	 */
 
 	public Cancion(String nombre, String autor, String categoria, short año, String disco, String ruta) {
@@ -210,15 +203,5 @@ public class Cancion extends ElementoConNombre {
 	public void setRuta(String ruta) {
 		this.ruta = ruta;
 	}
-
-	public String getRutaImagen() {
-		return rutaImagen;
-	}
-
-	public void setRutaImagen(String rutaImagen) {
-		this.rutaImagen = rutaImagen;
-	}
-	
-	
 
 }

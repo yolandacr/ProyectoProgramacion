@@ -1,7 +1,6 @@
-//DOCUMENTACION OK
+
 package InterfacesGraficas;
 
-import javax.swing.JPanel;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
@@ -12,7 +11,6 @@ import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.Insets;
-import javax.swing.JTextField;
 
 /**
  * Clase de la Pantalla Acierto version alternativa
@@ -21,7 +19,7 @@ import javax.swing.JTextField;
  *
  */
 
-public class PantallaAciertov2 extends JPanel {
+public class PantallaAciertov2 extends PanelMadre {
 	private Ventana ventana;// variable de objeto ventana para pasarla por parámetros al constructor.
 
 	/**
@@ -51,7 +49,7 @@ public class PantallaAciertov2 extends JPanel {
 		add(textoAcierto, gbc_textoAcierto);
 
 		JLabel textoCorrecto = new JLabel("La respuesta es correcta");
-		textoCorrecto.setForeground(new Color(204, 51, 255));
+		textoCorrecto.setForeground(new Color(255, 51, 255));
 		textoCorrecto.setFont(new Font("Goudy Stout", Font.PLAIN, 35));
 		textoCorrecto.setHorizontalAlignment(SwingConstants.CENTER);
 		GridBagConstraints gbc_textoCorrecto = new GridBagConstraints();
@@ -61,11 +59,14 @@ public class PantallaAciertov2 extends JPanel {
 		gbc_textoCorrecto.gridy = 3;
 		add(textoCorrecto, gbc_textoCorrecto);
 
-		JLabel textoPuntos;
+		JLabel textoPuntos = new JLabel();
 
 		if (ventana.nuevaPartida.getNivel().equalsIgnoreCase("Fácil")) {
 			textoPuntos = new JLabel("+50 PTS");
-		} else {
+		}
+
+		if (ventana.nuevaPartida.getNivel().equalsIgnoreCase("Experto")) {
+
 			textoPuntos = new JLabel("+100 PTS");
 		}
 
@@ -78,12 +79,26 @@ public class PantallaAciertov2 extends JPanel {
 		gbc_textoPuntos.gridy = 6;
 		add(textoPuntos, gbc_textoPuntos);
 
-		JButton botonSiguiente = new JButton("Siguiente");
+		// boton siguiente
+
+		JButton botonSiguiente = new BotonMadre("Siguiente");
+		botonSiguiente.setBackground(new Color(255, 255, 255));
 		botonSiguiente.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 
-				if (ventana.cancionesAJugar.size() > 0) {
+				if (ventana.cancionesPartida.size() == 10) {
+					if (ventana.nuevaPartida.getNivel().equalsIgnoreCase("Fácil")) {
+						ventana.nuevaPartida.setPuntosPartida((short) (ventana.nuevaPartida.getPuntosPartida() + 50));
+						ventana.irFin();
+
+					}
+					if (ventana.nuevaPartida.getNivel().equalsIgnoreCase("Experto")) {
+						ventana.nuevaPartida.setPuntosPartida((short) (ventana.nuevaPartida.getPuntosPartida() + 100));
+						ventana.irFin();
+					}
+					ventana.irFin();
+				} else {
 					if (ventana.nuevaPartida.getNivel().equalsIgnoreCase("Fácil")) {
 						ventana.nuevaPartida.setPuntosPartida((short) (ventana.nuevaPartida.getPuntosPartida() + 50));
 						ventana.siguienteCancion();
@@ -94,16 +109,6 @@ public class PantallaAciertov2 extends JPanel {
 						ventana.irAExperto();
 					}
 
-				} else {
-					if (ventana.nuevaPartida.getNivel().equalsIgnoreCase("Fácil")) {
-						ventana.nuevaPartida.setPuntosPartida((short) (ventana.nuevaPartida.getPuntosPartida() + 50));
-						ventana.irFin();
-
-					} else {
-						ventana.nuevaPartida.setPuntosPartida((short) (ventana.nuevaPartida.getPuntosPartida() + 100));
-						ventana.irFin();
-					}
-					ventana.irFin();
 				}
 
 			}

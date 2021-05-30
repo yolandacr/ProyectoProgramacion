@@ -62,7 +62,6 @@ public class PantallaNivel extends PanelMadre {
 						botonExperto.getText());
 				ventana.irAExperto();
 				inicio.hiloMusical.pararIntro();
-				inicio.hiloMusical.interrupt();
 				
 			}
 		});

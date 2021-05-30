@@ -7,18 +7,15 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
-import javax.swing.JButton;
-
 import Interfaces.FuncionesHiloIntro;
-import Interfaces.FuncionesHilos;
 
 /**
- * clase para los hilos
+ * clase para el hilo de la cancion de introduccion
  * 
  * @author yolanda cordero
  *
  */
-public class HiloIntro extends Thread implements FuncionesHiloIntro{
+public class HiloIntro extends Thread implements FuncionesHiloIntro {
 
 	private String rutaCancion;// ruta relativa del archivo wav
 	private Clip sonido;// archivo de sonido reproducible
@@ -37,6 +34,7 @@ public class HiloIntro extends Thread implements FuncionesHiloIntro{
 	 */
 
 	public void runIntro() {
+
 		try {
 			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(rutaCancion));
 			sonido = AudioSystem.getClip();
@@ -48,7 +46,6 @@ public class HiloIntro extends Thread implements FuncionesHiloIntro{
 
 			e2.printStackTrace();
 		}
-
 	}
 
 	/**

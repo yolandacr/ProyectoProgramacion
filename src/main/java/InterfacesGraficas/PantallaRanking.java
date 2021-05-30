@@ -6,6 +6,10 @@ package InterfacesGraficas;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
+
+import Clases.Cancion;
+import Clases.Partida;
+
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
@@ -15,6 +19,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.awt.Color;
 
 /**
@@ -230,6 +235,9 @@ public class PantallaRanking extends PanelMadre {
 		botonInicio.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				ventana.siguienteCancion();
+				ventana.nuevaPartida=new Partida(null,(short)0,null,null);
+				ventana.cancionesPartida=new ArrayList<Cancion>();
 				ventana.irInicio();
 			}
 		});

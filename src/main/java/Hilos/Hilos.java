@@ -24,7 +24,7 @@ public class Hilos extends Thread implements FuncionesHilos {
 	private Clip sonido;// archivo de sonido reproducible
 
 	/**
-	 * metodo constructor
+	 * metodo constructor para todas las canciones del juego
 	 * 
 	 * @param rc        ruta de la canción (relativa)
 	 * @param botonPlay boton de ejecucion
@@ -56,6 +56,15 @@ public class Hilos extends Thread implements FuncionesHilos {
 			e2.printStackTrace();
 		}
 
+	}
+
+	/**
+	 * metodo para parar la cancion de la intro
+	 */
+
+	public void pararIntro() {
+		sonido.stop();
+		sonido.close();
 	}
 
 	/**

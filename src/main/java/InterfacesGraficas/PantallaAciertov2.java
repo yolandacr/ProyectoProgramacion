@@ -63,7 +63,8 @@ public class PantallaAciertov2 extends PanelMadre {
 
 		if (ventana.nuevaPartida.getNivel().equalsIgnoreCase("Fácil")) {
 			textoPuntos = new JLabel("+50 PTS");
-		} else {
+		} 
+		if (ventana.nuevaPartida.getNivel().equalsIgnoreCase("Experto")){
 			textoPuntos = new JLabel("+100 PTS");
 		}
 
@@ -83,28 +84,25 @@ public class PantallaAciertov2 extends PanelMadre {
 		botonSiguiente.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-
-				if (ventana.cancionesPartida.size() == 10) {
-					if (ventana.nuevaPartida.getNivel().equalsIgnoreCase("Fácil")) {
-						ventana.nuevaPartida.setPuntosPartida((short) (ventana.nuevaPartida.getPuntosPartida() + 50));
-						ventana.irFin();
-
-					} else {
-						ventana.nuevaPartida.setPuntosPartida((short) (ventana.nuevaPartida.getPuntosPartida() + 100));
-						ventana.irFin();
-
-					}
-
-					ventana.irFin();
-				} else {
+				
+				if(ventana.cancionesPartida.size()<10) {
 					if (ventana.nuevaPartida.getNivel().equalsIgnoreCase("Fácil")) {
 						ventana.nuevaPartida.setPuntosPartida((short) (ventana.nuevaPartida.getPuntosPartida() + 50));
 						ventana.siguienteCancion();
 						ventana.irFacil();
+				}else {
+					ventana.nuevaPartida.setPuntosPartida((short) (ventana.nuevaPartida.getPuntosPartida() + 100));
+					ventana.siguienteCancion();
+					ventana.irAExperto();
+				}
+				}else {
+					if (ventana.nuevaPartida.getNivel().equalsIgnoreCase("Fácil")) {
+						ventana.nuevaPartida.setPuntosPartida((short) (ventana.nuevaPartida.getPuntosPartida() + 50));
+						ventana.irFin();
+
 					} else {
 						ventana.nuevaPartida.setPuntosPartida((short) (ventana.nuevaPartida.getPuntosPartida() + 100));
-						ventana.siguienteCancion();
-						ventana.irAExperto();
+						ventana.irFin();
 					}
 
 				}

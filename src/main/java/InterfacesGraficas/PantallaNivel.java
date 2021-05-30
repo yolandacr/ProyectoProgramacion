@@ -19,6 +19,7 @@ import java.awt.event.MouseEvent;
  */
 public class PantallaNivel extends PanelMadre {
 	private Ventana ventana;// objeto ventana base
+	private PantallaInicio inicio; //objeto de la ventana inicio necesario para parar su hilo
 
 	/**
 	 * metodo constructor
@@ -44,6 +45,7 @@ public class PantallaNivel extends PanelMadre {
 				ventana.nuevaPartida = new Partida(ventana.jugador, (short) 0, ventana.cancionesCategoria,
 						botonFacil.getText());
 				ventana.irFacil();
+				inicio.hiloMusical.pararIntro();
 			}
 		});
 		botonFacil.setFont(new Font("Goudy Stout", Font.PLAIN, 20));
@@ -59,6 +61,9 @@ public class PantallaNivel extends PanelMadre {
 				ventana.nuevaPartida = new Partida(ventana.jugador, (short) 0, ventana.cancionesCategoria,
 						botonExperto.getText());
 				ventana.irAExperto();
+				inicio.hiloMusical.pararIntro();
+				inicio.hiloMusical.interrupt();
+				
 			}
 		});
 		botonExperto.setFont(new Font("Goudy Stout", Font.PLAIN, 20));

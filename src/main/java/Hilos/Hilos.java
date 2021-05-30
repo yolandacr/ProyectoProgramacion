@@ -26,7 +26,7 @@ public class Hilos extends Thread implements FuncionesHilos {
 	/**
 	 * metodo constructor para todas las canciones del juego
 	 * 
-	 * @param rc        ruta de la canción (relativa)
+	 * @param rc ruta de la canción (relativa)
 	 * @param botonPlay boton de ejecucion
 	 * @param botonStop boton de parada
 	 */

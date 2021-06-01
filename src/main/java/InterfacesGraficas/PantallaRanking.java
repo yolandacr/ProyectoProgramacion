@@ -57,10 +57,10 @@ public class PantallaRanking extends PanelMadre {
 
 		// generamos el ranking
 		try {
-			//Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root", "1234");
-			Connection conexion =
-		    DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root",
-			"admin");
+			Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root", "1234");
+			//Connection conexion =
+		    //DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root",
+			//"admin");
 			Statement smt = conexion.createStatement();
 			ResultSet rankingResult = smt // hacemos la consulta
 					.executeQuery("SELECT nombre_jugador,puntos FROM rockola.partida order by puntos desc limit 5");

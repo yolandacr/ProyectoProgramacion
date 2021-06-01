@@ -143,6 +143,33 @@ public class Ventana extends JFrame implements FuncionesVentana {
 		this.juegoFacil = null;
 		this.juegoDificil = null;
 	}
+	
+	/**
+	 * metodo que resetea todas las pantallas y datos del juego
+	 */
+	
+	public void reseteoJuego() {
+		this.acierto=null;
+		this.nuevaPartida=null;
+		this.cancionesCategoria=null;
+		this.cancionesPartida=null;
+		this.categoria=null;
+		this.fallo=null;
+		this.fin=null;
+		this.inicio=null;
+		this.juegoDificil=null;
+		this.juegoFacil=null;
+		this.jugador=null;
+		this.login=null;
+		this.nivel=null;
+		this.nombresRanking=null;
+		this.nuevaPartida=null;
+		this.opcionesCancionActual=null;
+		this.puntosRanking=null;
+		this.ranking=null;
+		this.registro=null;
+   
+	}
 
 	/**
 	 * método para ir a la pantalla del juego en modo experto

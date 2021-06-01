@@ -120,11 +120,11 @@ public class PantallaRegistro extends PanelMadre {
 				// Todo relleno, se puede insertar
 					
 						Jugador jugador = new Jugador(campoNombre.getText(), String.valueOf(campoContraseña.getPassword()));
-				//Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root","1234");
+				Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root","1234");
 
 						// credenciales pa conectar en pc clase
 
-						Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola","root","admin");
+						//Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola","root","admin");
 
 						Statement smt = conexion.createStatement();
 						smt.executeUpdate("insert into Jugador " + "values('" + campoNombre.getText() + "'," + "'"

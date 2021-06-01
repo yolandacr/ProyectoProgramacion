@@ -115,12 +115,12 @@ public class PantallaLogin extends PanelMadre {
 				} else { // no estan en blanco y pasa a validar
 
 					try {
-						/*Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root",
-								"1234");*/
+						Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root",
+								"1234");
 
-						Connection conexion =
+						/*Connection conexion =
 						DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola",
-						"root","admin");
+						"root","admin");*/
 
 						Statement smt = conexion.createStatement();
 

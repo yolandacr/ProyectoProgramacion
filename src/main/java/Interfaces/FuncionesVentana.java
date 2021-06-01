@@ -34,5 +34,7 @@ public interface FuncionesVentana {
 	public void siguienteCancion();// metodo para resetear la pantalla y que cambie de cancion
 	
 	public void irFin();//método para ir a la pantalla de fin de juego
+	
+	public void reseteoJuego();// metodo que resetea pantalla y datos de juego
 
 }

@@ -74,10 +74,10 @@ public class PantallaFinPartida extends PanelMadre {
 			public void mouseClicked(MouseEvent e) {
 
 				try {
-					Connection conexion =
+					/*Connection conexion =
 					DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola",
-					"root","admin");
-					//Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root", "1234");
+					"root","admin");*/
+					Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root", "1234");
 
 					Statement smt = conexion.createStatement();
 					smt.executeUpdate("insert into partida values ("+(int)ventana.nuevaPartida.getPuntosPartida() + ",'"
@@ -90,7 +90,7 @@ public class PantallaFinPartida extends PanelMadre {
 				} catch (SQLException e1) {
 					e1.printStackTrace();
 				}
-				
+				ventana.reseteoJuego();
 				ventana.irARanking();
 			}
 		});

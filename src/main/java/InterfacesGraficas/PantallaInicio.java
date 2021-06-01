@@ -83,6 +83,7 @@ public class PantallaInicio extends PanelMadre {
 		botonLogin.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+			    
 				ventana.irALogin();
 			}
 		});

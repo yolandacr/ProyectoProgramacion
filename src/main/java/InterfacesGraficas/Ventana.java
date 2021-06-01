@@ -12,6 +12,7 @@ import javax.swing.JFrame;
 import Clases.Cancion;
 import Clases.Jugador;
 import Clases.Partida;
+import Hilos.HiloIntro;
 import Interfaces.FuncionesVentana;
 
 @SuppressWarnings("serial")
@@ -41,7 +42,7 @@ public class Ventana extends JFrame implements FuncionesVentana {
 	protected Partida nuevaPartida; // objeto para crear una nueva partida cuando empezamos
 	protected String[] nombresRanking; // array que guarda los nombres de los 5 jugadores con más puntuación.
 	protected short[] puntosRanking; // array con el top 5 de puntuaciones
-	
+	protected HiloIntro hiloMusical;// variable que contendrá la ejecución de la musica
 	
 
 	/**

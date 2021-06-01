@@ -66,7 +66,7 @@ public class PantallaLogin extends PanelMadre {
 		campoNombre.setFont(new Font("Goudy Stout", Font.PLAIN, 20));
 		campoNombre.setForeground(new Color(255, 51, 255));
 		campoNombre.setBackground(new Color(255, 255, 255));
-		campoNombre.setText("YOLANDA");
+		//campoNombre.setText("YOLANDA");
 		campoNombre.setHorizontalAlignment(SwingConstants.CENTER);
 		GridBagConstraints gbc_campoNombre = new GridBagConstraints();
 		gbc_campoNombre.fill = GridBagConstraints.HORIZONTAL;
@@ -92,7 +92,7 @@ public class PantallaLogin extends PanelMadre {
 		campoContraseña.setFont(new Font("Goudy Stout", Font.PLAIN, 20));
 		campoContraseña.setForeground(Color.MAGENTA);
 		campoContraseña.setBackground(new Color(255, 255, 255));
-		campoContraseña.setText("CORDERO");
+		//campoContraseña.setText("CORDERO");
 		campoContraseña.setHorizontalAlignment(SwingConstants.CENTER);
 		GridBagConstraints gbc_campoContraseña = new GridBagConstraints();
 		gbc_campoContraseña.fill = GridBagConstraints.HORIZONTAL;
@@ -115,12 +115,12 @@ public class PantallaLogin extends PanelMadre {
 				} else { // no estan en blanco y pasa a validar
 
 					try {
-						Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root",
-								"1234");
+						/*Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root",
+								"1234");*/
 
-						// Connection conexion =
-						// DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola",
-						// "root","admin");
+						Connection conexion =
+						DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola",
+						"root","admin");
 
 						Statement smt = conexion.createStatement();
 

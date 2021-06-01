@@ -6,11 +6,11 @@
 package Excepciones;
 
 /**
- * La siguiente excepcion saltará cuando un array a formar esté vacío
+ * La siguiente excepcion saltará cuando, en la pantalla registro, la contraseña esté en blanco.
  * @author Yolanda Cordero
  */
-public class ArrayVacioException extends Exception {
-    public ArrayVacioException(String mensaje) {
+public class ContraseñaVaciaException extends Exception {
+    public ContraseñaVaciaException(String mensaje) {
         super(mensaje);
     }
     

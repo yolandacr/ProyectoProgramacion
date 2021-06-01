@@ -27,7 +27,7 @@ import javax.swing.JTextField;
 
 public class PantallaFinPartida extends PanelMadre {
 	private Ventana ventana;// variable de objeto ventana para pasarla por parámetros al constructor.
-	private JTextField campoPuntos;
+	private JTextField campoPuntos;//en este campo aparecerán los puntos de la partida
 	
 
 	/**
@@ -74,10 +74,10 @@ public class PantallaFinPartida extends PanelMadre {
 			public void mouseClicked(MouseEvent e) {
 
 				try {
-					// Connection conexion =
-					// DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola",
-					// "root","admin");
-					Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root", "1234");
+					Connection conexion =
+					DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola",
+					"root","admin");
+					//Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root", "1234");
 
 					Statement smt = conexion.createStatement();
 					smt.executeUpdate("insert into partida values ("+(int)ventana.nuevaPartida.getPuntosPartida() + ",'"

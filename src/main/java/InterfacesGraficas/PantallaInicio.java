@@ -28,7 +28,7 @@ import java.awt.event.MouseEvent;
 
 public class PantallaInicio extends PanelMadre {
 	private Ventana ventana;// variable de onjeto ventana para pasarla por parámetros al constructor.
-	protected HiloIntro hiloMusical;// variable que contendrá la ejecución de la musica
+	
 
 	/**
 	 * método constructor para la pantalla de Login
@@ -46,9 +46,9 @@ public class PantallaInicio extends PanelMadre {
 		setLayout(gridBagLayout);
 		
 		//iniciamos cancion de intro
-		hiloMusical = new HiloIntro("./sonidos/intro.wav");
-		hiloMusical.start();
-		hiloMusical.runIntro();
+		ventana.hiloMusical = new HiloIntro("./sonidos/intro.wav");
+		ventana.hiloMusical.start();
+		ventana.hiloMusical.runIntro();
 
 		// botón de nuevo usuario
 

@@ -64,7 +64,8 @@ public class PantallaAciertov2 extends PanelMadre {
 		if (ventana.nuevaPartida.getNivel().equalsIgnoreCase("Fácil")) {
 			textoPuntos = new JLabel("+50 PTS");
 		} 
-		if (ventana.nuevaPartida.getNivel().equalsIgnoreCase("Experto")){
+		//if (ventana.nuevaPartida.getNivel().equalsIgnoreCase("Experto"))
+		else{
 			textoPuntos = new JLabel("+100 PTS");
 		}
 

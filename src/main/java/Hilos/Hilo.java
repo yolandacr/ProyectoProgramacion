@@ -16,7 +16,7 @@ import Interfaces.FuncionesHilos;
  * @author yolanda cordero
  *
  */
-public class Hilos extends Thread implements FuncionesHilos {
+public class Hilo extends Thread implements FuncionesHilos {
 
 	private String rutaCancion;// ruta relativa del archivo wav
 	private JButton botonPlay;// boton para ejecutar la canción
@@ -31,7 +31,7 @@ public class Hilos extends Thread implements FuncionesHilos {
 	 * @param botonStop boton de parada
 	 */
 
-	public Hilos(String rc, JButton botonPlay, JButton botonStop) {
+	public Hilo(String rc, JButton botonPlay, JButton botonStop) {
 		rutaCancion = rc;
 		this.botonPlay = botonPlay;
 		this.botonStop = botonStop;

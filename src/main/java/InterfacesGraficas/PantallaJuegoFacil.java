@@ -8,7 +8,7 @@ import javax.sound.sampled.Clip;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import Clases.Cancion;
-import Hilos.Hilos;
+import Hilos.Hilo;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
@@ -31,7 +31,7 @@ public class PantallaJuegoFacil extends PanelMadre {
 	private Cancion actual;// cancion con la que se juega en el momento dado
 	private File archivoSonido;// archivo de sonido
 	private Clip sonido;// objeto reproducible del sonido
-	private Hilos hiloMusical;// variable que contendrá la ejecución de la musica
+	private Hilo hiloMusical;// variable que contendrá la ejecución de la musica
 
 	/**
 	 * metodo constructor
@@ -193,7 +193,7 @@ public class PantallaJuegoFacil extends PanelMadre {
 			public void mouseClicked(MouseEvent e) {
 				// instanciamos el hilo
 
-				hiloMusical = new Hilos(actual.getRuta(), botonPlay, botonStop);
+				hiloMusical = new Hilo(actual.getRuta(), botonPlay, botonStop);
 				hiloMusical.start();
 
 			}
@@ -206,8 +206,9 @@ public class PantallaJuegoFacil extends PanelMadre {
 		botonStop.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				if(hiloMusical!=null) {
 				hiloMusical.parar();
-			}
+			}}
 		});
 		botonStop.setBounds(511, 148, 136, 57);
 		add(botonStop);

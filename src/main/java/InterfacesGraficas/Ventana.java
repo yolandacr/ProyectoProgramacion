@@ -159,7 +159,7 @@ public class Ventana extends JFrame implements FuncionesVentana {
 		this.inicio=null;
 		this.juegoDificil=null;
 		this.juegoFacil=null;
-		this.jugador=null;
+		//this.jugador=null;
 		this.login=null;
 		this.nivel=null;
 		this.nombresRanking=null;

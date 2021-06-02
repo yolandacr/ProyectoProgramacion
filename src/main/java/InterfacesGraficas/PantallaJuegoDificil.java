@@ -12,7 +12,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import Clases.Cancion;
-import Hilos.Hilos;
+import Hilos.Hilo;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
@@ -35,7 +35,7 @@ public class PantallaJuegoDificil extends PanelMadre {
 	private File archivoSonido;// archivo de sonido
 	private Clip sonido;// objeto reproducible del sonido
 	private JTextField campoRespuesta;// campo donde escribimos la respuesta
-	private Hilos hiloMusical;// variable que contendrá la ejecución de la musica
+	private Hilo hiloMusical;// variable que contendrá la ejecución de la musica
 
 	/**
 	 * metodo constructor
@@ -91,10 +91,10 @@ public class PantallaJuegoDificil extends PanelMadre {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				// instanciamos el hilo
-
-				hiloMusical = new Hilos(actual.getRuta(), botonPlay, botonStop);
+               
+				hiloMusical = new Hilo(actual.getRuta(), botonPlay, botonStop);
 				hiloMusical.start();
-
+                
 			}
 
 		});
@@ -106,7 +106,9 @@ public class PantallaJuegoDificil extends PanelMadre {
 		botonStop.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				hiloMusical.parar();
+				if(hiloMusical!=null) {
+					hiloMusical.parar();
+				}
 
 			}
 		});

@@ -9,7 +9,7 @@ import java.awt.Font;
 import javax.swing.SwingConstants;
 
 import Hilos.HiloIntro;
-import Hilos.Hilos;
+import Hilos.Hilo;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;

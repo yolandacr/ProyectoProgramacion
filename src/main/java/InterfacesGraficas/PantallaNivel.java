@@ -19,7 +19,7 @@ import java.awt.event.MouseEvent;
  */
 public class PantallaNivel extends PanelMadre {
 	private Ventana ventana;// objeto ventana base
-	private PantallaInicio inicio; //objeto de la ventana inicio necesario para parar su hilo
+	
 
 	/**
 	 * metodo constructor

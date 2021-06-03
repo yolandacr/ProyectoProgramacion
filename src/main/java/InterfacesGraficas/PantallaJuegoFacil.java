@@ -192,10 +192,11 @@ public class PantallaJuegoFacil extends PanelMadre {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				// instanciamos el hilo
+				
 
 				hiloMusical = new Hilo(actual.getRuta(), botonPlay, botonStop);
 				hiloMusical.start();
-
+				
 			}
 		});
 		botonPlay.setBounds(276, 148, 136, 57);
@@ -208,11 +209,17 @@ public class PantallaJuegoFacil extends PanelMadre {
 			public void mouseClicked(MouseEvent e) {
 				if(hiloMusical!=null) {
 				hiloMusical.parar();
+				
 			}}
 		});
 		botonStop.setBounds(511, 148, 136, 57);
 		add(botonStop);
+		
+		
+		
 
 	}
+	
+	
 
 }

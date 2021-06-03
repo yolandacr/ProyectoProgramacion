@@ -280,5 +280,7 @@ public class Ventana extends JFrame implements FuncionesVentana {
 		this.fin.setVisible(true);
 
 	}
+	
+	
 
 }

@@ -11,7 +11,7 @@ import javax.swing.JButton;
 import Interfaces.FuncionesHilos;
 
 /**
- * clase para los hilos
+ * clase para los hilos de las canción a jugar en ese momento
  * 
  * @author yolanda cordero
  *
@@ -26,7 +26,7 @@ public class Hilo extends Thread implements FuncionesHilos {
 	/**
 	 * metodo constructor para todas las canciones del juego
 	 * 
-	 * @param rc ruta de la canción (relativa)
+	 * @param rc        ruta de la canción (relativa)
 	 * @param botonPlay boton de ejecucion
 	 * @param botonStop boton de parada
 	 */

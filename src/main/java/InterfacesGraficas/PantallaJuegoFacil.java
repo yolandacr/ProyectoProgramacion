@@ -1,37 +1,22 @@
 
 package InterfacesGraficas;
 
-import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.Color;
-import javax.sound.sampled.Clip;
 import javax.swing.JButton;
-import javax.swing.JTextField;
-import Clases.Cancion;
-import Hilos.Hilo;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Random;
 
 /**
- * clase para crear las pantallas del modo facil
+ * clase para crear las pantallas del modo facil. Hereda de PantallaJuegoBase
  * 
  * @author yolanda cordero
  *
  */
 
-public class PantallaJuegoFacil extends PanelMadre {
-
-	private Ventana ventana;// objeto ventana base
-	private JTextField campoPuntos;// campo donde aparecen los puntos acumulados
-	private Cancion actual;// cancion con la que se juega en el momento dado
-	private File archivoSonido;// archivo de sonido
-	private Clip sonido;// objeto reproducible del sonido
-	private Hilo hiloMusical;// variable que contendrá la ejecución de la musica
+public class PantallaJuegoFacil extends PantallaJuegoBase {
 
 	/**
 	 * metodo constructor
@@ -39,56 +24,29 @@ public class PantallaJuegoFacil extends PanelMadre {
 	 * @param v jframe base
 	 */
 	public PantallaJuegoFacil(Ventana v) {
-		
 
-		this.ventana = v;
-
-		Random r = new Random();
-
-		actual = ventana.cancionesCategoria.get(r.nextInt(ventana.cancionesCategoria.size()));
-
-		ventana.cancionesPartida.add(actual);
-
-		setLayout(null);
-		JLabel textoPuntos = new JLabel("Puntos:");
-		textoPuntos.setForeground(new Color(204, 51, 255));
-		textoPuntos.setFont(new Font("Goudy Stout", Font.PLAIN, 25));
-		textoPuntos.setBounds(10, 21, 200, 42);
-		add(textoPuntos);
-
-		campoPuntos = new JTextField();
-		campoPuntos.setBackground(Color.BLACK);
-		campoPuntos.setForeground(new Color(255, 51, 255));
-		campoPuntos.setEditable(false);
-		campoPuntos.setFont(new Font("Goudy Stout", Font.PLAIN, 25));
-		campoPuntos.setBounds(206, 22, 101, 42);
-		add(campoPuntos);
-		campoPuntos.setColumns(10);
-
-		// establecemos los puntos a los de la partida. Empezarán en 0
-
-		campoPuntos.setText(String.valueOf(ventana.nuevaPartida.getPuntosPartida()));
+		super(v);// metodo constructor de la superclase
 
 		// opcion 1
 
-		JButton botonOpcion1 = new BotonMadre(actual.getOpcionesEleccion()[0]);
+		JButton botonOpcion1 = new BotonMadre(getActual().getOpcionesEleccion()[0]);
 		botonOpcion1.setFont(new Font("Goudy Stout", Font.PLAIN, 10));
 		botonOpcion1.setForeground(new Color(255, 51, 255));
 		botonOpcion1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 
-				if (botonOpcion1.getText().equalsIgnoreCase(actual.getNombre())) {
-					ventana.cancionesCategoria.remove(actual);
-					ventana.irAciertoV2();
+				if (botonOpcion1.getText().equalsIgnoreCase(getActual().getNombre())) {
+					getVentana().cancionesCategoria.remove(getActual());
+					getVentana().irAciertoV2();
 
 				} else {
-					ventana.cancionesCategoria.remove(actual);
-					ventana.irFallo();
+					getVentana().cancionesCategoria.remove(getActual());
+					getVentana().irFallo();
 
 				}
-				if (hiloMusical != null) {
-					hiloMusical.parar();
+				if (getHiloMusical() != null) {
+					getHiloMusical().parar();
 				}
 
 			}
@@ -98,22 +56,24 @@ public class PantallaJuegoFacil extends PanelMadre {
 
 		// opcion 2
 
-		JButton botonOpcion2 = new BotonMadre(actual.getOpcionesEleccion()[1]);
+		JButton botonOpcion2 = new BotonMadre(getActual().getOpcionesEleccion()[1]);
 		botonOpcion2.setFont(new Font("Goudy Stout", Font.PLAIN, 10));
 		botonOpcion2.setForeground(new Color(255, 51, 255));
 		botonOpcion2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if (botonOpcion2.getText().equalsIgnoreCase(actual.getNombre())) {
-					ventana.cancionesCategoria.remove(actual);
-					ventana.irAciertoV2();
+				if (botonOpcion2.getText().equalsIgnoreCase(getActual().getNombre())) {
+					getVentana().cancionesCategoria.remove(getActual());
+					getVentana().irAciertoV2();
 
 				} else {
-					ventana.cancionesCategoria.remove(actual);
-					ventana.irFallo();
+					getVentana().cancionesCategoria.remove(getActual());
+					getVentana().irFallo();
 
 				}
-				hiloMusical.parar();
+				if (getHiloMusical() != null) {
+					getHiloMusical().parar();
+				}
 
 			}
 		});
@@ -122,21 +82,23 @@ public class PantallaJuegoFacil extends PanelMadre {
 
 		// opcion 3
 
-		JButton botonOpcion4 = new BotonMadre(actual.getOpcionesEleccion()[2]);
+		JButton botonOpcion4 = new BotonMadre(getActual().getOpcionesEleccion()[2]);
 		botonOpcion4.setFont(new Font("Goudy Stout", Font.PLAIN, 10));
 		botonOpcion4.setForeground(new Color(255, 51, 255));
 		botonOpcion4.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if (botonOpcion4.getText().equalsIgnoreCase(actual.getNombre())) {
-					ventana.cancionesCategoria.remove(actual);
-					ventana.irAciertoV2();
+				if (botonOpcion4.getText().equalsIgnoreCase(getActual().getNombre())) {
+					getVentana().cancionesCategoria.remove(getActual());
+					getVentana().irAciertoV2();
 				} else {
-					ventana.cancionesCategoria.remove(actual);
-					ventana.irFallo();
+					getVentana().cancionesCategoria.remove(getActual());
+					getVentana().irFallo();
 
 				}
-				hiloMusical.parar();
+				if (getHiloMusical() != null) {
+					getHiloMusical().parar();
+				}
 			}
 		});
 		botonOpcion4.addActionListener(new ActionListener() {
@@ -148,7 +110,7 @@ public class PantallaJuegoFacil extends PanelMadre {
 
 		// opcion 4
 
-		JButton botonOpcion3 = new BotonMadre(actual.getOpcionesEleccion()[3]);
+		JButton botonOpcion3 = new BotonMadre(getActual().getOpcionesEleccion()[3]);
 		botonOpcion3.setFont(new Font("Goudy Stout", Font.PLAIN, 10));
 		botonOpcion3.setForeground(new Color(255, 51, 255));
 		botonOpcion3.addActionListener(new ActionListener() {
@@ -158,68 +120,26 @@ public class PantallaJuegoFacil extends PanelMadre {
 		botonOpcion3.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if (botonOpcion3.getText().equalsIgnoreCase(actual.getNombre())) {
+				if (botonOpcion3.getText().equalsIgnoreCase(getActual().getNombre())) {
 
-					ventana.cancionesCategoria.remove(actual);
-					ventana.irAciertoV2();
+					getVentana().cancionesCategoria.remove(getActual());
+					getVentana().irAciertoV2();
 
 				} else {
 
-					ventana.cancionesCategoria.remove(actual);
-					ventana.irFallo();
+					getVentana().cancionesCategoria.remove(getActual());
+					getVentana().irFallo();
 
 				}
 
-				if (hiloMusical != null) {
-					hiloMusical.parar();
+				if (getHiloMusical() != null) {
+					getHiloMusical().parar();
 				}
 			}
 		});
 		botonOpcion3.setBounds(75, 440, 337, 37);
 		add(botonOpcion3);
 
-		// boton play y stop
-
-		JButton botonStop = new BotonMadre("Stop");
-		JButton botonPlay = new BotonMadre("Play");
-		botonPlay.setFont(new Font("Goudy Stout", Font.PLAIN, 20));
-		botonPlay.setForeground(new Color(204, 51, 255));
-		botonPlay.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		botonPlay.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				// instanciamos el hilo
-				
-
-				hiloMusical = new Hilo(actual.getRuta(), botonPlay, botonStop);
-				hiloMusical.start();
-				
-			}
-		});
-		botonPlay.setBounds(276, 148, 136, 57);
-		add(botonPlay);
-
-		botonStop.setFont(new Font("Goudy Stout", Font.PLAIN, 20));
-		botonStop.setForeground(new Color(204, 51, 255));
-		botonStop.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				if(hiloMusical!=null) {
-				hiloMusical.parar();
-				
-			}}
-		});
-		botonStop.setBounds(511, 148, 136, 57);
-		add(botonStop);
-		
-		
-		
-
 	}
-	
-	
 
 }

@@ -56,8 +56,11 @@ public class PantallaCategoria extends PanelMadre {
 				try {
 					ventana.cancionesCategoria = new ArrayList<Cancion>();
 					Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root", "1234");
-					 /*Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root",
-					 "admin");*/
+					/*
+					 * Connection conexion =
+					 * DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root",
+					 * "admin");
+					 */
 
 					Statement smt = conexion.createStatement();
 					ResultSet cancionesResult = smt
@@ -71,9 +74,11 @@ public class PantallaCategoria extends PanelMadre {
 
 						Connection conexion1 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root",
 								"1234");
-						 /*Connection conexion1 =
-						 DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root",
-						 "admin");*/
+						/*
+						 * Connection conexion1 =
+						 * DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root",
+						 * "admin");
+						 */
 						Statement smt1 = conexion1.createStatement();
 						ResultSet opcionesResult = smt1
 								.executeQuery("select nombre from opciones where nombre_cancion='"
@@ -137,9 +142,9 @@ public class PantallaCategoria extends PanelMadre {
 				try {
 					ventana.cancionesCategoria = new ArrayList<Cancion>();
 					Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root", "1234");
-					//Connection conexion =
-					//DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root",
-					//"admin");
+					// Connection conexion =
+					// DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root",
+					// "admin");
 					Statement smt = conexion.createStatement();
 					ResultSet cancionesResult = smt.executeQuery("select * from cancion where categoria='" + "AÑOS90'");
 
@@ -150,10 +155,10 @@ public class PantallaCategoria extends PanelMadre {
 										cancionesResult.getString("disco"), cancionesResult.getString("ruta")));
 
 						Connection conexion1 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root",
-							"1234");
-						//Connection conexion1 =
-						//DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root",
-						//"admin");
+								"1234");
+						// Connection conexion1 =
+						// DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root",
+						// "admin");
 
 						Statement smt1 = conexion1.createStatement();
 						ResultSet opcionesResult = smt1
@@ -199,9 +204,9 @@ public class PantallaCategoria extends PanelMadre {
 				try {
 					ventana.cancionesCategoria = new ArrayList<Cancion>();
 					Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root", "1234");
-					//Connection conexion =
-					//DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root",
-					//"admin");
+					// Connection conexion =
+					// DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root",
+					// "admin");
 					Statement smt = conexion.createStatement();
 					ResultSet cancionesResult = smt
 							.executeQuery("select * from cancion where categoria='" + "AÑOS2000'");
@@ -214,9 +219,11 @@ public class PantallaCategoria extends PanelMadre {
 
 						Connection conexion1 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root",
 								"1234");
-						/*Connection conexion1 =
-						DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root",
-						"admin");*/
+						/*
+						 * Connection conexion1 =
+						 * DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root",
+						 * "admin");
+						 */
 						Statement smt1 = conexion1.createStatement();
 						ResultSet opcionesResult = smt1
 								.executeQuery("select nombre from opciones where nombre_cancion='"
@@ -261,9 +268,11 @@ public class PantallaCategoria extends PanelMadre {
 				try {
 					ventana.cancionesCategoria = new ArrayList<Cancion>();
 					Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root", "1234");
-					/*Connection conexion =
-					DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root",
-					"admin");*/
+					/*
+					 * Connection conexion =
+					 * DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root",
+					 * "admin");
+					 */
 					Statement smt = conexion.createStatement();
 					ResultSet cancionesResult = smt.executeQuery("select * from cancion where categoria='" + "AÑOS80'");
 
@@ -277,9 +286,11 @@ public class PantallaCategoria extends PanelMadre {
 
 						Connection conexion1 = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root",
 								"1234");
-						/*Connection conexion1 =
-						DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root",
-						"admin");*/
+						/*
+						 * Connection conexion1 =
+						 * DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root",
+						 * "admin");
+						 */
 						Statement smt1 = conexion1.createStatement();
 						ResultSet opcionesResult = smt1
 								.executeQuery("select nombre from opciones where nombre_cancion='"

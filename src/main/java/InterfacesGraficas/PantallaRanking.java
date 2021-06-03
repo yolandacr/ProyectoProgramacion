@@ -1,15 +1,11 @@
-//DOCUMENTACION OK
-//TODO FALLA A LA HORA DE PONER ENTEROS EN EL TEXTFIELD. PREGUNTAR A MIGUEL SI PUEDO PONER EN LA BASE DE DATOS ESE CAMPO COMO VARCHAR O UNA ALTERNATIVA
 
 package InterfacesGraficas;
 
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
-
 import Clases.Cancion;
 import Clases.Partida;
-
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
@@ -58,9 +54,9 @@ public class PantallaRanking extends PanelMadre {
 		// generamos el ranking
 		try {
 			Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root", "1234");
-			//Connection conexion =
-		    //DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root",
-			//"admin");
+			// Connection conexion =
+			// DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root",
+			// "admin");
 			Statement smt = conexion.createStatement();
 			ResultSet rankingResult = smt // hacemos la consulta
 					.executeQuery("SELECT nombre_jugador,puntos FROM rockola.partida order by puntos desc limit 5");
@@ -236,8 +232,8 @@ public class PantallaRanking extends PanelMadre {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				ventana.siguienteCancion();
-				ventana.nuevaPartida=new Partida(null,(short)0,null,null);
-				ventana.cancionesPartida=new ArrayList<Cancion>();
+				ventana.nuevaPartida = new Partida(null, (short) 0, null, null);
+				ventana.cancionesPartida = new ArrayList<Cancion>();
 				ventana.irInicio();
 			}
 		});

@@ -1,5 +1,4 @@
 
-
 package InterfacesGraficas;
 
 import java.awt.Cursor;
@@ -18,10 +17,11 @@ import Interfaces.FuncionesVentana;
 @SuppressWarnings("serial")
 
 /**
+ * La siguiente clase corresponde a nuestra ventana base. Constructor y métodos
+ * que nos dejaran navegar por las pantallas correctamente.
  * 
- * @author Yolanda Cordero La siguiente clase corresponde a nuestra ventana
- *         base. Constructor y métodos que nos dejaran navegar por las pantallas
- *         correctamente.
+ * @author Yolanda Cordero
+ *
  */
 public class Ventana extends JFrame implements FuncionesVentana {
 	private PantallaInicio inicio; // objeto para la pantalla de inicio
@@ -44,14 +44,13 @@ public class Ventana extends JFrame implements FuncionesVentana {
 	protected short[] puntosRanking; // array con el top 5 de puntuaciones
 	protected HiloIntro hiloMusical;// variable que contendrá la ejecución de la musica
 	
-
 	/**
 	 * constructor sin argumentos para instanciar objetos Ventana.
 	 */
 
 	public Ventana() {
-		cancionesPartida= new ArrayList<Cancion>();
-		
+		cancionesPartida = new ArrayList<Cancion>();
+
 		this.setSize(1000, 700);// tamaño de la ventana en píxeles
 		this.setResizable(false); // indica que no se puede modificar el tamaño
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);// cierra el programa cuando cerramos en la "x"
@@ -143,32 +142,32 @@ public class Ventana extends JFrame implements FuncionesVentana {
 		this.juegoFacil = null;
 		this.juegoDificil = null;
 	}
-	
+
 	/**
 	 * metodo que resetea todas las pantallas y datos del juego
 	 */
-	
+
 	public void reseteoJuego() {
-		this.acierto=null;
-		this.nuevaPartida=null;
-		this.cancionesCategoria=null;
-		this.cancionesPartida=null;
-		this.categoria=null;
-		this.fallo=null;
-		this.fin=null;
-		this.inicio=null;
-		this.juegoDificil=null;
-		this.juegoFacil=null;
-		//this.jugador=null;
-		this.login=null;
-		this.nivel=null;
-		this.nombresRanking=null;
-		this.nuevaPartida=null;
-		this.opcionesCancionActual=null;
-		this.puntosRanking=null;
-		this.ranking=null;
-		this.registro=null;
-   
+		this.acierto = null;
+		this.nuevaPartida = null;
+		this.cancionesCategoria = null;
+		this.cancionesPartida = null;
+		this.categoria = null;
+		this.fallo = null;
+		this.fin = null;
+		this.inicio = null;
+		this.juegoDificil = null;
+		this.juegoFacil = null;
+		// this.jugador=null;
+		this.login = null;
+		this.nivel = null;
+		this.nombresRanking = null;
+		this.nuevaPartida = null;
+		this.opcionesCancionActual = null;
+		this.puntosRanking = null;
+		this.ranking = null;
+		this.registro = null;
+
 	}
 
 	/**
@@ -280,7 +279,5 @@ public class Ventana extends JFrame implements FuncionesVentana {
 		this.fin.setVisible(true);
 
 	}
-	
-	
 
 }

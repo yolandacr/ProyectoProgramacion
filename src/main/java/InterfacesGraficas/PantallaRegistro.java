@@ -1,4 +1,4 @@
-//preguntar a miguel por el metodo obsoleto pa get text en contraseña
+
 package InterfacesGraficas;
 
 import javax.swing.JPasswordField;
@@ -104,41 +104,41 @@ public class PantallaRegistro extends PanelMadre {
 		JButton botonRegistrar = new BotonMadre("Registrar");
 		botonRegistrar.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) 
-			{
+			public void mouseClicked(MouseEvent e) {
 				try {
 					if (campoNombre.getText().isBlank() || String.valueOf(campoContraseña.getPassword()).isBlank()) {
 						if (campoNombre.getText().isBlank()) {
 							throw new NombreVacioException("El campo nombre esta vacio");
 						}
-						
-						if(String.valueOf(campoContraseña.getPassword()).isBlank()) {
+
+						if (String.valueOf(campoContraseña.getPassword()).isBlank()) {
 							throw new ContraseñaVaciaException("La contraseña está vacía");
 						}
 
-					}  
-				// Todo relleno, se puede insertar
-					
-						Jugador jugador = new Jugador(campoNombre.getText(), String.valueOf(campoContraseña.getPassword()));
-				Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root","1234");
-
-						// credenciales pa conectar en pc clase
-
-						//Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola","root","admin");
-
-						Statement smt = conexion.createStatement();
-						smt.executeUpdate("insert into Jugador " + "values('" + campoNombre.getText() + "'," + "'"
-								+ String.valueOf(campoContraseña.getPassword()) + "')");
-						JOptionPane.showMessageDialog(ventana, "El usuario se ha registrado correctamente",
-								"Registro correcto", JOptionPane.INFORMATION_MESSAGE);
-
-						smt.close();
-						conexion.close();
-						ventana.irInicio();
-					} catch (SQLException |NombreVacioException|ContraseñaVaciaException e1) {
-						JOptionPane.showMessageDialog(ventana, e1.getMessage(), "Error de inserción",
-								JOptionPane.ERROR_MESSAGE);
 					}
+					// Todo relleno, se puede insertar
+
+					Jugador jugador = new Jugador(campoNombre.getText(), String.valueOf(campoContraseña.getPassword()));
+					Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola", "root", "1234");
+
+					// credenciales pa conectar en pc clase
+
+					// Connection conexion =
+					// DriverManager.getConnection("jdbc:mysql://127.0.0.1/rockola","root","admin");
+
+					Statement smt = conexion.createStatement();
+					smt.executeUpdate("insert into Jugador " + "values('" + campoNombre.getText() + "'," + "'"
+							+ String.valueOf(campoContraseña.getPassword()) + "')");
+					JOptionPane.showMessageDialog(ventana, "El usuario se ha registrado correctamente",
+							"Registro correcto", JOptionPane.INFORMATION_MESSAGE);
+
+					smt.close();
+					conexion.close();
+					ventana.irInicio();
+				} catch (SQLException | NombreVacioException | ContraseñaVaciaException e1) {
+					JOptionPane.showMessageDialog(ventana, e1.getMessage(), "Error de inserción",
+							JOptionPane.ERROR_MESSAGE);
+				}
 			}
 		});
 		botonRegistrar.setForeground(new Color(255, 51, 255));

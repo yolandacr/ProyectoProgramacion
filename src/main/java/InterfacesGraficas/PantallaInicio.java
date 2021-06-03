@@ -7,10 +7,7 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.Font;
 import javax.swing.SwingConstants;
-
 import Hilos.HiloIntro;
-import Hilos.Hilo;
-
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
@@ -28,7 +25,6 @@ import java.awt.event.MouseEvent;
 
 public class PantallaInicio extends PanelMadre {
 	private Ventana ventana;// variable de onjeto ventana para pasarla por parámetros al constructor.
-	
 
 	/**
 	 * método constructor para la pantalla de Login
@@ -44,8 +40,8 @@ public class PantallaInicio extends PanelMadre {
 		gridBagLayout.columnWeights = new double[] { 0.0, 0.0, 1.0, Double.MIN_VALUE };
 		gridBagLayout.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE };
 		setLayout(gridBagLayout);
-		
-		//iniciamos cancion de intro
+
+		// iniciamos cancion de intro
 		ventana.hiloMusical = new HiloIntro("./sonidos/intro.wav");
 		ventana.hiloMusical.start();
 		ventana.hiloMusical.runIntro();
@@ -83,7 +79,7 @@ public class PantallaInicio extends PanelMadre {
 		botonLogin.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-			    
+
 				ventana.irALogin();
 			}
 		});

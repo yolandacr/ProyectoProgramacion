@@ -19,7 +19,6 @@ import java.awt.event.MouseEvent;
  */
 public class PantallaNivel extends PanelMadre {
 	private Ventana ventana;// objeto ventana base
-	
 
 	/**
 	 * metodo constructor
@@ -62,7 +61,7 @@ public class PantallaNivel extends PanelMadre {
 						botonExperto.getText());
 				ventana.irAExperto();
 				ventana.hiloMusical.pararIntro();
-				
+
 			}
 		});
 		botonExperto.setFont(new Font("Goudy Stout", Font.PLAIN, 20));

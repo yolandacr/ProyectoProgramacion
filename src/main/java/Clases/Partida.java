@@ -8,7 +8,6 @@ package Clases;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 /**
  * clase que almacena todo lo necesario para crear objetos Partida
@@ -17,27 +16,23 @@ import java.util.Scanner;
  */
 public class Partida {
 
-
 	private Jugador jugador;// objeto jugador de la partida
 	private short puntosPartida;// puntos almacenados en la partida.
 	private LocalDateTime fecha;// fecha en la que se realizó la partida.
 	private ArrayList<Cancion> cancionesPartida;// canciones que son jugadas en esta partida.
-	private String nivel; //nivel de juego elegido
+	private String nivel; // nivel de juego elegido
 
-	
-	
 	/**
 	 * método constructor para crear nuevas partidas
-	 * @param jugador jugador que está logueado
-	 * @param puntosPartida puntos conseguidos en la partida
-	 * @param fecha fecha de la partida y hora
+	 * 
+	 * @param jugador          jugador que está logueado
+	 * @param puntosPartida    puntos conseguidos en la partida
+	 * @param fecha            fecha de la partida y hora
 	 * @param cancionesPartida canciones con las que se va a jugar
-	 * @param nivel de dificultad elegido
+	 * @param nivel            de dificultad elegido
 	 */
-	
-	
-	public Partida(Jugador jugador, short puntosPartida, ArrayList<Cancion> cancionesPartida,
-			String nivel) {
+
+	public Partida(Jugador jugador, short puntosPartida, ArrayList<Cancion> cancionesPartida, String nivel) {
 		super();
 		this.jugador = jugador;
 		this.puntosPartida = puntosPartida;
@@ -45,11 +40,10 @@ public class Partida {
 		this.cancionesPartida = cancionesPartida;
 		this.nivel = nivel;
 	}
-	
-	
 
 	/**
 	 * metodo constructor para el ranking
+	 * 
 	 * @param jugador       objeto jugador con el nombre
 	 * @param puntosPartida puntos obtenidos en la partida
 	 */
@@ -60,11 +54,9 @@ public class Partida {
 		this.puntosPartida = puntosPartida;
 	}
 
-	
-	
-
 	/**
 	 * método getter para el objeto jugador
+	 * 
 	 * @return un objeto jugador
 	 */
 	public Jugador getJugador() {
@@ -136,9 +128,9 @@ public class Partida {
 		this.cancionesPartida = cancionesPartida;
 	}
 
-
 	/**
 	 * metodo getter de nivel
+	 * 
 	 * @return un string con el nivel de juego
 	 */
 
@@ -146,15 +138,13 @@ public class Partida {
 		return nivel;
 	}
 
-
-/**
- *  metodo setter de nivel
- * @param nivel nuevo valor para el string de nivel
- */
+	/**
+	 * metodo setter de nivel
+	 * 
+	 * @param nivel nuevo valor para el string de nivel
+	 */
 	public void setNivel(String nivel) {
 		this.nivel = nivel;
 	}
-	
-	
 
 }

@@ -6,12 +6,14 @@
 package Excepciones;
 
 /**
- * La siguiente excepcion saltará cuando, en la pantalla registro, la contraseña esté en blanco.
+ * La siguiente excepcion saltará cuando, en la pantalla registro, la contraseña
+ * esté en blanco.
+ * 
  * @author Yolanda Cordero
  */
 public class ContraseñaVaciaException extends Exception {
-    public ContraseñaVaciaException(String mensaje) {
-        super(mensaje);
-    }
-    
+	public ContraseñaVaciaException(String mensaje) {
+		super(mensaje);
+	}
+
 }
